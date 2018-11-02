@@ -25,7 +25,7 @@
                     <a
                         class='nav-link dropdown-toggle' href='#' id='article' role='button'
                         data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
-                        <i class='fa fa-list'></i>
+                        <i class='fa fa-file-text'></i>
                         Artikel
                     </a>
                     <div class='dropdown-menu' aria-labelledby='article'>
@@ -34,7 +34,18 @@
                     </div>
                 </li>
 
-                
+                <li class='nav-item dropdown {{ Route::is('category.*') ? 'active' : '' }}'>
+                    <a
+                        class='nav-link dropdown-toggle' href='#' id='category' role='button'
+                        data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+                        <i class='fa fa-list'></i>
+                        Kategori
+                    </a>
+                    <div class='dropdown-menu' aria-labelledby='category'>
+                        <a class='dropdown-item' href='{{ route('category.index') }}'> Seluruh Kategori </a>
+                        <a class='dropdown-item' href='{{ route('category.create') }}'> Tambah Kategori </a>
+                    </div>
+                </li>
             </div>
 
             <div class="navbar-nav ml-auto">

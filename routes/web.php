@@ -36,3 +36,12 @@ Route::group(['prefix' => '/article', 'as' => 'article.'], function() {
     Route::post('/update/{article}', 'ArticleController@update')->name('update');
     Route::post('/delete/{article}', 'ArticleController@delete')->name('delete');
 });
+
+Route::group(['prefix' => '/category', 'as' => 'category.'], function() {
+    Route::get('/index', 'CategoryController@index')->name('index');
+    Route::get('/create', 'CategoryController@create')->name('create');
+    Route::post('/store', 'CategoryController@store')->name('store');
+    Route::get('/edit/{category}', 'CategoryController@edit')->name('edit');
+    Route::post('/update/{category}', 'CategoryController@update')->name('update');
+    Route::post('/delete/{category}', 'CategoryController@delete')->name('delete');
+});

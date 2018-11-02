@@ -18,7 +18,7 @@
 
     <div class="card">
         <div class="card-header">
-            <i class="fa fa-list"></i>
+            <i class="fa fa-file-text"></i>
             Seluruh Artikel
         </div>
         <div class="card-body">
