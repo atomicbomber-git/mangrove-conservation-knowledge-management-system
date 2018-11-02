@@ -15,7 +15,8 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
+Vue.component('article-create', require('./components/article/Create.vue'));
+Vue.component('article-edit', require('./components/article/Edit.vue'));
 
 const app = new Vue({
     el: '#app'

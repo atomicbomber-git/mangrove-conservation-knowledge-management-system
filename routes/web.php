@@ -27,3 +27,12 @@ Route::group(['prefix' => '/user', 'as' => 'user.'], function() {
     Route::post('/update/{user}', 'UserController@update')->name('update');
     Route::post('/delete/{user}', 'UserController@delete')->name('delete');
 });
+
+Route::group(['prefix' => '/article', 'as' => 'article.'], function() {
+    Route::get('/index', 'ArticleController@index')->name('index');
+    Route::get('/create', 'ArticleController@create')->name('create');
+    Route::post('/store', 'ArticleController@store')->name('store');
+    Route::get('/edit/{article}', 'ArticleController@edit')->name('edit');
+    Route::post('/update/{article}', 'ArticleController@update')->name('update');
+    Route::post('/delete/{article}', 'ArticleController@delete')->name('delete');
+});

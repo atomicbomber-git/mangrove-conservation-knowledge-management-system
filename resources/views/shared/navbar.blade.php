@@ -21,6 +21,19 @@
                     </div>
                 </li>
 
+                <li class='nav-item dropdown {{ Route::is('article.*') ? 'active' : '' }}'>
+                    <a
+                        class='nav-link dropdown-toggle' href='#' id='article' role='button'
+                        data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+                        <i class='fa fa-list'></i>
+                        Artikel
+                    </a>
+                    <div class='dropdown-menu' aria-labelledby='article'>
+                        <a class='dropdown-item' href='{{ route('article.index') }}'> Seluruh Artikel </a>
+                        <a class='dropdown-item' href='{{ route('article.index') }}'> Tambah Artikel </a>
+                    </div>
+                </li>
+
                 
             </div>
 
