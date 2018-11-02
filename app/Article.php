@@ -20,6 +20,11 @@ class Article extends Model
         return $this->belongsTo(Category::class);
     }
 
+    public function poster()
+    {
+        return $this->belongsTo(User::class, 'poster_id');
+    }
+
     public function getStatusAttribute($value)
     {
         return $this::STATUSES[$value];

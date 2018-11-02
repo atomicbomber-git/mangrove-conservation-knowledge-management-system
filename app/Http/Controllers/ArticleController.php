@@ -11,8 +11,8 @@ class ArticleController extends Controller
 {
     public function index()
     {
-        $articles = Article::select('id', 'title', 'status', 'category_id')
-            ->with('category:id,name')
+        $articles = Article::select('id', 'title', 'status', 'category_id', 'poster_id')
+            ->with('category:id,name', 'poster:id,name')
             ->orderBy('created_at')
             ->get();
 
