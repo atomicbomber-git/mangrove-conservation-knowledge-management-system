@@ -23,6 +23,18 @@
         </div>
 
         <div class="form-group">
+            <label for='category_id'> Kategori: </label>
+            <select
+                class="form-control" v-model="article.category_id"
+                :class="{'is-invalid': get(this.error_data, 'errors.category_id[0]', false)}">
+                <option v-for="category in categories" :key="category.id" :value="category.id">
+                    {{ category.name }}
+                </option>
+            </select>
+            <div class='invalid-feedback'>{{ get(this.error_data, 'errors.category_id[0]', false) }}</div>
+        </div>
+
+        <div class="form-group">
             <label for="content"> Isi: </label>
             <vue-editor v-model="article.content"></vue-editor>
         </div>
@@ -52,13 +64,13 @@
                 return {
                     'title': this.article.title,
                     'content': this.article.content,
-                    'status': this.article.original_status
+                    'status': this.article.original_status,
+                    'category_id': this.article.category_id
                 }
             },
 
-            statuses() {
-                return window.statuses
-            }
+            statuses() { return window.statuses },
+            categories() { return window.categories }
         },
 
         methods: {

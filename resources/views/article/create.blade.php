@@ -15,7 +15,6 @@
             Tambah Artikel
         </div>
         <div class="card-body">
-
             <div id="app">
                 <article-create/>
             </div>
@@ -24,4 +23,5 @@
 </div>
 
 @javascript('statuses', \App\Article::STATUSES)
+@javascript('categories', $categories)
 @endsection

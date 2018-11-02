@@ -12,8 +12,13 @@ class Article extends Model
     ];
 
     public $fillable = [
-        'poster_id', 'title', 'content', 'status'
+        'poster_id', 'title', 'content', 'status', 'category_id'
     ];
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 
     public function getStatusAttribute($value)
     {

@@ -11,6 +11,18 @@
         </div>
 
         <div class="form-group">
+            <label for='category_id'> Kategori: </label>
+            <select
+                class="form-control" v-model="article.category_id"
+                :class="{'is-invalid': get(this.error_data, 'errors.category_id[0]', false)}">
+                <option v-for="category in categories" :key="category.id" :value="category.id">
+                    {{ category.name }}
+                </option>
+            </select>
+            <div class='invalid-feedback'>{{ get(this.error_data, 'errors.category_id[0]', false) }}</div>
+        </div>
+
+        <div class="form-group">
             <label for="content"> Isi: </label>
             <vue-editor v-model="article.content"></vue-editor>
             <p class="text-danger mt-2" v-if="get(this.error_data, 'errors.content[0]', false)">
@@ -33,7 +45,7 @@
     export default {
         data() {
             return {
-                article: {title: '', content: ''},
+                article: {title: '', content: '', category_id: null},
                 error_data: null
             }
         },
@@ -43,12 +55,13 @@
                 return {
                     'title': this.article.title,
                     'content': this.article.content,
+                    'category_id': this.article.category_id
                 }
             },
 
-            statuses() {
-                return window.statuses
-            }
+            statuses() { return window.statuses },
+            categories() { return window.categories }
+
         },
 
         methods: {
@@ -58,7 +71,7 @@
 
                 axios.post(`/article/store`, this.form_data)
                     .then(response => {
-                        window.location.replace('/collectio')
+                        window.location.replace(response.data.redirect)
                     })
                     .catch(error => {
                         this.error_data = error.response.data

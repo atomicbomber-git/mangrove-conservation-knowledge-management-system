@@ -25,4 +25,6 @@
 
 @javascript('article', $article)
 @javascript('statuses', \App\Article::STATUSES)
+@javascript('categories', $categories)
+
 @endsection

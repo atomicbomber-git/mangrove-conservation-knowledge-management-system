@@ -60961,6 +60961,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -60978,11 +60990,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             return {
                 'title': this.article.title,
                 'content': this.article.content,
-                'status': this.article.original_status
+                'status': this.article.original_status,
+                'category_id': this.article.category_id
             };
         },
         statuses: function statuses() {
             return window.statuses;
+        },
+        categories: function categories() {
+            return window.categories;
         }
     },
 
@@ -61095,6 +61111,64 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "invalid-feedback" }, [
         _vm._v(_vm._s(_vm.get(this.error_data, "errors.title[0]", false)))
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "form-group" }, [
+      _c("label", { attrs: { for: "category_id" } }, [_vm._v(" Kategori: ")]),
+      _vm._v(" "),
+      _c(
+        "select",
+        {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.article.category_id,
+              expression: "article.category_id"
+            }
+          ],
+          staticClass: "form-control",
+          class: {
+            "is-invalid": _vm.get(
+              this.error_data,
+              "errors.category_id[0]",
+              false
+            )
+          },
+          on: {
+            change: function($event) {
+              var $$selectedVal = Array.prototype.filter
+                .call($event.target.options, function(o) {
+                  return o.selected
+                })
+                .map(function(o) {
+                  var val = "_value" in o ? o._value : o.value
+                  return val
+                })
+              _vm.$set(
+                _vm.article,
+                "category_id",
+                $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+              )
+            }
+          }
+        },
+        _vm._l(_vm.categories, function(category) {
+          return _c(
+            "option",
+            { key: category.id, domProps: { value: category.id } },
+            [
+              _vm._v(
+                "\n                " + _vm._s(category.name) + "\n            "
+              )
+            ]
+          )
+        })
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "invalid-feedback" }, [
+        _vm._v(_vm._s(_vm.get(this.error_data, "errors.category_id[0]", false)))
       ])
     ]),
     _vm._v(" "),
@@ -61232,13 +61306,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            article: { title: '', content: '' },
+            article: { title: '', content: '', category_id: null },
             error_data: null
         };
     },
@@ -61248,11 +61334,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         form_data: function form_data() {
             return {
                 'title': this.article.title,
-                'content': this.article.content
+                'content': this.article.content,
+                'category_id': this.article.category_id
             };
         },
         statuses: function statuses() {
             return window.statuses;
+        },
+        categories: function categories() {
+            return window.categories;
         }
     },
 
@@ -61264,7 +61354,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             e.preventDefault();
 
             axios.post('/article/store', this.form_data).then(function (response) {
-                window.location.replace('/collectio');
+                window.location.replace(response.data.redirect);
             }).catch(function (error) {
                 _this.error_data = error.response.data;
             });
@@ -61311,6 +61401,64 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "invalid-feedback" }, [
         _vm._v(_vm._s(_vm.get(this.error_data, "errors.title[0]", false)))
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "form-group" }, [
+      _c("label", { attrs: { for: "category_id" } }, [_vm._v(" Kategori: ")]),
+      _vm._v(" "),
+      _c(
+        "select",
+        {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.article.category_id,
+              expression: "article.category_id"
+            }
+          ],
+          staticClass: "form-control",
+          class: {
+            "is-invalid": _vm.get(
+              this.error_data,
+              "errors.category_id[0]",
+              false
+            )
+          },
+          on: {
+            change: function($event) {
+              var $$selectedVal = Array.prototype.filter
+                .call($event.target.options, function(o) {
+                  return o.selected
+                })
+                .map(function(o) {
+                  var val = "_value" in o ? o._value : o.value
+                  return val
+                })
+              _vm.$set(
+                _vm.article,
+                "category_id",
+                $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+              )
+            }
+          }
+        },
+        _vm._l(_vm.categories, function(category) {
+          return _c(
+            "option",
+            { key: category.id, domProps: { value: category.id } },
+            [
+              _vm._v(
+                "\n                " + _vm._s(category.name) + "\n            "
+              )
+            ]
+          )
+        })
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "invalid-feedback" }, [
+        _vm._v(_vm._s(_vm.get(this.error_data, "errors.category_id[0]", false)))
       ])
     ]),
     _vm._v(" "),

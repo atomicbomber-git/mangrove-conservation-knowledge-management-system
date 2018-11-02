@@ -27,6 +27,7 @@
                     <tr>
                         <th> # </th>
                         <th> Judul </th>
+                        <th> Kategori </th>
                         <th> Status </th>
                         <th> Tindakan </th>
                     </tr>
@@ -36,6 +37,7 @@
                     <tr>
                         <td> {{ $loop->iteration }} </td>
                         <td> {{ str_limit($article->title, 40) }} </td>
+                        <td> {{ $article->category->name }} </td>
                         <td>
                             @switch($article->getOriginal('status'))
                             @case('approved')
