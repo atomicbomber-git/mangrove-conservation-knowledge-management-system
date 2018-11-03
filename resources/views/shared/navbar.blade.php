@@ -6,7 +6,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-
+                @auth
                 <li class='nav-item dropdown {{ Route::is('user.*') ? 'active' : '' }}'>
                     <a
                         class='nav-link dropdown-toggle' href='#' id='user' role='button'
@@ -46,6 +46,7 @@
                         <a class='dropdown-item' href='{{ route('category.create') }}'> Tambah Kategori </a>
                     </div>
                 </li>
+                @endauth
             </div>
 
             <div class="navbar-nav ml-auto">
