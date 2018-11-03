@@ -17,7 +17,7 @@ class CreateArticlesTable extends Migration
             $table->increments('id');
             $table->integer('poster_id')->unsigned();
             $table->string('title');
-            $table->text('content');
+            $table->longtext('content');
 
             $table->string('status');
 
