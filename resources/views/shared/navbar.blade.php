@@ -7,6 +7,18 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
                 @auth
+                <li class='nav-item dropdown {{ Route::is('home.*') ? 'active' : '' }}'>
+                    <a
+                        class='nav-link dropdown-toggle' href='#' id='home' role='button'
+                        data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+                        <i class='fa fa-home'></i>
+                        Depan
+                    </a>
+                    <div class='dropdown-menu' aria-labelledby='home'>
+                        <a class='dropdown-item' href='#'> Depan </a>
+                    </div>
+                </li>
+
                 <li class='nav-item dropdown {{ Route::is('user.*') ? 'active' : '' }}'>
                     <a
                         class='nav-link dropdown-toggle' href='#' id='user' role='button'

@@ -51,6 +51,39 @@ class ResearchController extends Controller
             ->with('message.success', __('messages.create.success'));
     }
 
+    public function edit(Research $research)
+    {
+        $categories = Category::select('id', 'name')->get();
+
+        return view('research.edit', compact('research', 'categories'));
+    }
+
+    public function update(Research $research)
+    {
+        $category_ids = Category::select('id')->pluck('id');
+
+        $data = $this->validate(request(), [
+            'title' => ['required', 'string', 'max:191', Rule::unique('researches')->ignore($research->id)],
+            'category_id' => ['required', Rule::in($category_ids)],
+            'document' => 'sometimes|nullable|mimes:pdf'
+        ]);
+
+        DB::transaction(function() use($research, $data) {
+            $research->update($data);
+            $research->clearMediaCollection(config('media.collections.documents'));
+            
+            if (empty($data['document'])) {
+                return;
+            }
+
+            $research->addMediaFromRequest('document')
+                ->toMediaCollection(config('media.collections.documents'));
+        });
+
+        return back()
+            ->with('message.success', __('messages.update.success'));
+    }
+
     public function delete(Research $research)
     {
         $research->delete();

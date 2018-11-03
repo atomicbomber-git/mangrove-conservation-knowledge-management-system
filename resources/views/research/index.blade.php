@@ -41,6 +41,11 @@
                                 <td> {{ $research->poster->name }} </td>
                                 <td> {{ $research->category->name }} </td>
                                 <td>
+
+                                    <a href="{{ route('research.edit', $research) }}" class="btn btn-secondary btn-sm">
+                                        <i class="fa fa-pencil"></i>
+                                    </a>
+
                                     <a href="{{ route('research.document', $research) }}" class="btn btn-secondary btn-sm">
                                         <i class="fa fa-file-pdf-o"></i>
                                     </a>
