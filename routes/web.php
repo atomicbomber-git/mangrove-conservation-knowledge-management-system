@@ -61,9 +61,6 @@ Route::group(['prefix' => '/research', 'as' => 'research.'], function() {
 Route::group(['prefix' => '/slide', 'as' => 'slide.'], function() {
     Route::get('/index', 'SlideController@index')->name('index');
     Route::get('/image/{slide}', 'SlideController@image')->name('image');
-    Route::get('/create', 'SlideController@create')->name('create');
-    Route::post('/store', 'SlideController@store')->name('store');
     Route::get('/edit/{slide}', 'SlideController@edit')->name('edit');
     Route::post('/update/{slide}', 'SlideController@update')->name('update');
-    Route::post('/delete/{slide}', 'SlideController@delete')->name('delete');
 });
