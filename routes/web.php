@@ -15,7 +15,7 @@
 //     return view('welcome');
 // });
 
-Route::redirect('/', '/login');
+Route::redirect('/', '/home');
 
 Auth::routes();
 
