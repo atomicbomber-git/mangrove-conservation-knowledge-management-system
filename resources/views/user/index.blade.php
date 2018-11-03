@@ -1,10 +1,10 @@
 @extends('shared.layout')
-@section('title', 'Seluruh Akun Pengguna')
+@section('title', 'Seluruh Pengguna')
 @section('content')
 <div class="container my-5">
     <h1 class='mb-5'>
         <i class='fa fa-users'></i>
-        Seluruh Akun Pengguna
+        Seluruh Pengguna
     </h1>
 
     @include('shared.message', ['session_key' => 'message.success', 'state' => 'success'])
@@ -19,7 +19,7 @@
     <div class="card">
         <div class="card-header">
             <i class="fa fa-users"></i>
-            Seluruh Akun Pengguna
+            Seluruh Pengguna
         </div>
         <div class="card-body">
            <table class='table table-sm table-striped table-bordered'>

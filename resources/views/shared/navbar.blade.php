@@ -12,12 +12,12 @@
                         class='nav-link dropdown-toggle' href='#' id='user' role='button'
                         data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
                         <i class='fa fa-users'></i>
-                        Akun Pengguna
+                        Pengguna
                     </a>
                     
                     <div class='dropdown-menu' aria-labelledby='user'>
-                        <a class='dropdown-item' href='{{ route('user.index') }}'> Seluruh Akun Pengguna </a>
-                        <a class='dropdown-item' href='{{ route('user.create') }}'> Tambah Akun Pengguna </a>
+                        <a class='dropdown-item' href='{{ route('user.index') }}'> Seluruh Pengguna </a>
+                        <a class='dropdown-item' href='{{ route('user.create') }}'> Tambah Pengguna </a>
                     </div>
                 </li>
 
