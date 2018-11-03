@@ -15,7 +15,7 @@
                         Depan
                     </a>
                     <div class='dropdown-menu' aria-labelledby='home'>
-                        <a class='dropdown-item' href='#'> Depan </a>
+                        <a class='dropdown-item' href='{{ route('slide.index') }}'> Gambar Slide </a>
                     </div>
                 </li>
 
@@ -42,7 +42,7 @@
                     </a>
                     <div class='dropdown-menu' aria-labelledby='article'>
                         <a class='dropdown-item' href='{{ route('article.index') }}'> Seluruh Artikel </a>
-                        <a class='dropdown-item' href='{{ route('article.index') }}'> Tambah Artikel </a>
+                        <a class='dropdown-item' href='{{ route('article.create') }}'> Tambah Artikel </a>
                     </div>
                 </li>
 
