@@ -11,9 +11,9 @@ class ArticleController extends Controller
 {
     public function index()
     {
-        $articles = Article::select('id', 'title', 'status', 'category_id', 'poster_id')
+        $articles = Article::select('id', 'title', 'status', 'category_id', 'poster_id', 'published_date')
             ->with('category:id,name', 'poster:id,name')
-            ->orderBy('created_at')
+            ->orderByDesc('status', 'published_date')
             ->get();
 
         return view('article.index', compact('articles'));
@@ -70,6 +70,10 @@ class ArticleController extends Controller
             'status' => ['required', Rule::in(array_keys(Article::STATUSES))],
             'category_id' => ['required', Rule::in($category_ids)]
         ]);
+
+        if ($data['status'] == 'approved') {
+            $data['published_date'] = now();
+        }
 
         $article->update($data);
 

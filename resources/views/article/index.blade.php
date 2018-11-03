@@ -28,6 +28,7 @@
                         <th> # </th>
                         <th> Judul </th>
                         <th> Penulis </th>
+                        <th> T. Publikasi </th>
                         <th> Kategori </th>
                         <th> Status </th>
                         <th> Tindakan </th>
@@ -37,8 +38,9 @@
                    @foreach ($articles as $article)
                     <tr>
                         <td> {{ $loop->iteration }} </td>
-                        <td> {{ str_limit($article->title, 40) }} </td>
+                        <td> {{ str_limit($article->title, 30) }} </td>
                         <td> {{ $article->poster->name }} </td>
+                        <td> {{ $article->published_date->format('m/d/Y H:i:s') }} </td>
                         <td> {{ $article->category->name }} </td>
                         <td>
                             @switch($article->getOriginal('status'))

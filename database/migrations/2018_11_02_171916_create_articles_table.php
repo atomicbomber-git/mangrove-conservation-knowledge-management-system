@@ -20,6 +20,7 @@ class CreateArticlesTable extends Migration
             $table->longtext('content');
 
             $table->string('status');
+            $table->datetime('published_date')->nullable();
 
             $table->foreign('poster_id')
                 ->references('id')

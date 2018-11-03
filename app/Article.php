@@ -12,7 +12,11 @@ class Article extends Model
     ];
 
     public $fillable = [
-        'poster_id', 'title', 'content', 'status', 'category_id'
+        'poster_id', 'title', 'content', 'status', 'category_id', 'published_date'
+    ];
+
+    public $dates = [
+        'published_date'
     ];
 
     public function category()
