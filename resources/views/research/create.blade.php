@@ -44,8 +44,8 @@
 
                 <div class="form-group">
                     <label for="document"> Dokumen: </label>
-                    <input class='form-control {{ !$errors->has('document') ?: 'is-invalid' }}' type="file" name="document">
-                    <div class='invalid-feedback'>
+                    <input class='d-block {{ !$errors->has('document') ?: 'is-invalid' }}' type="file" name="document">
+                    <div class="text-danger mt-2">
                         {{ $errors->first('document') }}
                     </div>
                 </div>
