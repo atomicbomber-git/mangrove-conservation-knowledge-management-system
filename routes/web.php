@@ -47,3 +47,13 @@ Route::group(['prefix' => '/category', 'as' => 'category.'], function() {
     Route::post('/update/{category}', 'CategoryController@update')->name('update');
     Route::post('/delete/{category}', 'CategoryController@delete')->name('delete');
 });
+
+Route::group(['prefix' => '/research', 'as' => 'research.'], function() {
+    Route::get('/index', 'ResearchController@index')->name('index');
+    Route::get('/create', 'ResearchController@create')->name('create');
+    Route::post('/store', 'ResearchController@store')->name('store');
+    Route::get('/edit/{research}', 'ResearchController@edit')->name('edit');
+    Route::post('/update/{research}', 'ResearchController@update')->name('update');
+    Route::post('/delete/{research}', 'ResearchController@delete')->name('delete');
+    Route::get('/document/{research}', 'ResearchController@document')->name('document');
+});

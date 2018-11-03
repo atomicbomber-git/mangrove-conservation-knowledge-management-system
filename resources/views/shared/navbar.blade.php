@@ -46,6 +46,20 @@
                         <a class='dropdown-item' href='{{ route('category.create') }}'> Tambah Kategori </a>
                     </div>
                 </li>
+
+                <li class='nav-item dropdown {{ Route::is('research.*') ? 'active' : '' }}'>
+                    <a
+                        class='nav-link dropdown-toggle' href='#' id='research' role='button'
+                        data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+                        <i class='fa fa-flask'></i>
+                        H. Penelitian
+                    </a>
+                    <div class='dropdown-menu' aria-labelledby='research'>
+                        <a class='dropdown-item' href='{{ route('research.index') }}'> Seluruh Hasil Penelitian </a>
+                        <a class='dropdown-item' href='{{ route('research.create') }}'> Tambah Hasil Penelitian </a>
+                    </div>
+                </li>
+
                 @endauth
             </div>
 
