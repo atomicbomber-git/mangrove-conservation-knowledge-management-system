@@ -1,6 +1,6 @@
 <nav class="navbar navbar-dark bg-dark navbar-expand-lg navbar-light bg-light">
     <div class="container">
-        <a class="navbar-brand" href="#"> {{ @config('app.name') }} </a>
+        <a class="navbar-brand" href="{{ route('home') }}"> {{ @config('app.name') }} </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -95,6 +95,17 @@
                         </div>
                     </div>
                     @endauth
+
+                    @guest
+                    <li class='nav-item active'>
+                        <a class='nav-link' href='{{ route('login') }}'>
+                            <button class="btn btn-light">
+                                Masuk
+                                <i class='fa fa-sign-in'></i>
+                            </button>
+                        </a>
+                    </li>
+                    @endguest
                 </li>
             </div>
         </div>
