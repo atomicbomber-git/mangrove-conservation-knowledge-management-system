@@ -2,7 +2,7 @@
 @section('title', 'Halaman Masuk')
 @section('content')
 <div class="container my-5">
-    <div class="card w-50 mx-auto">
+    <div class="card mx-auto" style="max-width: 30rem">
         <div class="card-header">
             <i class="fa fa-sign-in"></i>
             Masuk
