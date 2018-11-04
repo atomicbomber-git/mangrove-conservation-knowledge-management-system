@@ -58,7 +58,7 @@ class AuthServiceProvider extends ServiceProvider
         });
 
         Gate::define('read-article', function ($user, Article $article) {
-            if ($article->status != 'approved') {
+            if ($article->getOriginal('status') != 'approved') {
                 return $user->id == $article->poster_id || $user->getOriginal('type') == 'admin';
             }
 
