@@ -75,14 +75,17 @@ Route::group(['prefix' => '/research', 'as' => 'research.'], function() {
     Route::get('/document/{research}', 'ResearchController@document')->name('document');
 });
 
-Route::group(['prefix' => '/user-research', 'as' => 'user-research.', 'middleware' => ['auth']], function() {
+Route::group(['prefix' => '/user-research', 'as' => 'user-research.'], function() {
+    Route::middleware(['auth'], function() {
+        Route::get('/own-index', 'UserResearchController@ownIndex')->name('own-index');
+        Route::get('/create', 'UserResearchController@create')->name('create');
+        Route::post('/store', 'UserResearchController@store')->name('store');
+        Route::get('/edit/{research}', 'UserResearchController@edit')->name('edit');
+        Route::post('/update/{research}', 'UserResearchController@update')->name('update');
+        Route::post('/delete/{research}', 'UserResearchController@delete')->name('delete');
+    });
+
     Route::get('/index', 'UserResearchController@index')->name('index');
-    Route::get('/own-index', 'UserResearchController@ownIndex')->name('own-index');
-    Route::get('/create', 'UserResearchController@create')->name('create');
-    Route::post('/store', 'UserResearchController@store')->name('store');
-    Route::get('/edit/{research}', 'UserResearchController@edit')->name('edit');
-    Route::post('/update/{research}', 'UserResearchController@update')->name('update');
-    Route::post('/delete/{research}', 'UserResearchController@delete')->name('delete');
 });
 
 Route::group(['prefix' => '/slide', 'as' => 'slide.'], function() {

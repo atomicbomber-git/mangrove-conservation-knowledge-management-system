@@ -115,6 +115,21 @@
                 </li>
                 @endcan
 
+                @else
+                <li class='nav-item {{ Route::is('user-article.*') ? 'active' : '' }}'>
+                    <a class='nav-link' href='{{ route('user-article.index') }}'>
+                        <i class='fa fa-file-text'></i>
+                        Artikel
+                    </a>
+                </li>
+
+                <li class='nav-item {{ Route::is('user-research.*') ? 'active' : '' }}'>
+                    <a class='nav-link' href='{{ route('user-research.index') }}'>
+                        <i class='fa fa-flask'></i>
+                        Hasil Penelitian
+                    </a>
+                </li>
+
                 @endauth
             </div>
 
