@@ -4,7 +4,7 @@
 <div class="container my-5">
     <h1 class='mb-5'>
         <i class='fa fa-file-text'></i>
-        Daftar Seluruh Artikel
+        Daftar Seluruh Artikel Saya
     </h1>
 
     @include('shared.message', ['session_key' => 'message.success', 'state' => 'success'])
@@ -12,7 +12,7 @@
     <div class="card">
         <div class="card-header">
             <i class="fa fa-file-text"></i>
-            Daftar Seluruh Artikel
+            Daftar Seluruh Artikel Saya
         </div>
         <div class="card-body">
             <div class='table-responsive'>
