@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use App\User;
+use App\Article;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -25,6 +27,46 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        // Management for admin
+        Gate::define('administrate-home', function ($user) {
+            return $user->getOriginal('type') == 'admin';
+        });
+
+        Gate::define('administrate-users', function ($user) {
+            return $user->getOriginal('type') == 'admin';
+        });
+
+        Gate::define('delete-user', function ($user, User $model) {
+            return $user->getOriginal('type') == 'admin' && $user->id != $model->id;
+        });
+
+        Gate::define('administrate-articles', function ($user) {
+            return $user->getOriginal('type') == 'admin';
+        });
+
+        Gate::define('administrate-categories', function ($user) {
+            return $user->getOriginal('type') == 'admin';
+        });
+
+        Gate::define('administrate-researches', function ($user) {
+            return $user->getOriginal('type') == 'admin';
+        });
+
+        // Management for non-admins
+        Gate::define('manage-articles', function ($user) {
+            return $user->getOriginal('type') != 'admin';
+        });
+
+        Gate::define('read-article', function ($user, Article $article) {
+            if ($article->status != 'approved') {
+                return $user->id == $article->poster_id || $user->getOriginal('type') == 'admin';
+            }
+
+            return TRUE;
+        });
+
+        Gate::define('delete-article', function ($user, Article $article) {
+            return $user->id == $article->poster_id || $user->getOriginal('type') == 'admin';
+        });
     }
 }

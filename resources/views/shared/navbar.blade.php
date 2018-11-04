@@ -7,6 +7,8 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
                 @auth
+
+                @can('administrate-home')
                 <li class='nav-item dropdown {{ Route::is('home.*') ? 'active' : '' }}'>
                     <a
                         class='nav-link dropdown-toggle' href='#' id='home' role='button'
@@ -18,7 +20,9 @@
                         <a class='dropdown-item' href='{{ route('slide.index') }}'> Gambar Slide </a>
                     </div>
                 </li>
+                @endcan
 
+                @can('administrate-users')
                 <li class='nav-item dropdown {{ Route::is('user.*') ? 'active' : '' }}'>
                     <a
                         class='nav-link dropdown-toggle' href='#' id='user' role='button'
@@ -32,7 +36,9 @@
                         <a class='dropdown-item' href='{{ route('user.create') }}'> Tambah Pengguna </a>
                     </div>
                 </li>
+                @endcan
 
+                @can('administrate-articles')
                 <li class='nav-item dropdown {{ Route::is('article.*') ? 'active' : '' }}'>
                     <a
                         class='nav-link dropdown-toggle' href='#' id='article' role='button'
@@ -45,7 +51,25 @@
                         <a class='dropdown-item' href='{{ route('article.create') }}'> Tambah Artikel </a>
                     </div>
                 </li>
+                @endcan
 
+                @can('manage-articles')
+                <li class='nav-item dropdown {{ Route::is('user-article.*') ? 'active' : '' }}'>
+                    <a
+                        class='nav-link dropdown-toggle' href='#' id='user-article' role='button'
+                        data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+                        <i class='fa fa-file-text'></i>
+                        Artikel
+                    </a>
+                    <div class='dropdown-menu' aria-labelledby='user-article'>
+                        <a class='dropdown-item' href='{{ route('user-article.index') }}'> Seluruh Artikel </a>
+                        <a class='dropdown-item' href='{{ route('user-article.create') }}'> Tambah Artikel </a>
+                        <a class='dropdown-item' href='{{ route('user-article.own-index') }}'> Artikel Saya </a>
+                    </div>
+                </li>
+                @endcan
+
+                @can('administrate-categories')
                 <li class='nav-item dropdown {{ Route::is('category.*') ? 'active' : '' }}'>
                     <a
                         class='nav-link dropdown-toggle' href='#' id='category' role='button'
@@ -58,7 +82,9 @@
                         <a class='dropdown-item' href='{{ route('category.create') }}'> Tambah Kategori </a>
                     </div>
                 </li>
+                @endcan
 
+                @can('administrate-researches')
                 <li class='nav-item dropdown {{ Route::is('research.*') ? 'active' : '' }}'>
                     <a
                         class='nav-link dropdown-toggle' href='#' id='research' role='button'
@@ -71,6 +97,7 @@
                         <a class='dropdown-item' href='{{ route('research.create') }}'> Tambah Hasil Penelitian </a>
                     </div>
                 </li>
+                @endcan
 
                 @endauth
             </div>

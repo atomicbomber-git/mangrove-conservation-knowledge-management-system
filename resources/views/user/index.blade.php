@@ -45,12 +45,14 @@
                                 <i class="fa fa-pencil"></i>
                             </a>
 
+                            @can('delete-user', $user)
                             <form action='{{ route('user.delete', $user) }}' method='POST' class='d-inline-block'>
                                 @csrf
                                 <button type='submit' class='btn btn-danger btn-sm'>
                                     <i class='fa fa-trash'></i>
                                 </button>
                             </form>
+                            @endcan
                         </td>
                    </tr>
                   @endforeach

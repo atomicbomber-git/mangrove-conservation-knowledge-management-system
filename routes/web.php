@@ -21,16 +21,16 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::group(['prefix' => '/user', 'as' => 'user.'], function() {
+Route::group(['prefix' => '/user', 'as' => 'user.', 'middleware' => ['can:administrate-users', 'auth']], function() {
     Route::get('/index', 'UserController@index')->name('index');
-    Route::view('/create', 'user.create')->name('create');
+    Route::get('/create', 'UserController@create')->name('create');
     Route::post('/store', 'UserController@store')->name('store');
     Route::get('/edit/{user}', 'UserController@edit')->name('edit');
     Route::post('/update/{user}', 'UserController@update')->name('update');
     Route::post('/delete/{user}', 'UserController@delete')->name('delete');
 });
 
-Route::group(['prefix' => '/article', 'as' => 'article.'], function() {
+Route::group(['prefix' => '/article', 'as' => 'article.', 'middleware' => ['can:administrate-articles', 'auth']], function() {
     Route::get('/index', 'ArticleController@index')->name('index');
     Route::get('/create', 'ArticleController@create')->name('create');
     Route::post('/store', 'ArticleController@store')->name('store');
@@ -39,7 +39,21 @@ Route::group(['prefix' => '/article', 'as' => 'article.'], function() {
     Route::post('/delete/{article}', 'ArticleController@delete')->name('delete');
 });
 
-Route::group(['prefix' => '/category', 'as' => 'category.'], function() {
+Route::group(['prefix' => '/user-article', 'as' => 'user-article.'], function() {
+    Route::middleware(['can:manage-articles', 'auth'])->group(function() {
+        Route::get('/own-index', 'UserArticleController@ownIndex')->name('own-index');
+        Route::get('/create', 'UserArticleController@create')->name('create');
+        Route::post('/store', 'UserArticleController@store')->name('store');
+        Route::get('/edit/{article}', 'UserArticleController@edit')->name('edit');
+        Route::post('/update/{article}', 'UserArticleController@update')->name('update');
+        Route::post('/delete/{article}', 'UserArticleController@delete')->name('delete')->middleware('can:delete-article,article');
+    });
+
+    Route::get('/index', 'UserArticleController@index')->name('index');
+    Route::get('/read/{article}', 'UserArticleController@read')->name('read')->middleware('can:read-article,article');
+});
+
+Route::group(['prefix' => '/category', 'as' => 'category.', 'middleware' => ['can:administrate-categories', 'auth']], function() {
     Route::get('/index', 'CategoryController@index')->name('index');
     Route::get('/create', 'CategoryController@create')->name('create');
     Route::post('/store', 'CategoryController@store')->name('store');
@@ -48,7 +62,7 @@ Route::group(['prefix' => '/category', 'as' => 'category.'], function() {
     Route::post('/delete/{category}', 'CategoryController@delete')->name('delete');
 });
 
-Route::group(['prefix' => '/research', 'as' => 'research.'], function() {
+Route::group(['prefix' => '/research', 'as' => 'research.', 'middleware' => ['can:administrate-researches', 'auth']], function() {
     Route::get('/index', 'ResearchController@index')->name('index');
     Route::get('/create', 'ResearchController@create')->name('create');
     Route::post('/store', 'ResearchController@store')->name('store');
@@ -59,8 +73,11 @@ Route::group(['prefix' => '/research', 'as' => 'research.'], function() {
 });
 
 Route::group(['prefix' => '/slide', 'as' => 'slide.'], function() {
-    Route::get('/index', 'SlideController@index')->name('index');
+    Route::middleware(['can:administrate-home', 'auth'])->group(function() {
+        Route::get('/index', 'SlideController@index')->name('index');
+        Route::get('/edit/{slide}', 'SlideController@edit')->name('edit');
+        Route::post('/update/{slide}', 'SlideController@update')->name('update');
+    });
+
     Route::get('/image/{slide}', 'SlideController@image')->name('image');
-    Route::get('/edit/{slide}', 'SlideController@edit')->name('edit');
-    Route::post('/update/{slide}', 'SlideController@update')->name('update');
 });

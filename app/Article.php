@@ -29,6 +29,11 @@ class Article extends Model
         return $this->belongsTo(User::class, 'poster_id');
     }
 
+    public function scopeApproved($query)
+    {
+        return $query->where('status', 'approved');
+    }
+
     public function getStatusAttribute($value)
     {
         return $this::STATUSES[$value];

@@ -26,9 +26,9 @@ class LoginController extends Controller
             case 'admin':
                 return route('user.index');
             case 'regular':
-                return route('user.index');
+                return route('home');
             case 'researcher':
-                return route('user.index');
+                return route('home');
         }
     }
 

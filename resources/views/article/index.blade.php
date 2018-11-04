@@ -40,7 +40,7 @@
                         <td> {{ $loop->iteration }} </td>
                         <td> {{ str_limit($article->title, 30) }} </td>
                         <td> {{ $article->poster->name }} </td>
-                        <td> {{ $article->published_date->format('m/d/Y H:i:s') }} </td>
+                        <td> @format_datetime($article->published_date) </td>
                         <td> {{ $article->category->name }} </td>
                         <td>
                             @switch($article->getOriginal('status'))
