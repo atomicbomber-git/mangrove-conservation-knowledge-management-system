@@ -52,7 +52,7 @@ class AuthServiceProvider extends ServiceProvider
             return $user->getOriginal('type') == 'admin';
         });
 
-        // Management for non-admins
+        // Article management for non-admins
         Gate::define('manage-articles', function ($user) {
             return $user->getOriginal('type') != 'admin';
         });
@@ -87,6 +87,10 @@ class AuthServiceProvider extends ServiceProvider
             }
 
             return FALSE;
+        });
+
+        Gate::define('manage-researches', function ($user) {
+            return $user->getOriginal('type') != 'admin';
         });
     }
 }

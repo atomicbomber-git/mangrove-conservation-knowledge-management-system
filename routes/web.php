@@ -62,14 +62,27 @@ Route::group(['prefix' => '/category', 'as' => 'category.', 'middleware' => ['ca
     Route::post('/delete/{category}', 'CategoryController@delete')->name('delete');
 });
 
-Route::group(['prefix' => '/research', 'as' => 'research.', 'middleware' => ['can:administrate-researches', 'auth']], function() {
-    Route::get('/index', 'ResearchController@index')->name('index');
-    Route::get('/create', 'ResearchController@create')->name('create');
-    Route::post('/store', 'ResearchController@store')->name('store');
-    Route::get('/edit/{research}', 'ResearchController@edit')->name('edit');
-    Route::post('/update/{research}', 'ResearchController@update')->name('update');
-    Route::post('/delete/{research}', 'ResearchController@delete')->name('delete');
+Route::group(['prefix' => '/research', 'as' => 'research.'], function() {
+    Route::middleware(['can:administrate-research', 'auth'])->group(function() {
+        Route::get('/index', 'ResearchController@index')->name('index');
+        Route::get('/create', 'ResearchController@create')->name('create');
+        Route::post('/store', 'ResearchController@store')->name('store');
+        Route::get('/edit/{research}', 'ResearchController@edit')->name('edit');
+        Route::post('/update/{research}', 'ResearchController@update')->name('update');
+        Route::post('/delete/{research}', 'ResearchController@delete')->name('delete');
+    });
+
     Route::get('/document/{research}', 'ResearchController@document')->name('document');
+});
+
+Route::group(['prefix' => '/user-research', 'as' => 'user-research.', 'middleware' => ['auth']], function() {
+    Route::get('/index', 'UserResearchController@index')->name('index');
+    Route::get('/own-index', 'UserResearchController@ownIndex')->name('own-index');
+    Route::get('/create', 'UserResearchController@create')->name('create');
+    Route::post('/store', 'UserResearchController@store')->name('store');
+    Route::get('/edit/{research}', 'UserResearchController@edit')->name('edit');
+    Route::post('/update/{research}', 'UserResearchController@update')->name('update');
+    Route::post('/delete/{research}', 'UserResearchController@delete')->name('delete');
 });
 
 Route::group(['prefix' => '/slide', 'as' => 'slide.'], function() {

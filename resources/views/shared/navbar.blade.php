@@ -99,6 +99,22 @@
                 </li>
                 @endcan
 
+                @can('manage-researches')
+                <li class='nav-item dropdown {{ Route::is('user-research.*') ? 'active' : '' }}'>
+                    <a
+                        class='nav-link dropdown-toggle' href='#' id='user-research' role='button'
+                        data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+                        <i class='fa fa-flask'></i>
+                        H. Penelitian
+                    </a>
+                    <div class='dropdown-menu' aria-labelledby='user-research'>
+                        <a class='dropdown-item' href='{{ route('user-research.index') }}'> Seluruh Hasil Penelitian </a>
+                        <a class='dropdown-item' href='{{ route('user-research.create') }}'> Tambah Hasil Penelitian </a>
+                        <a class='dropdown-item' href='{{ route('user-research.own-index') }}'> Hasil Penelitian Saya </a>
+                    </div>
+                </li>
+                @endcan
+
                 @endauth
             </div>
 
