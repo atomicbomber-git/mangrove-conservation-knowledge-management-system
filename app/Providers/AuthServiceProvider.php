@@ -57,7 +57,7 @@ class AuthServiceProvider extends ServiceProvider
             return $user->getOriginal('type') != 'admin';
         });
 
-        Gate::define('read-article', function ($user, Article $article) {
+        Gate::define('read-article', function (?User $user, Article $article) {
             if ($article->getOriginal('status') != 'approved') {
                 return $user->id == $article->poster_id || $user->getOriginal('type') == 'admin';
             }
