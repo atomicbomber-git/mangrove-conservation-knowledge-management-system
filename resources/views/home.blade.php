@@ -35,7 +35,7 @@
     </h1>
     
     <div class="row">
-        <div class="col-10">
+        <div class="col-9">
             <p>
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius, at suscipit tempora nesciunt enim commodi beatae provident asperiores quod modi consectetur ex dolorum molestiae expedita voluptatem. Aperiam sed reiciendis neque. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae voluptates odio ad maiores sint fuga quia consequatur placeat quaerat modi similique quas blanditiis pariatur ratione rerum, optio nostrum, esse saepe. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus vitae iusto voluptatum quis perferendis consequuntur aspernatur temporibus praesentium assumenda et reiciendis sequi labore unde, neque dolores architecto veritatis numquam delectus! Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse tempora culpa vel consequatur quam? Maxime corrupti deleniti doloribus. Soluta ratione nihil eos ab architecto qui quas delectus et? Necessitatibus, perspiciatis? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Blanditiis ea cupiditate alias repudiandae. Sequi accusamus nihil quis quidem vitae aspernatur odit quod soluta, placeat consequatur sed eum voluptas quo saepe!
             </p>
@@ -44,7 +44,7 @@
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam reiciendis sapiente quasi natus animi accusamus iure, blanditiis perspiciatis accusantium quo ipsam nihil ipsum ducimus, ipsa, ab voluptatem mollitia asperiores laudantium?
             </p>
         </div>
-        <div class="col-2" style="border-left: thin solid gray">
+        <div class="col-3" style="border-left: thin solid gray">
             <div class="mb-5">
                 <h5 class="text-primary"> Artikel Terbaru </h5>
                 <hr class="mt-0 mb-2">
