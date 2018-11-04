@@ -17,6 +17,7 @@ window.Vue = require('vue');
 
 Vue.component('article-create', require('./components/article/Create.vue'));
 Vue.component('user-article-create', require('./components/user-article/Create.vue'));
+Vue.component('user-article-edit', require('./components/user-article/Edit.vue'));
 Vue.component('article-edit', require('./components/article/Edit.vue'));
 
 const app = new Vue({

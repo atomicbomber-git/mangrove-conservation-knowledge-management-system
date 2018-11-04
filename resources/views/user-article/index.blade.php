@@ -37,13 +37,6 @@
                                 <a href="{{ route('user-article.read', $article) }}" class="btn btn-secondary btn-sm">
                                     <i class="fa fa-eye"></i>
                                 </a>
-
-                                <form action='{{ route('user-article.delete', $article) }}' method='POST' class='d-inline-block'>
-                                    @csrf
-                                    <button type='submit' class='btn btn-danger btn-sm'>
-                                        <i class='fa fa-trash'></i>
-                                    </button>
-                                </form>
                             </td>
                         </tr>
                        @endforeach

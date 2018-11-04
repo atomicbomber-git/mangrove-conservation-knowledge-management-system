@@ -54,13 +54,19 @@
                                 <a href="{{ route('user-article.read', $article) }}" class="btn btn-secondary btn-sm">
                                     <i class="fa fa-eye"></i>
                                 </a>
+                                
+                                <a href="{{ route('user-article.edit', $article) }}" class="btn btn-secondary btn-sm">
+                                    <i class="fa fa-pencil"></i>
+                                </a>
 
+                                @can('delete-artice', $article)
                                 <form action='{{ route('user-article.delete', $article) }}' method='POST' class='d-inline-block'>
                                     @csrf
                                     <button type='submit' class='btn btn-danger btn-sm'>
                                         <i class='fa fa-trash'></i>
                                     </button>
                                 </form>
+                                @endcan
                             </td>
                         </tr>
                        @endforeach

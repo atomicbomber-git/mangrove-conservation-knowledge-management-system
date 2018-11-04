@@ -65,8 +65,28 @@ class AuthServiceProvider extends ServiceProvider
             return TRUE;
         });
 
+        Gate::define('edit-article', function ($user, Article $article) {
+            if ($user->getOriginal('type') == 'admin') {
+                return TRUE;
+            }
+
+            if ($user->id == $article->poster_id && $article->getOriginal('status') != 'approved') {
+                return TRUE;
+            }
+
+            return FALSE;
+        });
+
         Gate::define('delete-article', function ($user, Article $article) {
-            return $user->id == $article->poster_id || $user->getOriginal('type') == 'admin';
+            if ($user->getOriginal('type') == 'admin') {
+                return TRUE;
+            }
+
+            if ($user->id == $article->poster_id && $article->getOriginal('status') != 'approved') {
+                return TRUE;
+            }
+
+            return FALSE;
         });
     }
 }

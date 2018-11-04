@@ -25,11 +25,11 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         Blade::directive('format_datetime', function ($datetime) {
-            return "<?php echo (isset($datetime) ? ($datetime)->format('d/m/Y H:i:s') : '-'); ?>";
+            return "<?php echo (isset($datetime) ? ($datetime)->format('d/m/Y H:i:s') : ''); ?>";
         });
 
         Blade::directive('localized_date', function ($date) {
-            return "<?php echo isset($date) ? (new Date($date))->format('l, j F Y') : '-' ?>";
+            return "<?php echo isset($date) ? (new Date($date))->format('l, j F Y') : '' ?>";
         });
     }
 }

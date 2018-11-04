@@ -57,6 +57,10 @@
                             @endswitch
                         </td>
                         <td>
+                            <a href="{{ route('user-article.read', $article) }}" class="btn btn-secondary btn-sm">
+                                <i class="fa fa-eye"></i>
+                            </a>
+
                             <a href="{{ route('article.edit', $article) }}" class="btn btn-secondary btn-sm">
                                 <i class="fa fa-pencil"></i>
                             </a>
