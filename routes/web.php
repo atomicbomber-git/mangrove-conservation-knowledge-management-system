@@ -63,7 +63,7 @@ Route::group(['prefix' => '/category', 'as' => 'category.', 'middleware' => ['ca
 });
 
 Route::group(['prefix' => '/research', 'as' => 'research.'], function() {
-    Route::middleware(['can:administrate-research', 'auth'])->group(function() {
+    Route::middleware(['can:administrate-researches', 'auth'])->group(function() {
         Route::get('/index', 'ResearchController@index')->name('index');
         Route::get('/create', 'ResearchController@create')->name('create');
         Route::post('/store', 'ResearchController@store')->name('store');
