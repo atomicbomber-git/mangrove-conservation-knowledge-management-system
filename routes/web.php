@@ -76,7 +76,7 @@ Route::group(['prefix' => '/research', 'as' => 'research.'], function() {
 });
 
 Route::group(['prefix' => '/user-research', 'as' => 'user-research.'], function() {
-    Route::middleware(['auth'], function() {
+    Route::middleware(['auth'])->group(function() {
         Route::get('/own-index', 'UserResearchController@ownIndex')->name('own-index');
         Route::get('/create', 'UserResearchController@create')->name('create');
         Route::post('/store', 'UserResearchController@store')->name('store');

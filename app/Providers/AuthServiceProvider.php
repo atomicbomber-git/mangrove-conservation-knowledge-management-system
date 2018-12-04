@@ -90,7 +90,7 @@ class AuthServiceProvider extends ServiceProvider
         });
 
         Gate::define('manage-researches', function ($user) {
-            return $user->getOriginal('type') != 'admin';
+            return $user->getOriginal('type') == 'researcher';
         });
     }
 }
