@@ -38,7 +38,11 @@
                     </div>
                 </div>
 
-                <div class="form-group mt-5">
+                <div class="mt-5">
+                    <a href="{{ route('register') }}" class="mr-2">
+                        Registrasi Akun
+                    </a>
+
                     <button class="btn btn-primary">
                         Masuk
                         <i class="fa fa-sign-in"></i>

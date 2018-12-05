@@ -30,6 +30,7 @@
                             <th> Judul </th>
                             <th> Penulis </th>
                             <th> Kategori </th>
+                            <th> Status </th>
                             <th> Tindakan </th>
                         </tr>
                     </thead>
@@ -37,11 +38,24 @@
                         @foreach ($researches as $research)
                             <tr>
                                 <td> {{ $loop->iteration }} </td>
-                                <td> {{ $research->title }} </td>
+                                <td style="width: 15rem"> {{ $research->title }} </td>
                                 <td> {{ $research->poster->name }} </td>
                                 <td> {{ $research->category->name }} </td>
                                 <td>
-
+                                    @switch($research->getOriginal('status'))
+                                    @case('approved')
+                                    <span class="badge badge-pill badge-success">
+                                        {{ $research->status }}
+                                    </span>
+                                    @break
+                                    @case('unapproved')
+                                    <span class="badge badge-pill badge-danger">
+                                        {{ $research->status }}
+                                    </span>
+                                    @break
+                                    @endswitch
+                                </td>
+                                <td>
                                     <a href="{{ route('research.edit', $research) }}" class="btn btn-secondary btn-sm">
                                         <i class="fa fa-pencil"></i>
                                     </a>

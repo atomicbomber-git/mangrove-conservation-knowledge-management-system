@@ -92,5 +92,9 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('manage-researches', function ($user) {
             return $user->getOriginal('type') == 'researcher';
         });
+
+        Gate::define('view-researches', function ($user) {
+            return $user->getOriginal('type') == 'regular' || $user->getOriginal('type') == 'researcher';
+        });
     }
 }

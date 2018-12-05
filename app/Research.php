@@ -10,8 +10,13 @@ class Research extends Model implements HasMedia
 {
     use HasMediaTrait;
 
+    const STATUSES = [
+        'unapproved' => 'Belum / Tidak Disetujui',
+        'approved' => 'Telah Disetujui'
+    ];
+
     public $fillable = [
-        'title', 'category_id', 'poster_id'
+        'title', 'category_id', 'poster_id', 'status'
     ];
 
     public function poster()
@@ -22,5 +27,10 @@ class Research extends Model implements HasMedia
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function getStatusAttribute($value)
+    {
+        return $this::STATUSES[$value];
     }
 }

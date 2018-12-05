@@ -12,8 +12,9 @@ class ResearchController extends Controller
 {
     public function index()
     {
-        $researches = Research::select('id', 'title', 'poster_id', 'category_id')
+        $researches = Research::select('id', 'title', 'poster_id', 'category_id', 'status')
             ->with('poster:id,name', 'category:id,name')
+            ->orderBy('status')
             ->get();
 
         return view('research.index', compact('researches'));
@@ -64,6 +65,7 @@ class ResearchController extends Controller
 
         $data = $this->validate(request(), [
             'title' => ['required', 'string', 'max:191', Rule::unique('researches')->ignore($research->id)],
+            'status' => ['required', Rule::in(array_keys(Research::STATUSES))],
             'category_id' => ['required', Rule::in($category_ids)],
             'document' => 'sometimes|nullable|mimes:pdf'
         ]);

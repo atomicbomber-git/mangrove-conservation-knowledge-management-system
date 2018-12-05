@@ -17,6 +17,19 @@
         <div class="card-body">
             <form method="POST" action="{{ route('research.update', $research) }}" enctype="multipart/form-data">
                 @csrf
+
+                <div class='form-group'>
+                    <label for='status'> Status: </label>
+                    <select name='status' id='status' class='form-control'>
+                        @foreach(\App\Research::STATUSES as $key => $value)
+                        <option {{ old('status', $research->getOriginal('status')) == $key ? 'selected' : '' }} value='{{ $key }}'> {{ $value }} </option>
+                        @endforeach
+                    </select>
+                    <div class='invalid-feedback'>
+                        {{ $errors->first('status') }}
+                    </div>
+                </div>
+
                 <div class='form-group'>
                     <label for='title'> Judul: </label>
                 

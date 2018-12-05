@@ -54,7 +54,7 @@ class UserResearchController extends Controller
 
     public function ownIndex()
     {
-        $researches = Research::select('id', 'title', 'category_id', 'poster_id')
+        $researches = Research::select('id', 'title', 'category_id', 'poster_id', 'status')
             ->with('category:id,name')
             ->where('poster_id', auth()->user()->id)
             ->orderByDesc('created_at')
