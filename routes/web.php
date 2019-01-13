@@ -62,6 +62,15 @@ Route::group(['prefix' => '/category', 'as' => 'category.', 'middleware' => ['ca
     Route::post('/delete/{category}', 'CategoryController@delete')->name('delete');
 });
 
+Route::group(['prefix' => '/mangrove', 'as' => 'mangrove.'], function() {
+    Route::get('/index', 'MangroveController@index')->name('index');
+
+    Route::middleware(['can:administrate-researches', 'auth'])->group(function() {
+        Route::get('/edit', 'MangroveController@edit')->name('edit');
+        Route::post('/update', 'MangroveController@update')->name('update');
+    });
+});
+
 Route::group(['prefix' => '/research', 'as' => 'research.'], function() {
     Route::middleware(['can:administrate-researches', 'auth'])->group(function() {
         Route::get('/index', 'ResearchController@index')->name('index');

@@ -18,6 +18,7 @@
                     </a>
                     <div class='dropdown-menu' aria-labelledby='home'>
                         <a class='dropdown-item' href='{{ route('slide.index') }}'> Gambar Slide </a>
+                        <a class='dropdown-item' href='{{ route('mangrove.edit') }}'> Mangrove </a>
                     </div>
                 </li>
                 @endcan
@@ -129,6 +130,13 @@
                     <a class='nav-link' href='{{ route('user-research.index') }}'>
                         <i class='fa fa-flask'></i>
                         Hasil Penelitian
+                    </a>
+                </li>
+
+                <li class='nav-item {{ Route::is('mangrove.*') ? 'active' : '' }}'>
+                    <a class='nav-link' href='{{ route('mangrove.index') }}'>
+                        <i class='fa fa-tree'></i>
+                        Mangrove
                     </a>
                 </li>
 
