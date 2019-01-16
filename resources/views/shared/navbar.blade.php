@@ -18,7 +18,11 @@
                     </a>
                     <div class='dropdown-menu' aria-labelledby='home'>
                         <a class='dropdown-item' href='{{ route('slide.index') }}'> Gambar Slide </a>
-                        <a class='dropdown-item' href='{{ route('mangrove.edit') }}'> Mangrove </a>
+                        {{-- <a class='dropdown-item' href='{{ route('mangrove.edit') }}'> Mangrove </a> --}}
+
+                        @foreach ($information as $record)
+                        <a class='dropdown-item' href='{{ route('information.edit', $record) }}'> {{ $record->menu_title }} </a>
+                        @endforeach
                     </div>
                 </li>
                 @endcan
@@ -133,11 +137,19 @@
                     </a>
                 </li>
 
-                <li class='nav-item {{ Route::is('mangrove.*') ? 'active' : '' }}'>
-                    <a class='nav-link' href='{{ route('mangrove.index') }}'>
-                        <i class='fa fa-tree'></i>
+                <li class='nav-item dropdown {{ Route::is('information.*') ? 'active' : '' }}'>
+                    <a
+                        class='nav-link dropdown-toggle' href='#' id='information' role='button'
+                        data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+                        <i class='fa fa-info'></i>
                         Mangrove
                     </a>
+                    
+                    <div class='dropdown-menu' aria-labelledby='information'>
+                        @foreach ($information as $record)
+                        <a class='dropdown-item' href='{{ route('information.index', $record) }}'> {{ $record->menu_title }} </a>
+                        @endforeach
+                    </div>
                 </li>
 
                 @endauth

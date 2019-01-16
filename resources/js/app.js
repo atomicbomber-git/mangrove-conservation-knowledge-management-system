@@ -19,7 +19,7 @@ Vue.component('article-create', require('./components/article/Create.vue'));
 Vue.component('user-article-create', require('./components/user-article/Create.vue'));
 Vue.component('user-article-edit', require('./components/user-article/Edit.vue'));
 Vue.component('article-edit', require('./components/article/Edit.vue'));
-Vue.component('mangrove-edit', require('./components/mangrove/Edit.vue'));
+Vue.component('information-edit', require('./components/information/Edit.vue'));
 
 const app = new Vue({
     el: '#app'

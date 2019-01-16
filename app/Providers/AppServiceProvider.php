@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\Facades\View;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -30,6 +31,10 @@ class AppServiceProvider extends ServiceProvider
 
         Blade::directive('localized_date', function ($date) {
             return "<?php echo isset($date) ? (new Date($date))->format('l, j F Y') : '' ?>";
+        });
+
+        View::composer('shared.navbar', function ($view) {
+            $view->with('information', \App\Information::select('id', 'menu_title')->get());
         });
     }
 }

@@ -71,6 +71,12 @@ Route::group(['prefix' => '/mangrove', 'as' => 'mangrove.'], function() {
     });
 });
 
+Route::group(['prefix' => '/information', 'as' => 'information.'], function() {
+    Route::get('/index/{information}', 'InformationController@index')->name('index');
+    Route::get('/edit/{information}', 'InformationController@edit')->name('edit');
+    Route::post('/update/{information}', 'InformationController@update')->name('update');
+});
+
 Route::group(['prefix' => '/research', 'as' => 'research.'], function() {
     Route::middleware(['can:administrate-researches', 'auth'])->group(function() {
         Route::get('/index', 'ResearchController@index')->name('index');
