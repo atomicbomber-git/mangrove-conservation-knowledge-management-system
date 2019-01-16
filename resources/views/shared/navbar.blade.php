@@ -123,20 +123,6 @@
                 @endcan
 
                 @else
-                <li class='nav-item {{ Route::is('user-article.*') ? 'active' : '' }}'>
-                    <a class='nav-link' href='{{ route('user-article.index') }}'>
-                        <i class='fa fa-file-text'></i>
-                        Artikel
-                    </a>
-                </li>
-
-                <li class='nav-item {{ Route::is('user-research.*') ? 'active' : '' }}'>
-                    <a class='nav-link' href='{{ route('user-research.index') }}'>
-                        <i class='fa fa-flask'></i>
-                        Hasil Penelitian
-                    </a>
-                </li>
-
                 <li class='nav-item dropdown {{ Route::is('information.*') ? 'active' : '' }}'>
                     <a
                         class='nav-link dropdown-toggle' href='#' id='information' role='button'
@@ -150,6 +136,20 @@
                         <a class='dropdown-item' href='{{ route('information.index', $record) }}'> {{ $record->menu_title }} </a>
                         @endforeach
                     </div>
+                </li>
+
+                <li class='nav-item {{ Route::is('user-article.*') ? 'active' : '' }}'>
+                    <a class='nav-link' href='{{ route('user-article.index') }}'>
+                        <i class='fa fa-file-text'></i>
+                        Artikel
+                    </a>
+                </li>
+
+                <li class='nav-item {{ Route::is('user-research.*') ? 'active' : '' }}'>
+                    <a class='nav-link' href='{{ route('user-research.index') }}'>
+                        <i class='fa fa-flask'></i>
+                        Hasil Penelitian
+                    </a>
                 </li>
 
                 @endauth
