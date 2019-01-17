@@ -17,14 +17,14 @@ class HomeController extends Controller
     public function index()
     {
         $latest_articles = Article::select('id', 'title', 'poster_id', 'category_id', 'published_date')
-            ->with('poster:id,name', 'category:id,name')
+            ->with('poster:id,first_name,last_name', 'category:id,name')
             ->approved()
             ->orderByDesc('published_date')
             ->limit(3)
             ->get();
 
         $latest_researches = Research::select('id', 'title', 'poster_id', 'category_id', 'created_at')
-            ->with('poster:id,name', 'category:id,name')
+            ->with('poster:id,first_name,last_name', 'category:id,name')
             ->orderByDesc('created_at')
             ->limit(3)
             ->get();

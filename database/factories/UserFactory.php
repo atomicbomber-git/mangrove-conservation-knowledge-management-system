@@ -18,7 +18,8 @@ $factory->define(App\User::class, function (Faker $faker) {
     $username = $faker->unique()->username;
     
     return [
-        'name' => $faker->name,
+        'first_name' => $faker->firstName,
+        'last_name' => $faker->lastName,
         'username' => $username,
         'email' => $faker->unique()->safeEmail,
         'type' => $faker->randomElement(['regular', 'researcher']),

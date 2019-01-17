@@ -13,7 +13,7 @@ class ResearchController extends Controller
     public function index()
     {
         $researches = Research::select('id', 'title', 'poster_id', 'category_id', 'status')
-            ->with('poster:id,name', 'category:id,name')
+            ->with('poster:id,first_name,last_name', 'category:id,name')
             ->orderBy('status')
             ->get();
 
@@ -35,7 +35,9 @@ class ResearchController extends Controller
         $data = $this->validate(request(), [
             'title' => 'required|unique:researches',
             'category_id' => ['required', Rule::in($category_ids)],
-            'document' => 'required|mimes:pdf'
+            'document' => 'required|mimes:pdf',
+            'description' => 'string|required',
+            'year' => 'integer|gte:1900'
         ]);
         
         $data['poster_id'] = auth()->user()->id;

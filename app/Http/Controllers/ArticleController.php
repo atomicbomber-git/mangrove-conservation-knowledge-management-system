@@ -12,7 +12,7 @@ class ArticleController extends Controller
     public function index()
     {
         $articles = Article::select('id', 'title', 'status', 'category_id', 'poster_id', 'published_date')
-            ->with('category:id,name', 'poster:id,name')
+            ->with('category:id,name', 'poster:id,first_name,last_name')
             ->orderByDesc('status', 'published_date')
             ->get();
 

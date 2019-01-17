@@ -10,17 +10,23 @@ class UserController extends Controller
 {
     public function index()
     {
-        $users = User::select('id', 'name', 'username', 'type')
-            ->orderBy('name')
+        $users = User::select('id', 'first_name', 'last_name', 'username', 'type')
+            ->orderBy('first_name')
             ->get();
 
         return view('user.index', compact('users'));
     }
 
+    public function create()
+    {
+        return view('user.create');
+    }
+
     public function store()
     {
         $data = $this->validate(request(), [
-            'name' => 'required|string',
+            'first_name' => 'required|string',
+            'last_name' => 'required|string',
             'username' => 'required|unique:users',
             'password' => 'required|min:8|confirmed',
             'type' => ['required', Rule::in(array_keys(User::TYPES))]
@@ -43,7 +49,8 @@ class UserController extends Controller
     public function update(User $user)
     {
         $data = $this->validate(request(), [
-            'name' => 'required|string',
+            'first_name' => 'required|string',
+            'last_name' => 'required|string',
             'username' => ['required', Rule::unique('users')->ignore($user->id)],
             'password' => 'sometimes|nullable|min:8|confirmed',
             'type' => ['required', Rule::in(array_keys(User::TYPES))]

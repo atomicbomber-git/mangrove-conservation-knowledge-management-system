@@ -13,7 +13,7 @@ class UserResearchController extends Controller
     public function index()
     {
         $researches = Research::select('id', 'title', 'category_id', 'poster_id')
-            ->with('poster:id,name', 'category:id,name')
+            ->with('poster:id,first_name,last_name', 'category:id,name')
             ->orderByDesc('created_at')
             ->get();
 

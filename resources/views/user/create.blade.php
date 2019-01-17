@@ -17,17 +17,32 @@
         <div class="card-body">
            <form action="{{ route('user.store') }}" method="POST">
                @csrf
+               
                <div class='form-group'>
-                   <label for='name'> Nama Asli: </label>
+                   <label for='first_name'> Nama Depan: </label>
                
                    <input
-                       id='name' name='name' type='text'
-                       placeholder='Nama Asli'
-                       value='{{ old('name') }}'
-                       class='form-control {{ !$errors->has('name') ?: 'is-invalid' }}'>
+                       id='first_name' name='first_name' type='text'
+                       placeholder='Nama Depan'
+                       value='{{ old('first_name') }}'
+                       class='form-control {{ !$errors->has('first_name') ?: 'is-invalid' }}'>
                
                    <div class='invalid-feedback'>
-                       {{ $errors->first('name') }}
+                       {{ $errors->first('first_name') }}
+                   </div>
+               </div>
+
+               <div class='form-group'>
+                   <label for='last_name'> Nama Belakang: </label>
+               
+                   <input
+                       id='last_name' name='last_name' type='text'
+                       placeholder='Nama Belakang'
+                       value='{{ old('last_name') }}'
+                       class='form-control {{ !$errors->has('last_name') ?: 'is-invalid' }}'>
+               
+                   <div class='invalid-feedback'>
+                       {{ $errors->first('last_name') }}
                    </div>
                </div>
 

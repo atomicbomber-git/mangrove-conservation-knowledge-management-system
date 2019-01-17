@@ -31,6 +31,20 @@
                 </div>
 
                 <div class='form-group'>
+                    <label for='year'> Tahun: </label>
+                
+                    <input
+                        id='year' name='year' type='number'
+                        placeholder='Tahun'
+                        value='{{ old('year', now()->format('Y')) }}'
+                        class='form-control {{ !$errors->has('year') ?: 'is-invalid' }}'>
+                
+                    <div class='invalid-feedback'>
+                        {{ $errors->first('year') }}
+                    </div>
+                </div>
+
+                <div class='form-group'>
                     <label for='category_id'> Kategori: </label>
                     <select name='category_id' id='category_id' class='form-control'>
                         @foreach($categories as $category)
@@ -47,6 +61,21 @@
                     <input class='d-block {{ !$errors->has('document') ?: 'is-invalid' }}' type="file" name="document">
                     <div class="text-danger mt-2">
                         {{ $errors->first('document') }}
+                    </div>
+                </div>
+
+                <div class='form-group'>
+                    <label for='description'> Deskripsi: </label>
+                
+                    <textarea
+                        id='description' name='description'
+                        placeholder="Deskripsi hasil penelitian"
+                        class='form-control {{ !$errors->has('description') ?: 'is-invalid' }}'
+                        col='30' row='6'
+                        >{{ old('description') }}</textarea>
+                
+                    <div class='invalid-feedback'>
+                        {{ $errors->first('description') }}
                     </div>
                 </div>
 
