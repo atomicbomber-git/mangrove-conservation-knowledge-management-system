@@ -6,7 +6,7 @@
     <div class="carousel-inner">
         @foreach ($slides as $slide)
         <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
-            <img class="d-block w-100" style="height: 600px; object-fit: cover; filter: brightness(90%)" src="{{ route('slide.image', $slide) }}" alt="{{ $slide->name }}">
+            <img class="d-block w-100" style="height: 420px; object-fit: cover; filter: brightness(90%)" src="{{ route('slide.image', $slide) }}" alt="{{ $slide->name }}">
             <div class="carousel-caption d-none d-md-block">
                 <h5> {{ $slide->name }} </h5>
                 <p> {{ $slide->description }} </p>
