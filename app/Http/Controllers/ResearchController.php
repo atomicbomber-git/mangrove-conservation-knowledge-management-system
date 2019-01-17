@@ -7,13 +7,15 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
 use App\Research;
 use App\Category;
+use App\Author;
 
 class ResearchController extends Controller
 {
     public function index()
     {
-        $researches = Research::select('id', 'title', 'description', 'year', 'poster_id', 'category_id', 'status')
+        $researches = Research::select('id', 'title', 'year', 'poster_id', 'category_id', 'status')
             ->with('poster:id,first_name,last_name', 'category:id,name')
+            ->with('authors:id,first_name,last_name,research_id')
             ->orderBy('status')
             ->orderByDesc('year')
             ->get();
@@ -34,11 +36,14 @@ class ResearchController extends Controller
         $category_ids = Category::select('id')->pluck('id');
 
         $data = $this->validate(request(), [
-            'title' => 'required|unique:researches',
+            'title' => 'required|string|unique:researches',
             'category_id' => ['required', Rule::in($category_ids)],
+            'authors' => 'required|array',
+            'authors.*.first_name' => 'required|string',
+            'authors.*.last_name' => 'required|string',
             'document' => 'required|mimes:pdf',
-            'description' => 'string|required',
-            'year' => 'integer|gte:1900'
+            'description' => 'required|string',
+            'year' => 'required|integer|gte:1900'
         ]);
         
         $data['poster_id'] = auth()->user()->id;
@@ -46,13 +51,26 @@ class ResearchController extends Controller
         DB::transaction(function() use($data) {
             $research = Research::create($data);
 
-            $research->addMediaFromRequest('document')
-            ->toMediaCollection(config('media.collections.documents'));
+            foreach ($data["authors"] as $author) {
+                Author::create([
+                    'research_id' => $research->id,
+                    'first_name' => $author['first_name'],
+                    'last_name' => $author['last_name']
+                ]);
+            }
+
+            $research
+                ->addMediaFromRequest('document')
+                ->toMediaCollection(config('media.collections.documents'));
         });
 
-        return redirect()
-            ->route('research.index')
-            ->with('message.success', __('messages.create.success'));
+        session()->flash('message.success', __('messages.create.success'));
+    }
+
+    public function detail(Research $research)
+    {
+        $research->load('authors:id,first_name,last_name,research_id');
+        return view('research.detail', compact('research'));
     }
 
     public function edit(Research $research)

@@ -29,7 +29,6 @@
                             <th> # </th>
                             <th> Judul </th>
                             <th> Penulis </th>
-                            <th style="width: 12rem"> Deskripsi </th>
                             <th> Kategori </th>
                             <th> Tahun </th>
                             <th> Status </th>
@@ -41,8 +40,7 @@
                             <tr>
                                 <td> {{ $loop->iteration }} </td>
                                 <td style="width: 15rem"> {{ $research->title }} </td>
-                                <td> {{ $research->poster->name }} </td>
-                                <td> {{ $research->description }} </td>
+                                <td style="width: 15rem"> {{ join(", ", $research->authors->pluck("name")->toArray()) }} </td>
                                 <td> {{ $research->category->name }} </td>
                                 <td> {{ $research->year }} </td>
                                 <td>
@@ -64,8 +62,8 @@
                                         <i class="fa fa-pencil"></i>
                                     </a>
 
-                                    <a href="{{ route('research.document', $research) }}" class="btn btn-secondary btn-sm">
-                                        <i class="fa fa-file-pdf-o"></i>
+                                    <a href="{{ route('research.detail', $research) }}" class="btn btn-secondary btn-sm">
+                                        <i class="fa fa-list"></i>
                                     </a>
 
                                     <form action='{{ route('research.delete', $research) }}' method='POST' class='d-inline-block'>

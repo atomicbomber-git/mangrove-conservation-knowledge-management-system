@@ -15,11 +15,14 @@ class ResearchSeeder extends Seeder
      */
     public function run()
     {
-        $users = User::select('id')->get();
+        $users = User::select('id', 'first_name', 'last_name')->get()
+            ->keyBy('id');
         $categories = Category::select('id')->get();
 
         factory(Research::class, 30)->make()->each(function($research) use($users, $categories) {
-            $research->poster_id = $users->random()->id;
+            $poster = $users->random();
+            $research->poster_id = $poster->id;
+
             $research->category_id = $categories->random()->id;
             
             $research
@@ -27,7 +30,19 @@ class ResearchSeeder extends Seeder
                 ->preservingOriginal()
                 ->toMediaCollection(config('media.collections.documents'));
 
-                $research->save();
+            $research->save();
+
+            $user_pool = $users->map(function($item) { return $item; });
+
+            $research->authors()->create($poster->only(['first_name', 'last_name']));
+            $user_pool->forget($poster->id);
+
+            $n_authors = rand(1, 3);
+            for ($i = 0; $i < $n_authors; ++$i) {
+                $author = $user_pool->random();
+                $research->authors()->create($author->only(['first_name', 'last_name']));
+                $user_pool->forget($author->id);
+            }
         });
     }
 }

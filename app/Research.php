@@ -24,6 +24,11 @@ class Research extends Model implements HasMedia
         return $this->belongsTo(User::class, 'poster_id');
     }
 
+    public function authors()
+    {
+        return $this->hasMany(Author::class);
+    }
+
     public function category()
     {
         return $this->belongsTo(Category::class);
