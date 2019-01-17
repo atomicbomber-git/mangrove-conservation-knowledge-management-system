@@ -17,7 +17,8 @@ class UserArticleController extends Controller
             ->map(function($category) {
                 $category->articles = Article::query()
                     ->select('id', 'title', 'poster_id', 'published_date')
-                    ->with('poster:id,name')
+                    ->where('status', 'approved')
+                    ->with('poster:id,first_name,last_name')
                     ->limit(3)
                     ->orderByDesc('published_date')
                     ->where('category_id', $category->id)->get(); 
@@ -39,8 +40,9 @@ class UserArticleController extends Controller
 
         $articles = Article::query()
             ->where('category_id', $categoryId)
+            ->where('status', 'approved')
             ->select('id', 'title', 'poster_id', 'published_date')
-            ->with('poster:id,name')
+            ->with('poster:id,first_name,last_name')
             ->orderByDesc('published_date')
             ->get();
 
@@ -50,7 +52,7 @@ class UserArticleController extends Controller
     public function ownIndex()
     {
         $articles = Article::select('id', 'title', 'category_id', 'poster_id', 'published_date', 'status')
-            ->with('poster:id,name', 'category:id,name')
+            ->with('poster:id,first_name,last_name', 'category:id,name')
             ->where('poster_id', auth()->user()->id)
             ->orderByDesc('status', 'published_date')
             ->get();
@@ -108,7 +110,7 @@ class UserArticleController extends Controller
 
     public function read(Article $article)
     {
-        $article->load('category:id,name', 'poster:id,name');
+        $article->load('category:id,name', 'poster:id,first_name,last_name');
         return view('user-article.read', compact('article'));
     }
 
