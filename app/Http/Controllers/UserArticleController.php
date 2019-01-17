@@ -11,13 +11,40 @@ class UserArticleController extends Controller
 {
     public function index()
     {
-        $articles = Article::select('id', 'title', 'category_id', 'poster_id', 'published_date')
-            ->approved()
-            ->with('poster:id,name', 'category:id,name')
+        $categories = Category::select('id', 'name')
+            ->orderBy('name')
+            ->get()
+            ->map(function($category) {
+                $category->articles = Article::query()
+                    ->select('id', 'title', 'poster_id', 'published_date')
+                    ->with('poster:id,name')
+                    ->limit(3)
+                    ->orderByDesc('published_date')
+                    ->where('category_id', $category->id)->get(); 
+                return $category;
+            });
+
+        return view('user-article.index', compact('categories'));
+    }
+
+    public function filteredIndex()
+    {
+        $categoryId = request('category_id');
+        
+        if (empty($categoryId)) {
+            abort(404);
+        }
+
+        $category = Category::find($categoryId);
+
+        $articles = Article::query()
+            ->where('category_id', $categoryId)
+            ->select('id', 'title', 'poster_id', 'published_date')
+            ->with('poster:id,name')
             ->orderByDesc('published_date')
             ->get();
 
-        return view('user-article.index', compact('articles'));
+        return view('user-article.filtered-index', compact('category', 'articles'));
     }
 
     public function ownIndex()

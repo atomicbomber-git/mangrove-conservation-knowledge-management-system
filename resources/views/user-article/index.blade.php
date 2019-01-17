@@ -1,48 +1,38 @@
 @extends('shared.layout')
-@section('title', 'Daftar Seluruh Artikel')
+@section('title', 'Artikel')
 @section('content')
 <div class="container my-5">
     <h1 class='mb-5'>
         <i class='fa fa-file-text'></i>
-        Daftar Seluruh Artikel
+        Artikel
     </h1>
 
     <div class="card">
-        <div class="card-header">
-            <i class="fa fa-file-text"></i>
-            Daftar Seluruh Artikel
-        </div>
         <div class="card-body">
-            <div class='table-responsive'>
-                <table class='table table-sm table-bordered table-striped'>
-                   <thead>
-                        <tr>
-                            <th> #. </th>
-                            <th> Judul </th>
-                            <th> Penulis </th>
-                            <th> Kategori </th>
-                            <th> T. Publikasi </th>
-                            <th> Tindakan </th>
-                        </tr>
-                   </thead>
-                   <tbody>
-                       @foreach ($articles as $article)
-                        <tr>
-                            <td> {{ $loop->iteration }} </td>
-                            <td> {{ $article->title }} </td>
-                            <td> {{ $article->poster->name }} </td>
-                            <td> {{ $article->category->name }} </td>
-                            <td> @localized_date($article->published_date) </td>
-                            <td>
-                                <a href="{{ route('user-article.read', $article) }}" class="btn btn-secondary btn-sm">
-                                    <i class="fa fa-eye"></i>
-                                </a>
-                            </td>
-                        </tr>
-                       @endforeach
-                   </tbody>
-                </table>
+
+            @foreach ($categories->chunk(2) as $category_chunk)
+
+            <div class="row mb-5">
+            @foreach ($category_chunk as $category)
+                <div class="col">
+                    <h4 class="text-primary"> {{ $category->name }} </h4>
+                    <hr class="mt-0 mb-2">
+
+                    @foreach ($category->articles as $article)
+                    <div class="mb-2">
+                        <a href="{{ route('user-article.read', $article) }}" class="d-block text-muted"> {{ $article->title }} </a>
+                        <small> @localized_date($article->published_date) oleh <span class="font-weight-bold"> {{ $article->poster->name }} </span> </small>
+                    </div>
+                    @endforeach
+
+                    <a href="{{ route('user-article.filtered-index', ['category_id' => $category->id]) }}" class="text-info font-weight-bold">
+                        SELURUH ARTIKEL
+                    </a>
+                </div>
+            @endforeach
             </div>
+
+            @endforeach
         </div>
     </div>
 </div>

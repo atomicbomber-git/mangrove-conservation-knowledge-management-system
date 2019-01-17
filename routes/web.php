@@ -50,6 +50,7 @@ Route::group(['prefix' => '/user-article', 'as' => 'user-article.'], function() 
     });
 
     Route::get('/index', 'UserArticleController@index')->name('index');
+    Route::get('/filtered-index', 'UserArticleController@filteredIndex')->name('filtered-index');
     Route::get('/read/{article}', 'UserArticleController@read')->name('read')->middleware('can:read-article,article');
 });
 
