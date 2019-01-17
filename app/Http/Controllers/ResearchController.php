@@ -12,9 +12,10 @@ class ResearchController extends Controller
 {
     public function index()
     {
-        $researches = Research::select('id', 'title', 'poster_id', 'category_id', 'status')
+        $researches = Research::select('id', 'title', 'description', 'year', 'poster_id', 'category_id', 'status')
             ->with('poster:id,first_name,last_name', 'category:id,name')
             ->orderBy('status')
+            ->orderByDesc('year')
             ->get();
 
         return view('research.index', compact('researches'));

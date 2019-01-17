@@ -29,7 +29,9 @@
                             <th> # </th>
                             <th> Judul </th>
                             <th> Penulis </th>
+                            <th style="width: 12rem"> Deskripsi </th>
                             <th> Kategori </th>
+                            <th> Tahun </th>
                             <th> Status </th>
                             <th> Tindakan </th>
                         </tr>
@@ -40,7 +42,9 @@
                                 <td> {{ $loop->iteration }} </td>
                                 <td style="width: 15rem"> {{ $research->title }} </td>
                                 <td> {{ $research->poster->name }} </td>
+                                <td> {{ $research->description }} </td>
                                 <td> {{ $research->category->name }} </td>
+                                <td> {{ $research->year }} </td>
                                 <td>
                                     @switch($research->getOriginal('status'))
                                     @case('approved')
