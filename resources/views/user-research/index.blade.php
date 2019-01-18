@@ -22,7 +22,6 @@
                             <th> # </th>
                             <th> Judul </th>
                             <th> Penulis </th>
-                            <th style="width: 12rem"> Deskripsi </th>
                             <th> Kategori </th>
                             <th> Tahun </th>
                             <th> Tindakan </th>
@@ -34,12 +33,11 @@
                             <td> {{ $loop->iteration }} </td>
                             <td> {{ $research->title }} </td>
                             <td> {{ $research->poster->name }} </td>
-                            <td> {{ $research->description }} </td>
                             <td> {{ $research->year }} </td>
                             <td> {{ $research->category->name }} </td>
                             <td>
-                                <a href="{{ route('research.document', $research) }}" class="btn btn-secondary btn-sm">
-                                    <i class="fa fa-file-pdf-o"></i>
+                                <a href="{{ route('user-research.detail', $research) }}" class="btn btn-secondary btn-sm">
+                                    <i class="fa fa-list"></i>
                                 </a>
                             </td>
                         </tr>

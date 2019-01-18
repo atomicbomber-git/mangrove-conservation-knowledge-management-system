@@ -51,8 +51,8 @@
                                     <i class="fa fa-pencil"></i>
                                 </a>
 
-                                <a href="{{ route('research.document', $research) }}" class="btn btn-secondary btn-sm">
-                                    <i class="fa fa-file-pdf-o"></i>
+                                <a href="{{ route('user-research.detail', $research) }}" class="btn btn-secondary btn-sm">
+                                    <i class="fa fa-list"></i>
                                 </a>
 
                                 <form action='{{ route('user-research.delete', $research) }}' method='POST' class='d-inline-block'>

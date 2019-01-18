@@ -98,6 +98,7 @@ Route::group(['prefix' => '/user-research', 'as' => 'user-research.'], function(
         Route::get('/create', 'UserResearchController@create')->name('create');
         Route::post('/store', 'UserResearchController@store')->name('store');
         Route::get('/edit/{research}', 'UserResearchController@edit')->name('edit');
+        Route::get('/detail/{research}', 'UserResearchController@detail')->name('detail');
         Route::post('/update/{research}', 'UserResearchController@update')->name('update');
         Route::post('/delete/{research}', 'UserResearchController@delete')->name('delete');
     });

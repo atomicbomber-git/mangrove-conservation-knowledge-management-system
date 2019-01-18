@@ -7,6 +7,7 @@ use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 use App\Research;
 use App\Category;
+use App\Author;
 
 class UserResearchController extends Controller
 {
@@ -34,9 +35,14 @@ class UserResearchController extends Controller
         $category_ids = Category::select('id')->pluck('id');
 
         $data = $this->validate(request(), [
-            'title' => 'required|unique:researches',
-            'category_id' => 'required|exists:categories,id',
-            'document' => 'required|mimes:pdf'
+            'title' => 'required|string|unique:researches',
+            'category_id' => ['required', Rule::in($category_ids)],
+            'authors' => 'required|array',
+            'authors.*.first_name' => 'required|string',
+            'authors.*.last_name' => 'required|string',
+            'document' => 'required|mimes:pdf',
+            'description' => 'required|string',
+            'year' => 'required|integer|gte:1900'
         ]);
         
         $data['poster_id'] = auth()->user()->id;
@@ -44,13 +50,20 @@ class UserResearchController extends Controller
         DB::transaction(function() use($data) {
             $research = Research::create($data);
 
-            $research->addMediaFromRequest('document')
-            ->toMediaCollection(config('media.collections.documents'));
+            foreach ($data["authors"] as $author) {
+                Author::create([
+                    'research_id' => $research->id,
+                    'first_name' => $author['first_name'],
+                    'last_name' => $author['last_name']
+                ]);
+            }
+
+            $research
+                ->addMediaFromRequest('document')
+                ->toMediaCollection(config('media.collections.documents'));
         });
 
-        return redirect()
-            ->route('user-research.index')
-            ->with('message.success', __('messages.create.success'));
+        session()->flash('message.success', __('messages.create.success'));
     }
 
     public function ownIndex()
@@ -66,33 +79,55 @@ class UserResearchController extends Controller
 
     public function edit(Research $research)
     {
+        $research->original_status = $research->getOriginal('status');
+        $research->load('authors:id,research_id,first_name,last_name');
         $categories = Category::select('id', 'name')->get();
 
         return view('user-research.edit', compact('research', 'categories'));
     }
 
+    public function detail(Research $research)
+    {
+        $research->load('authors:id,first_name,last_name,research_id');
+        return view('user-research.detail', compact('research'));
+    }
+
+
     public function update(Research $research)
     {
+        $category_ids = Category::select('id')->pluck('id');
+
         $data = $this->validate(request(), [
             'title' => ['required', 'string', 'max:191', Rule::unique('researches')->ignore($research->id)],
-            'category_id' => 'required|exists:categories,id',
+            'authors' => 'required|array',
+            'authors.*.first_name' => 'required|string',
+            'authors.*.last_name' => 'required|string',
+            'category_id' => ['required', Rule::in($category_ids)],
             'document' => 'sometimes|nullable|mimes:pdf'
         ]);
 
         DB::transaction(function() use($research, $data) {
             $research->update($data);
-            $research->clearMediaCollection(config('media.collections.documents'));
             
-            if (empty($data['document'])) {
-                return;
+            Author::where('research_id', $research->id)
+                ->delete();
+
+            foreach ($data["authors"] as $author) {
+                Author::create([
+                    'research_id' => $research->id,
+                    'first_name' => $author['first_name'],
+                    'last_name' => $author['last_name']
+                ]);
             }
 
+            if (empty($data['document'])) { return; }
+
+            $research->clearMediaCollection(config('media.collections.documents'));
             $research->addMediaFromRequest('document')
                 ->toMediaCollection(config('media.collections.documents'));
         });
 
-        return back()
-            ->with('message.success', __('messages.update.success'));
+        session()->flash('message.success', __('messages.update.success'));
     }
 
     public function delete(Research $research)
