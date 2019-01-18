@@ -1,15 +1,6 @@
 <template>
     <form @submit="onFormSubmit" ref="form">
         <div class='form-group'>
-            <label for='status'> Status: </label>
-            <select v-model="status" name="status" id="status" class="form-control">
-                <option value="unapproved"> Belum Disetujui </option>
-                <option value="approved"> Disetujui </option>
-            </select>
-            <div class='invalid-feedback'>{{ get(this.error_data, 'errors.status[0]', false) }}</div>
-        </div>
-
-        <div class='form-group'>
             <label for='title'> Judul: </label>
             <input
                 v-model='title'
