@@ -51,14 +51,12 @@
                         placeholder="Nama Depan"
                         :class="{'is-invalid': get(error_data, ['errors', `authors.${i}.first_name`, 0], false)}"
                         v-model="author.first_name">
-                    <!-- <div class='invalid-feedback'>{{ get(this.error_data, 'errors.latitude[0]', false) }}</div> -->
                 </div>
                 <div class='form-group col-md-5'>
                     <input class="form-control" type="text"
                         placeholder="Nama Belakang"
                         :class="{'is-invalid': get(error_data, ['errors', `authors.${i}.last_name`, 0], false)}"
                         v-model="author.last_name">
-                    <!-- <div class='invalid-feedback'>{{ get(this.error_data, 'errors.longitude[0]', false) }}</div> -->
                 </div>
                 <div class="col-md-1">
                     <button v-if="authors.length > 1" @click="onRemoveAuthorButtonClick(i)" class="btn btn-danger" type="button">
@@ -140,11 +138,7 @@ export default {
                 preparedFormData.append(key, this.formData[key]);
             });
 
-
-            // preparedFormData.append(`authors`, JSON.stringify(this.authors))
-            
             this.authors.forEach((author, index) => {
-                // console.log(author.first_name || undefined)
                 preparedFormData.append(`authors[${index}][first_name]`, author.first_name || '')
                 preparedFormData.append(`authors[${index}][last_name]`, author.last_name || '')
             })
