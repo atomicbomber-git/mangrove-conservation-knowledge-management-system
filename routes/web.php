@@ -21,6 +21,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/search', 'SearchController@search')->name('search');
+Route::post('/processSearch', 'SearchController@processSearch')->name('process-search');
+
 Route::group(['prefix' => '/user', 'as' => 'user.', 'middleware' => ['can:administrate-users', 'auth']], function() {
     Route::get('/index', 'UserController@index')->name('index');
     Route::get('/create', 'UserController@create')->name('create');
