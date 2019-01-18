@@ -1,6 +1,15 @@
 <template>
     <form @submit="onFormSubmit" ref="form">
         <div class='form-group'>
+            <label for='status'> Status: </label>
+            <select v-model="status" name="status" id="status" class="form-control">
+                <option value="unapproved"> Belum Disetujui </option>
+                <option value="approved"> Disetujui </option>
+            </select>
+            <div class='invalid-feedback'>{{ get(this.error_data, 'errors.status[0]', false) }}</div>
+        </div>
+
+        <div class='form-group'>
             <label for='title'> Judul: </label>
             <input
                 v-model='title'
@@ -72,6 +81,12 @@
             </div>
         </div>
 
+        <div class="alert alert-warning">
+            <i class="fa fa-warning"></i>
+            Biarkan kolom di bawah kosong jika Anda tidak ingin
+            mengubah dokumen yang telah ada.
+        </div>
+
         <div class="form-group">
             <label for="document"> Dokumen: </label>
             <input
@@ -94,13 +109,14 @@
 export default {
     data() {
         return {
-            title: null,
-            year: window.currentYear,
-            category_id: window.categories[0].id,
-            description: null,
+            status: window.research.original_status,
+            title: window.research.title,
+            year: window.research.year,
+            category_id: window.research.category_id,
+            description: window.research.description,
             document: null,
             error_data: null,
-            authors: [{ first_name: window.user.first_name, last_name: window.user.last_name}],
+            authors: window.research.authors,
 
             categories: window.categories,
             get: _.get
@@ -110,6 +126,7 @@ export default {
     computed: {
         formData() {
             return {
+                status: this.status,
                 title: this.title,
                 year: this.year,
                 category_id: this.category_id,
@@ -142,10 +159,10 @@ export default {
                 preparedFormData.append(`authors[${index}][first_name]`, author.first_name || '')
                 preparedFormData.append(`authors[${index}][last_name]`, author.last_name || '')
             })
-
-            preparedFormData.append('document', this.$refs.document.files[0])
             
-            axios.post(`/research/store`, preparedFormData, {headers: { 'Content-Type': 'multipart/form-data' }})
+            this.$refs.document.files[0] && preparedFormData.append('document', this.$refs.document.files[0])
+            
+            axios.post(`/research/update/${research.id}`, preparedFormData, {headers: { 'Content-Type': 'multipart/form-data' }})
                 .then(response => { window.location.reload(true) })
                 .catch(error => { this.error_data = error.response.data })
         }

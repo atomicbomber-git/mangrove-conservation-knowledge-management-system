@@ -21,6 +21,7 @@ Vue.component('user-article-edit', require('./components/user-article/Edit.vue')
 Vue.component('article-edit', require('./components/article/Edit.vue'));
 Vue.component('information-edit', require('./components/information/Edit.vue'));
 Vue.component('research-create', require('./components/research/Create.vue'));
+Vue.component('research-edit', require('./components/research/Edit.vue'));
 
 const app = new Vue({
     el: '#app'

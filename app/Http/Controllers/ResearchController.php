@@ -75,6 +75,8 @@ class ResearchController extends Controller
 
     public function edit(Research $research)
     {
+        $research->original_status = $research->getOriginal('status');
+        $research->load('authors:id,research_id,first_name,last_name');
         $categories = Category::select('id', 'name')->get();
 
         return view('research.edit', compact('research', 'categories'));
@@ -87,24 +89,35 @@ class ResearchController extends Controller
         $data = $this->validate(request(), [
             'title' => ['required', 'string', 'max:191', Rule::unique('researches')->ignore($research->id)],
             'status' => ['required', Rule::in(array_keys(Research::STATUSES))],
+            'authors' => 'required|array',
+            'authors.*.first_name' => 'required|string',
+            'authors.*.last_name' => 'required|string',
             'category_id' => ['required', Rule::in($category_ids)],
             'document' => 'sometimes|nullable|mimes:pdf'
         ]);
 
         DB::transaction(function() use($research, $data) {
             $research->update($data);
-            $research->clearMediaCollection(config('media.collections.documents'));
             
-            if (empty($data['document'])) {
-                return;
+            Author::where('research_id', $research->id)
+                ->delete();
+
+            foreach ($data["authors"] as $author) {
+                Author::create([
+                    'research_id' => $research->id,
+                    'first_name' => $author['first_name'],
+                    'last_name' => $author['last_name']
+                ]);
             }
 
+            if (empty($data['document'])) { return; }
+
+            $research->clearMediaCollection(config('media.collections.documents'));
             $research->addMediaFromRequest('document')
                 ->toMediaCollection(config('media.collections.documents'));
         });
 
-        return back()
-            ->with('message.success', __('messages.update.success'));
+        session()->flash('message.success', __('messages.update.success'));
     }
 
     public function delete(Research $research)
