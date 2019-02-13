@@ -22,7 +22,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/search', 'SearchController@search')->name('search');
-Route::post('/processSearch', 'SearchController@processSearch')->name('process-search');
+Route::get('/process_search', 'SearchController@process')->name('process_search');
 
 Route::group(['prefix' => '/user', 'as' => 'user.', 'middleware' => ['can:administrate-users', 'auth']], function() {
     Route::get('/index', 'UserController@index')->name('index');

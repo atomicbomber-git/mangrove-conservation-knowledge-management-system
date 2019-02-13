@@ -38,4 +38,9 @@ class Research extends Model implements HasMedia
     {
         return $this::STATUSES[$value];
     }
+
+    public function scopeApproved($query)
+    {
+        $query->where('status', 'approved');
+    }
 }

@@ -4,13 +4,12 @@
 <div class="container my-5">
     <h1 class='mb-5'>
         <i class='fa fa-search'></i>
-        Pencarian Google Scholar
+        Pencarian Hasil Penelitian
     </h1>
 
-    <div class="card">
+    <div class="card mb-4">
         <div class="card-body">
-            <form action="{{ route('process-search') }}" method="POST">
-                @csrf
+            <form action="{{ route('process_search') }}" method="GET">
                 <div class='form-group'>
                     <label for='keyword'> Kata Kunci: </label>
                 
@@ -34,5 +33,41 @@
             </form>
         </div>
     </div>
+
+    @isset($researches)
+    <div class="card">
+        <div class="card-body">
+            @if(isset($splitted_keywords))
+            <div class="alert alert-info mb-5">
+                Menampilkan hasil pencarian untuk kata kunci: <strong> {{ implode(", ", $splitted_keywords) }} </strong>
+            </div>
+            @endif
+
+            @if(isset($researches))
+
+            @forelse ($researches as $research)
+            <h5> {{ $research->title }} ({{ $research->year }}) </h5>
+            <p>
+            @foreach ($research->authors as $author)
+                <span class="text-success font-weight-bold">
+                    {{ $author->name }}{{ !$loop->last ? ', ' : '' }}
+                </span>
+            @endforeach
+            </p>
+            <p> {{ str_limit($research->description, 200) }} </p>
+            <a href="{{ route('research.document', $research) }}"> Unduh Dokumen </a>
+            <hr/>
+            @empty
+                
+            @endforelse
+
+            @endif
+        </div>
+
+        <div class="d-flex justify-content-center">
+            {{ $researches->appends(['keyword' => request('keyword')])->links() }}
+        </div>
+    </div>
+    @endif
 </div>
 @endsection
