@@ -65,7 +65,7 @@
             @endforeach
             </p>
             <p> {{ str_limit($research->description, 200) }} </p>
-            <a href="{{ route('research.document', $research) }}"> Unduh Dokumen </a>
+            <a href="{{ route('user-research.detail', $research) }}"> Detail </a> | <a href="{{ route('research.document', $research) }}"> Unduh Dokumen </a>
             <hr/>
             @empty
                 
