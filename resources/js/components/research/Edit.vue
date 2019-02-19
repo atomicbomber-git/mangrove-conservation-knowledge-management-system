@@ -96,9 +96,9 @@
         </div>
 
         <div class="form-group mt-4">
-            <button class="btn btn-secondary">
-                Tambahkan Hasil Penelitian Baru
-                <i class="fa fa-plus"></i>
+            <button class="btn btn-primary">
+                Ubah Hasil Penelitian
+                <i class="fa fa-check"></i>
             </button>
         </div>
 

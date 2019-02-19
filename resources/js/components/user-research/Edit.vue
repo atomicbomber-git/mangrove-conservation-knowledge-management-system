@@ -87,9 +87,9 @@
         </div>
 
         <div class="form-group mt-4">
-            <button class="btn btn-secondary">
+            <button class="btn btn-primary">
                 Ubah Data
-                <i class="fa fa-pencil"></i>
+                <i class="fa fa-check"></i>
             </button>
         </div>
 

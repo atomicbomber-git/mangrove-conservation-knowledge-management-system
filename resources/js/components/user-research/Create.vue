@@ -81,7 +81,7 @@
         </div>
 
         <div class="form-group mt-4">
-            <button class="btn btn-secondary">
+            <button class="btn btn-primary">
                 Tambahkan Hasil Penelitian Baru
                 <i class="fa fa-plus"></i>
             </button>
