@@ -9,7 +9,7 @@
 
     <div class="card mb-4">
         <div class="card-body">
-            <form action="{{ route('process_search') }}" method="GET">
+            <form action="{{ route('search') }}" method="GET">
                 <div class='form-group'>
                     <label for='keyword'> Kata Kunci: </label>
                 

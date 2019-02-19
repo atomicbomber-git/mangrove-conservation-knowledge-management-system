@@ -11,11 +11,6 @@ class SearchController extends Controller
 
     public function search()
     {
-        return view('search');
-    }
-
-    public function process()
-    {
         $data = $this->validate(request(), [
             'keyword' => 'nullable|string'
         ]);
@@ -38,7 +33,6 @@ class SearchController extends Controller
         $researches = $query
             ->orderByDesc('year')
             ->simplePaginate(5);
-
 
         return view('search', compact('splitted_keywords', 'researches', 'researches_count'));
     }

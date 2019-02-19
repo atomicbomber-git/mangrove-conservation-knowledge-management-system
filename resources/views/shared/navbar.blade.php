@@ -154,9 +154,8 @@
 
                 <li class='nav-item {{ Route::is('search') ? 'active' : '' }}'>
                     <a class='nav-link' href='{{ route('search') }}'>
-                        <i class='fa fa-icon'></i>
+                        <i class='fa fa-search'></i>
                         Pencarian
-                        <i class="fa fa-search"></i>
                     </a>
                 </li>
 
