@@ -20,24 +20,26 @@ class SearchController extends Controller
             'keyword' => 'nullable|string'
         ]);
 
+        $splitted_keywords = explode(' ', $data['keyword'] ?? '');
         
-        if (request('keyword')) {
-            $splitted_keywords = explode(' ', $data['keyword'] ?? '');
-
-            $researches = Research::query()
-                ->select('id', 'title', 'year', 'description', 'poster_id', 'category_id', 'status')
-                ->with('authors:id,first_name,last_name,research_id')
-                ->where(function ($query) use($splitted_keywords) {
-                    foreach ($splitted_keywords as $keyword) {
-                        foreach ($this->searchableFields as $field) {
-                            $query->orWhere($field, 'LIKE', "%$keyword%");
-                        }
+        $query = Research::query()
+            ->select('id', 'title', 'year', 'description', 'poster_id', 'category_id', 'status')
+            ->with('authors:id,first_name,last_name,research_id')
+            ->where(function ($query) use($splitted_keywords) {
+                foreach ($splitted_keywords as $keyword) {
+                    foreach ($this->searchableFields as $field) {
+                        $query->orWhere($field, 'LIKE', "%$keyword%");
                     }
-                })
-                ->orderByDesc('year')
-                ->simplePaginate(5);
-        }
-        
-        return view('search', compact('splitted_keywords', 'researches'));
+                }
+            });
+
+        $researches_count = $query->count();
+
+        $researches = $query
+            ->orderByDesc('year')
+            ->simplePaginate(5);
+
+
+        return view('search', compact('splitted_keywords', 'researches', 'researches_count'));
     }
 }

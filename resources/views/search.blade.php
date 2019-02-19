@@ -37,10 +37,20 @@
     @isset($researches)
     <div class="card">
         <div class="card-body">
-            @if(isset($splitted_keywords))
+            @if(null !== request('keyword'))
+            
             <div class="alert alert-info mb-5">
-                Menampilkan hasil pencarian untuk kata kunci: <strong> {{ implode(", ", $splitted_keywords) }} </strong>
+                Menampilkan hasil pencarian ke {{ $researches->firstItem() }}-{{ $researches->lastItem() }} 
+                dari {{ $researches_count }} hasil
+                untuk kata kunci: <strong> {{ implode(", ", $splitted_keywords) }} </strong>
             </div>
+
+            @else
+
+            <div class="alert alert-info mb-5">
+                Menampilkan seluruh hasil penelitian
+            </div>
+
             @endif
 
             @if(isset($researches))
