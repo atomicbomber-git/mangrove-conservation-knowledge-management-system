@@ -66,7 +66,27 @@
                                         <i class="fa fa-list"></i>
                                     </a>
 
-                                    <form action='{{ route('research.delete', $research) }}' method='POST' class='d-inline-block'>
+                                    @if($research->getOriginal('status') == App\Research::STATUS_UNAPPROVED)
+
+                                    <form method="POST" class="d-inline-block" action="{{ route('research-verification.create', $research) }}">
+                                        @csrf
+                                        <button class="btn btn-success btn-sm">
+                                            <i class="fa fa-check"></i>
+                                        </button>
+                                    </form>
+
+                                    @else
+
+                                    <form method="POST" class="d-inline-block" action="{{ route('research-verification.delete', $research) }}">
+                                        @csrf
+                                        <button class="btn btn-danger btn-sm">
+                                            <i class="fa fa-times"></i>
+                                        </button>
+                                    </form>
+
+                                    @endif
+
+                                    <form action='{{ route('research.delete', $research) }}' method='POST' class='ml-3 d-inline-block'>
                                         @csrf
                                         <button type='submit' class='btn btn-danger btn-sm'>
                                             <i class='fa fa-trash'></i>

@@ -101,6 +101,11 @@ Route::group(['prefix' => '/research', 'as' => 'research.'], function() {
     Route::get('/document/{research}', 'ResearchController@document')->name('document');
 });
 
+Route::group(['prefix' => '/research-verification', 'as' => 'research-verification.'], function() {
+    Route::post('/create/{research}', 'ResearchVerificationController@create')->name('create');
+    Route::post('/delete/{research}', 'ResearchVerificationController@delete')->name('delete');
+});
+
 Route::group(['prefix' => '/user-research', 'as' => 'user-research.'], function() {
     Route::middleware(['auth'])->group(function() {
         Route::get('/own-index', 'UserResearchController@ownIndex')->name('own-index');

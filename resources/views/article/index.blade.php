@@ -85,12 +85,12 @@
 
                             @endif
 
-                            {{-- <form action='{{ route('article.delete', $article) }}' method='POST' class='d-inline-block'>
+                            <form action='{{ route('article.delete', $article) }}' method='POST' class='ml-3 d-inline-block'>
                                 @csrf
                                 <button type='submit' class='btn btn-danger btn-sm'>
                                     <i class='fa fa-trash'></i>
                                 </button>
-                            </form> --}}
+                            </form>
                         </td>
                     </tr>
                    @endforeach
