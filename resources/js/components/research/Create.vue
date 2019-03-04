@@ -146,7 +146,7 @@ export default {
             preparedFormData.append('document', this.$refs.document.files[0])
             
             axios.post(`/research/store`, preparedFormData, {headers: { 'Content-Type': 'multipart/form-data' }})
-                .then(response => { window.location.reload(true) })
+                .then(response => { window.location.replace("/research/index") })
                 .catch(error => { this.error_data = error.response.data })
         }
     }
