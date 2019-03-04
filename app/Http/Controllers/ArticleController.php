@@ -28,7 +28,7 @@ class ArticleController extends Controller
         ]);
 
         $data['poster_id'] = auth()->user()->id;
-        $data['status'] = 'unapproved';
+        $data['status'] = Article::STATUS_APPROVED;
         Article::create($data);
 
         return [

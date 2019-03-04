@@ -47,6 +47,7 @@ class ResearchController extends Controller
         ]);
         
         $data['poster_id'] = auth()->user()->id;
+        $data['status'] = Research::STATUS_APPROVED;
 
         DB::transaction(function() use($data) {
             $research = Research::create($data);
