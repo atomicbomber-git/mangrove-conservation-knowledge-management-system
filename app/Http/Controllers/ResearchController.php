@@ -40,7 +40,7 @@ class ResearchController extends Controller
             'category_id' => ['required', Rule::in($category_ids)],
             'authors' => 'required|array',
             'authors.*.first_name' => 'required|string',
-            'authors.*.last_name' => 'required|string',
+            'authors.*.last_name' => 'nullable|string',
             'document' => 'required|mimes:pdf',
             'description' => 'required|string',
             'year' => 'required|integer|gte:1900'
