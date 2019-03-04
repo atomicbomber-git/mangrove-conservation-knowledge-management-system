@@ -15,6 +15,8 @@
 //     return view('welcome');
 // });
 
+use Illuminate\Support\Facades\Route;
+
 Route::redirect('/', '/home');
 
 Auth::routes();
@@ -39,6 +41,11 @@ Route::group(['prefix' => '/article', 'as' => 'article.', 'middleware' => ['can:
     Route::get('/edit/{article}', 'ArticleController@edit')->name('edit');
     Route::post('/update/{article}', 'ArticleController@update')->name('update');
     Route::post('/delete/{article}', 'ArticleController@delete')->name('delete');
+});
+
+Route::group(['prefix' => '/article-verification', 'as' => 'article-verification.'], function() {
+    Route::post('/create/{article}', 'ArticleVerificationController@create')->name('create');
+    Route::post('/delete/{article}', 'ArticleVerificationController@delete')->name('delete');
 });
 
 Route::group(['prefix' => '/user-article', 'as' => 'user-article.'], function() {

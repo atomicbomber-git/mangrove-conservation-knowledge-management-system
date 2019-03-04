@@ -6,9 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Article extends Model
 {
+    const STATUS_APPROVED = 'approved';
+    const STATUS_UNAPPROVED = 'unapproved';
+
     const STATUSES = [
-        'unapproved' => 'Belum / Tidak Disetujui',
-        'approved' => 'Telah Disetujui'
+        self::STATUS_APPROVED => 'Belum / Tidak Disetujui',
+        self::STATUS_UNAPPROVED => 'Telah Disetujui'
     ];
 
     public $fillable = [

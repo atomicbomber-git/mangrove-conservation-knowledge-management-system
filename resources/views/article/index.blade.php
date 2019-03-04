@@ -65,12 +65,32 @@
                                 <i class="fa fa-pencil"></i>
                             </a>
 
-                            <form action='{{ route('article.delete', $article) }}' method='POST' class='d-inline-block'>
+                            @if($article->getOriginal('status') == App\Article::STATUS_UNAPPROVED)
+
+                            <form method="POST" class="d-inline-block" action="{{ route('article-verification.create', $article) }}">
+                                @csrf
+                                <button class="btn btn-success btn-sm">
+                                    <i class="fa fa-check"></i>
+                                </button>
+                            </form>
+
+                            @else
+
+                            <form method="POST" class="d-inline-block" action="{{ route('article-verification.delete', $article) }}">
+                                @csrf
+                                <button class="btn btn-danger btn-sm">
+                                    <i class="fa fa-times"></i>
+                                </button>
+                            </form>
+
+                            @endif
+
+                            {{-- <form action='{{ route('article.delete', $article) }}' method='POST' class='d-inline-block'>
                                 @csrf
                                 <button type='submit' class='btn btn-danger btn-sm'>
                                     <i class='fa fa-trash'></i>
                                 </button>
-                            </form>
+                            </form> --}}
                         </td>
                     </tr>
                    @endforeach
