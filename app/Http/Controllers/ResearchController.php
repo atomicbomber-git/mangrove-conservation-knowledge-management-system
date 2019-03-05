@@ -92,7 +92,7 @@ class ResearchController extends Controller
             'status' => ['required', Rule::in(array_keys(Research::STATUSES))],
             'authors' => 'required|array',
             'authors.*.first_name' => 'required|string',
-            'authors.*.last_name' => 'required|string',
+            'authors.*.last_name' => 'nullable|string',
             'category_id' => ['required', Rule::in($category_ids)],
             'description' => 'required|string',
             'document' => 'sometimes|nullable|mimes:pdf'

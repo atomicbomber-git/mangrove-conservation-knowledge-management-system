@@ -39,7 +39,7 @@ class UserResearchController extends Controller
             'category_id' => ['required', Rule::in($category_ids)],
             'authors' => 'required|array',
             'authors.*.first_name' => 'required|string',
-            'authors.*.last_name' => 'required|string',
+            'authors.*.last_name' => 'nullable|string',
             'document' => 'required|mimes:pdf',
             'description' => 'required|string',
             'year' => 'required|integer|gte:1900'
@@ -101,7 +101,7 @@ class UserResearchController extends Controller
             'title' => ['required', 'string', 'max:191', Rule::unique('researches')->ignore($research->id)],
             'authors' => 'required|array',
             'authors.*.first_name' => 'required|string',
-            'authors.*.last_name' => 'required|string',
+            'authors.*.last_name' => 'nullable|string',
             'category_id' => ['required', Rule::in($category_ids)],
             'document' => 'sometimes|nullable|mimes:pdf',
             'description' => 'required|string',
