@@ -95,7 +95,8 @@ class ResearchController extends Controller
             'authors.*.last_name' => 'nullable|string',
             'category_id' => ['required', Rule::in($category_ids)],
             'description' => 'required|string',
-            'document' => 'sometimes|nullable|mimes:pdf'
+            'document' => 'sometimes|nullable|mimes:pdf',
+            'year' => 'required|integer|gte:1900'
         ]);
 
         DB::transaction(function() use($research, $data) {

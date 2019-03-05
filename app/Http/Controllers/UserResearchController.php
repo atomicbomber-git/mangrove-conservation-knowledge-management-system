@@ -115,6 +115,7 @@ class UserResearchController extends Controller
             'category_id' => ['required', Rule::in($category_ids)],
             'document' => 'sometimes|nullable|mimes:pdf',
             'description' => 'required|string',
+            'year' => 'required|integer|gte:1900'
         ]);
 
         DB::transaction(function() use($research, $data) {
