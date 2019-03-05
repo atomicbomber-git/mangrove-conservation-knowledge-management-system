@@ -15,9 +15,19 @@ class UserResearchController extends Controller
     {
         $researches = Research::select('id', 'title', 'year', 'description', 'category_id', 'poster_id')
             ->where('status', 'approved')
-            ->with('poster:id,first_name,last_name', 'category:id,name')
+            ->with('authors:id,research_id,first_name,last_name', 'category:id,name')
             ->orderByDesc('year')
-            ->get();
+            ->get()
+            ->each(function ($research) {
+
+                $author_names = $research->authors
+                    ->map(function ($author) {
+                        return rtrim($author->first_name . " " . $author->last_name);
+                    })
+                    ->toArray();
+
+                $research->formatted_authors = implode(", ", $author_names); 
+            });
 
         return view('user-research.index', compact('researches'));
     }

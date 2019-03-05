@@ -32,7 +32,7 @@
                         <tr>
                             <td> {{ $loop->iteration }} </td>
                             <td> {{ $research->title }} </td>
-                            <td> {{ $research->poster->name }} </td>
+                            <td> {{ $research->formatted_authors }} </td>
                             <td> {{ $research->year }} </td>
                             <td> {{ $research->category->name }} </td>
                             <td>
