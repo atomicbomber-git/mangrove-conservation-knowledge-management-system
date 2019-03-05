@@ -94,6 +94,7 @@ class ResearchController extends Controller
             'authors.*.first_name' => 'required|string',
             'authors.*.last_name' => 'required|string',
             'category_id' => ['required', Rule::in($category_ids)],
+            'description' => 'required|string',
             'document' => 'sometimes|nullable|mimes:pdf'
         ]);
 
