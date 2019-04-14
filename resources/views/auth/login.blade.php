@@ -2,7 +2,7 @@
 @section('title', 'Halaman Masuk')
 @section('content')
 <div
-    style="position: fixed; background-size: cover; height: 100vh; left: 0; right: 0; background-image: url(mangrove.jpg); filter: grayscale(0.5) blur(4px);"
+    style="position: fixed; background-size: cover; background-repeat: no; height: 100vh; left: 0; right: 0; background-image: url(mangrove.jpg);"
 >
 
 </div>
