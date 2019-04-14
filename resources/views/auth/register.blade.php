@@ -2,14 +2,9 @@
 @section('title', 'Registrasi Akun Baru')
 @section('content')
 <div class="container my-5">
-    <h1 class='mb-5'>
-        <i class='fa fa-plus'></i>
-        Registrasi Akun Baru
-    </h1>
-
     @include('shared.message', ['session_key' => 'message.success', 'state' => 'success'])
 
-    <div class="card w-50">
+    <div class="card w-50 mx-auto">
         <div class="card-header">
             <i class="fa fa-plus"></i>
             Registrasi Akun Baru

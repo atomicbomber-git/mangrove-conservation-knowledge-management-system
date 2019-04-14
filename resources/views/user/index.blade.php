@@ -47,7 +47,7 @@
 
                             <form action='{{ route('user.delete', $user) }}' method='POST' class='d-inline-block'>
                                 @csrf
-                                <button type='submit' class='btn btn-danger btn-sm'>
+                                <button type='submit' class='btn btn-danger btn-delete btn-sm'>
                                     <i class='fa fa-trash'></i>
                                 </button>
                             </form>
@@ -60,4 +60,8 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('extra-scripts')
+    @include('shared.datatables')
 @endsection

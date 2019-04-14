@@ -79,7 +79,7 @@
 
                                     <form method="POST" class="d-inline-block" action="{{ route('research-verification.delete', $research) }}">
                                         @csrf
-                                        <button class="btn btn-danger btn-sm">
+                                        <button class="btn btn-danger btn-delete btn-sm">
                                             <i class="fa fa-times"></i>
                                         </button>
                                     </form>
@@ -88,7 +88,7 @@
 
                                     <form action='{{ route('research.delete', $research) }}' method='POST' class='ml-3 d-inline-block'>
                                         @csrf
-                                        <button type='submit' class='btn btn-danger btn-sm'>
+                                        <button type='submit' class='btn btn-danger btn-delete btn-sm'>
                                             <i class='fa fa-trash'></i>
                                         </button>
                                     </form>
@@ -101,4 +101,8 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('extra-scripts')
+    @include('shared.datatables')
 @endsection

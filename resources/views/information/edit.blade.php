@@ -7,7 +7,9 @@
             <i class="fa fa-pencil"></i>
             Sunting Informasi {{ $information->menu_title }}
         </div>
+
         <div class="card-body" id="app">
+            @include('shared.message', ['session_key' => 'message.success', 'state' => 'success'])
             <information-edit/>
         </div>
     </div>

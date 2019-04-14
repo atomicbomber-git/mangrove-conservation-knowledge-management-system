@@ -59,10 +59,10 @@
                                     <i class="fa fa-pencil"></i>
                                 </a>
 
-                                @can('delete-artice', $article)
+                                @can('delete-article', $article)
                                 <form action='{{ route('user-article.delete', $article) }}' method='POST' class='d-inline-block'>
                                     @csrf
-                                    <button type='submit' class='btn btn-danger btn-sm'>
+                                    <button type='submit' class='btn btn-danger btn-delete btn-sm'>
                                         <i class='fa fa-trash'></i>
                                     </button>
                                 </form>
@@ -76,4 +76,8 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('extra-scripts')
+    @include('shared.datatables')
 @endsection

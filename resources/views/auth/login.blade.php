@@ -1,6 +1,11 @@
 @extends('shared.layout')
 @section('title', 'Halaman Masuk')
 @section('content')
+<div
+    style="position: fixed; background-size: cover; height: 100vh; left: 0; right: 0; background-image: url(mangrove.jpg); filter: grayscale(0.5) blur(4px);"
+>
+
+</div>
 <div class="container my-5">
     <div class="card mx-auto" style="max-width: 30rem">
         <div class="card-header">

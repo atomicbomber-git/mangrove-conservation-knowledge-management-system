@@ -15,8 +15,6 @@ return [
     'delete' => [
         'success' => 'Data berhasil dihapus.',
         'failure' => 'Data gagal dihapus.',
-    ],
-
-    'unauthorized' => "Maaf, Anda tidak diizinkan untuk melakukan tindakan tersebut."
+    ]
 
 ];

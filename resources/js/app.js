@@ -7,13 +7,19 @@
 
 require('./bootstrap');
 
-window.Vue = require('vue');
+// Load datatables
+require('datatables.net-bs4')
+
+// Load sweetalert
+window.swal = require('sweetalert')
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+
+window.Vue = require('vue');
 
 Vue.component('article-create', require('./components/article/Create.vue'));
 Vue.component('user-article-create', require('./components/user-article/Create.vue'));

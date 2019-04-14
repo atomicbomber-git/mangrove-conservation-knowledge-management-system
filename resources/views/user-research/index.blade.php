@@ -33,8 +33,8 @@
                             <td> {{ $loop->iteration }} </td>
                             <td> {{ $research->title }} </td>
                             <td> {{ $research->formatted_authors }} </td>
-                            <td> {{ $research->year }} </td>
                             <td> {{ $research->category->name }} </td>
+                            <td> {{ $research->year }} </td>
                             <td>
                                 <a href="{{ route('user-research.detail', $research) }}" class="btn btn-secondary btn-sm">
                                     <i class="fa fa-list"></i>
@@ -48,4 +48,8 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('extra-scripts')
+    @include('shared.datatables')
 @endsection

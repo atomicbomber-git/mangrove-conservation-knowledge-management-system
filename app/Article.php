@@ -10,8 +10,8 @@ class Article extends Model
     const STATUS_UNAPPROVED = 'unapproved';
 
     const STATUSES = [
-        self::STATUS_APPROVED => 'Belum / Tidak Disetujui',
-        self::STATUS_UNAPPROVED => 'Telah Disetujui'
+        self::STATUS_APPROVED => 'Disetujui',
+        self::STATUS_UNAPPROVED => 'Belum / Tidak Disetujui'
     ];
 
     public $fillable = [

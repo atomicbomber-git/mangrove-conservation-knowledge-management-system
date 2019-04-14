@@ -144,7 +144,11 @@ class UserResearchController extends Controller
 
     public function delete(Research $research)
     {
-        $research->delete();
+        DB::transaction(function() use($research) {
+            $research->authors()->delete();
+            $research->delete();
+        });
+        
         return back()
             ->with('message.success', __('messages.delete.success'));
     }

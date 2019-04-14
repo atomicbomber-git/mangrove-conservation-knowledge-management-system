@@ -57,7 +57,7 @@
 
                                 <form action='{{ route('user-research.delete', $research) }}' method='POST' class='d-inline-block'>
                                     @csrf
-                                    <button type='submit' class='btn btn-danger btn-sm'>
+                                    <button type='submit' class='btn btn-danger btn-delete btn-sm'>
                                         <i class='fa fa-trash'></i>
                                     </button>
                                 </form>

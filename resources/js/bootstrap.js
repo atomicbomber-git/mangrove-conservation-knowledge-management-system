@@ -1,6 +1,5 @@
 
 window._ = require('lodash');
-
 window.Quill = require('quill');
 
 /**

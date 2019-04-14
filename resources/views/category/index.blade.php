@@ -43,12 +43,12 @@
                            @if($category->deletable)
                            <form action='{{ route('category.delete', $category) }}' method='POST' class='d-inline-block'>
                                 @csrf
-                                <button type='submit' class='btn btn-danger btn-sm'>
+                                <button type='submit' class='btn btn-danger btn-delete btn-sm'>
                                     <i class='fa fa-trash'></i>
                                 </button>
                             </form>
                            @else
-                            <button class="btn btn-danger btn-sm" disabled>
+                            <button class="btn btn-danger btn-delete btn-sm" disabled>
                                 <i class="fa fa-trash"></i>
                             </button>
                            @endif
@@ -60,4 +60,8 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('extra-scripts')
+    @include('shared.datatables')
 @endsection
