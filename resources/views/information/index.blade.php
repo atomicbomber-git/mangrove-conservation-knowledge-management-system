@@ -10,7 +10,7 @@
            
            <hr>
 
-            <article style="font-size: 110%" id="content">
+            <article id="content">
                 {!! $information->content !!}
             </article>
         </div>

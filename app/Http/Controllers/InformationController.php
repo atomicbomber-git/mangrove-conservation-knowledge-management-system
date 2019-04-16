@@ -21,7 +21,9 @@ class InformationController extends Controller
             'content' => 'string|required'
         ]);
 
-        session()->flash("message.success", __('messages.update.success'));
         $information->update($data);
+        
+        return back()
+            ->with("message.success", __("messages.update.success"));
     }
 }
