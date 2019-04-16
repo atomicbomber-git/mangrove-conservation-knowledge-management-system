@@ -10,10 +10,14 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    const TYPE_ADMIN = "admin";
+    const TYPE_RESEARCHER = "researcher";
+    const TYPE_REGULAR = "regular";
+
     const TYPES = [
-        'admin' => 'Administator',
-        'researcher' => 'Peneliti',
-        'regular' => 'Umum'
+        self::TYPE_ADMIN => 'Administator',
+        self::TYPE_RESEARCHER => 'Peneliti',
+        self::TYPE_REGULAR => 'Umum',
     ];
 
     public function getTypeAttribute($value)

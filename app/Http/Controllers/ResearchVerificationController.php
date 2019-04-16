@@ -18,7 +18,7 @@ class ResearchVerificationController extends Controller
 
     public function delete(Research $research)
     {
-        $research->status = Research::STATUS_UNAPPROVED;
+        $research->status = Research::STATUS_REJECTED;
         $research->save();
 
         return back()

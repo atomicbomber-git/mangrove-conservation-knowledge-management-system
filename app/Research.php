@@ -12,10 +12,12 @@ class Research extends Model implements HasMedia
 
     const STATUS_APPROVED = 'approved';
     const STATUS_UNAPPROVED = 'unapproved';
+    const STATUS_REJECTED = 'rejected';
 
     const STATUSES = [
-        self::STATUS_UNAPPROVED => 'Belum / Tidak Disetujui',
-        self::STATUS_APPROVED => 'Telah Disetujui'
+        self::STATUS_UNAPPROVED => 'Belum Disetujui',
+        self::STATUS_APPROVED => 'Telah Disetujui',
+        self::STATUS_REJECTED => 'Ditolak',
     ];
 
     public $fillable = [

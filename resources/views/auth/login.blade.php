@@ -1,11 +1,10 @@
 @extends('shared.layout')
 @section('title', 'Halaman Masuk')
 @section('content')
-<div
-    style="position: fixed; background-size: cover; background-repeat: no; height: 100vh; left: 0; right: 0; background-image: url(mangrove.jpg);"
->
 
+<div class="background-image">
 </div>
+
 <div class="container my-5">
     <div class="card mx-auto" style="max-width: 30rem">
         <div class="card-header">

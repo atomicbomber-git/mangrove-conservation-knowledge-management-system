@@ -33,18 +33,7 @@
                             <td> {{ $research->title }} </td>
                             <td> {{ $research->category->name }} </td>
                             <td>
-                                @switch($research->getOriginal('status'))
-                                @case('approved')
-                                <span class="badge badge-pill badge-success">
-                                    {{ $research->status }}
-                                </span>
-                                @break
-                                @case('unapproved')
-                                <span class="badge badge-pill badge-danger">
-                                    {{ $research->status }}
-                                </span>
-                                @break
-                                @endswitch
+                                @include("shared.research-status", ["article" => $research])
                             </td>
                             <td>
                                 <a href="{{ route('user-research.edit', $research) }}" class="btn btn-secondary btn-sm">
@@ -55,12 +44,14 @@
                                     <i class="fa fa-list"></i>
                                 </a>
 
+                                @can("delete", $research)
                                 <form action='{{ route('user-research.delete', $research) }}' method='POST' class='d-inline-block'>
                                     @csrf
                                     <button type='submit' class='btn btn-danger btn-delete btn-sm'>
                                         <i class='fa fa-trash'></i>
                                     </button>
                                 </form>
+                                @endcan
                             </td>
                         </tr>
                        @endforeach

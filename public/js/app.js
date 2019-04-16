@@ -81235,7 +81235,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -81340,6 +81340,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    props: ["submit_url", "redirect_url"],
+
     data: function data() {
         return {
             title: null,
@@ -81390,14 +81392,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
 
             this.authors.forEach(function (author, index) {
-                preparedFormData.append('authors[' + index + '][first_name]', author.first_name || '');
-                preparedFormData.append('authors[' + index + '][last_name]', author.last_name || '');
+                preparedFormData.append("authors[" + index + "][first_name]", author.first_name || '');
+                preparedFormData.append("authors[" + index + "][last_name]", author.last_name || '');
             });
 
             preparedFormData.append('document', this.$refs.document.files[0]);
 
-            axios.post('/user-research/store', preparedFormData, { headers: { 'Content-Type': 'multipart/form-data' } }).then(function (response) {
-                window.location.reload(true);
+            axios.post(this.submit_url, preparedFormData, { headers: { 'Content-Type': 'multipart/form-data' } }).then(function (response) {
+                window.location.replace(_this.redirect_url);
             }).catch(function (error) {
                 _this.error_data = error.response.data;
             });

@@ -1,6 +1,10 @@
 @extends('shared.layout')
 @section('title', 'Registrasi Akun Baru')
 @section('content')
+
+<div class="background-image">
+</div>
+
 <div class="container my-5">
     @include('shared.message', ['session_key' => 'message.success', 'state' => 'success'])
 

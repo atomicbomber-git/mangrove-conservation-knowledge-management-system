@@ -43,18 +43,7 @@
                         <td> @format_datetime($article->published_date) </td>
                         <td> {{ $article->category->name }} </td>
                         <td>
-                            @switch($article->getOriginal('status'))
-                            @case('approved')
-                            <span class="badge badge-pill badge-success">
-                                {{ $article->status }}
-                            </span>
-                            @break
-                            @case('unapproved')
-                            <span class="badge badge-pill badge-danger">
-                                {{ $article->status }}
-                            </span>
-                            @break
-                            @endswitch
+                            @include("shared.status", ["status" => $article->getOriginal("status")])
                         </td>
                         <td>
                             <a href="{{ route('user-article.read', $article) }}" class="btn btn-secondary btn-sm">
@@ -65,25 +54,45 @@
                                 <i class="fa fa-pencil"></i>
                             </a>
 
-                            @if($article->getOriginal('status') == App\Article::STATUS_UNAPPROVED)
+                            @switch($article->getOriginal('status'))
+                                @case(App\Article::STATUS_UNAPPROVED)
 
-                            <form method="POST" class="d-inline-block" action="{{ route('article-verification.create', $article) }}">
-                                @csrf
-                                <button class="btn btn-success btn-sm">
-                                    <i class="fa fa-check"></i>
-                                </button>
-                            </form>
+                                    <form method="POST" class="d-inline-block" action="{{ route('article-verification.create', $article) }}">
+                                        @csrf
+                                        <button class="btn btn-success btn-sm">
+                                            <i class="fa fa-check"></i>
+                                        </button>
+                                    </form>
 
-                            @else
+                                    <form method="POST" class="d-inline-block" action="{{ route('article-verification.delete', $article) }}">
+                                        @csrf
+                                        <button class="btn btn-danger btn-sm">
+                                            <i class="fa fa-times"></i>
+                                        </button>
+                                    </form>
+                                    
+                                    @break
+                                @case(App\Article::STATUS_APPROVED)
 
-                            <form method="POST" class="d-inline-block" action="{{ route('article-verification.delete', $article) }}">
-                                @csrf
-                                <button class="btn btn-danger btn-delete btn-sm">
-                                    <i class="fa fa-times"></i>
-                                </button>
-                            </form>
+                                    <form method="POST" class="d-inline-block" action="{{ route('article-verification.delete', $article) }}">
+                                        @csrf
+                                        <button class="btn btn-danger btn-sm">
+                                            <i class="fa fa-times"></i>
+                                        </button>
+                                    </form>
+                                    
+                                    @break
+                                @case(App\Article::STATUS_REJECTED)
 
-                            @endif
+                                    <form method="POST" class="d-inline-block" action="{{ route('article-verification.create', $article) }}">
+                                        @csrf
+                                        <button class="btn btn-success btn-sm">
+                                            <i class="fa fa-check"></i>
+                                        </button>
+                                    </form>
+
+                                    @break 
+                            @endswitch
 
                             <form action='{{ route('article.delete', $article) }}' method='POST' class='ml-3 d-inline-block'>
                                 @csrf

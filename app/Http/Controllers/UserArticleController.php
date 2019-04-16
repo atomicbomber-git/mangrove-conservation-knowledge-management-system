@@ -76,8 +76,10 @@ class UserArticleController extends Controller
         ]);
 
         $data['poster_id'] = auth()->user()->id;
-        $data['status'] = 'unapproved';
+        $data['status'] = Article::STATUS_UNAPPROVED;
         Article::create($data);
+
+        session()->flash('message.success', __('messages.update.success'));
 
         return [
             'status' => 'success',

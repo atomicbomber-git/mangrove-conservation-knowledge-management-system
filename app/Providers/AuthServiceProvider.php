@@ -6,7 +6,8 @@ use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use App\User;
 use App\Article;
-use App\Policies\UserPolicy;
+use App\Research;
+use App\Policies\ResearchPolicy;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -16,7 +17,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        User::class => UserPolicy::class,
+        Research::class => ResearchPolicy::class,
     ];
 
     /**

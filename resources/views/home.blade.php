@@ -27,20 +27,12 @@
 <div class="container my-5">
     <h1 class='mb-5'>
         Knowledge Management System Konservasi Mangrove
-        <small class="text-muted">
-            <p class="lead">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus culpa ea officiis aliquid veritatis doloremque iusto quaerat optio corporis id quia autem dolores tenetur quis repellat doloribus atque, provident ad.
-            </p>
-        </small>
     </h1>
     
     <div class="row">
         <div class="col-9">
             <p>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius, at suscipit tempora nesciunt enim commodi beatae provident asperiores quod modi consectetur ex dolorum molestiae expedita voluptatem. Aperiam sed reiciendis neque. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae voluptates odio ad maiores sint fuga quia consequatur placeat quaerat modi similique quas blanditiis pariatur ratione rerum, optio nostrum, esse saepe. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus vitae iusto voluptatum quis perferendis consequuntur aspernatur temporibus praesentium assumenda et reiciendis sequi labore unde, neque dolores architecto veritatis numquam delectus! Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse tempora culpa vel consequatur quam? Maxime corrupti deleniti doloribus. Soluta ratione nihil eos ab architecto qui quas delectus et? Necessitatibus, perspiciatis? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Blanditiis ea cupiditate alias repudiandae. Sequi accusamus nihil quis quidem vitae aspernatur odit quod soluta, placeat consequatur sed eum voluptas quo saepe!
-            </p>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam reiciendis sapiente quasi natus animi accusamus iure, blanditiis perspiciatis accusantium quo ipsam nihil ipsum ducimus, ipsa, ab voluptatem mollitia asperiores laudantium?
+                <em> Knowledge Management System </em> (KMS) Konservasi Hutan Mangrove merupakan sebuah <em> website </em> yang mendukung manajemen dan pengelolaan pengetahuan terkait konservasi mangrove. <em> Website </em> ini bertujuan untuk memberikan pengetahuan dan informasi kepada masyarakat, pemerintah, dan peneliti dalam melakukan pelestarian mangrove. <em> Knowledge Management System </em> hutan mangrove dapat membantu dalam pencarian, pemilihan, pengaturan, penyaringan dan penyajian informasi, menawarkan sebuah pendekatan yang saling terintegrasi. <em> Knowledge Management System </em> ini terdiri dari <em> tacit knowledge </em> dan <em> explicit knowledge </em> yang meliputi pembibitan, penanaman, dan perawatan untuk konservasi hutan mangrove. Tersedia artikel dan hasil penelitian yang dikelola oleh <em> Knowledge Management System </em>. <em> Knowledge Management System </em> ini terbuka untuk umum, terutama masyarakat yang dapat membagikan pengalamannya menjadi sebuah pengetahuan di <em> Knowledge Management System </em> ini.
             </p>
         </div>
         <div class="col-3" style="border-left: thin solid gray">

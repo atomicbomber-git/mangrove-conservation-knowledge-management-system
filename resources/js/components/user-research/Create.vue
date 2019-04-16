@@ -92,6 +92,10 @@
 
 <script>
 export default {
+    props: [
+        "submit_url", "redirect_url",
+    ],
+
     data() {
         return {
             title: null,
@@ -145,8 +149,8 @@ export default {
 
             preparedFormData.append('document', this.$refs.document.files[0])
             
-            axios.post(`/user-research/store`, preparedFormData, {headers: { 'Content-Type': 'multipart/form-data' }})
-                .then(response => { window.location.reload(true) })
+            axios.post(this.submit_url, preparedFormData, {headers: { 'Content-Type': 'multipart/form-data' }})
+                .then(response => { window.location.replace(this.redirect_url) })
                 .catch(error => { this.error_data = error.response.data })
         }
     }

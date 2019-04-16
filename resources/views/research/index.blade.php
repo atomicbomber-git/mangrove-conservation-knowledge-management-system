@@ -44,18 +44,7 @@
                                 <td> {{ $research->category->name }} </td>
                                 <td> {{ $research->year }} </td>
                                 <td>
-                                    @switch($research->getOriginal('status'))
-                                    @case('approved')
-                                    <span class="badge badge-pill badge-success">
-                                        {{ $research->status }}
-                                    </span>
-                                    @break
-                                    @case('unapproved')
-                                    <span class="badge badge-pill badge-danger">
-                                        {{ $research->status }}
-                                    </span>
-                                    @break
-                                    @endswitch
+                                    @include("shared.research-status", ["article" => $research])
                                 </td>
                                 <td>
                                     <a href="{{ route('research.edit', $research) }}" class="btn btn-secondary btn-sm">
@@ -66,25 +55,46 @@
                                         <i class="fa fa-list"></i>
                                     </a>
 
-                                    @if($research->getOriginal('status') == App\Research::STATUS_UNAPPROVED)
+                                    @switch($research->getOriginal('status'))
+                                        @case(App\Research::STATUS_UNAPPROVED)
+                                            
+                                            <form method="POST" class="d-inline-block" action="{{ route('research-verification.create', $research) }}">
+                                                @csrf
+                                                <button class="btn btn-success btn-sm">
+                                                    <i class="fa fa-check"></i>
+                                                </button>
+                                            </form>
 
-                                    <form method="POST" class="d-inline-block" action="{{ route('research-verification.create', $research) }}">
-                                        @csrf
-                                        <button class="btn btn-success btn-sm">
-                                            <i class="fa fa-check"></i>
-                                        </button>
-                                    </form>
+                                            <form method="POST" class="d-inline-block" action="{{ route('research-verification.delete', $research) }}">
+                                                @csrf
+                                                <button class="btn btn-danger btn-sm">
+                                                    <i class="fa fa-times"></i>
+                                                </button>
+                                            </form>
 
-                                    @else
+                                            @break
+                                        @case(App\Research::STATUS_APPROVED)
+                                            
+                                            <form method="POST" class="d-inline-block" action="{{ route('research-verification.delete', $research) }}">
+                                                @csrf
+                                                <button class="btn btn-danger btn-sm">
+                                                    <i class="fa fa-times"></i>
+                                                </button>
+                                            </form>
 
-                                    <form method="POST" class="d-inline-block" action="{{ route('research-verification.delete', $research) }}">
-                                        @csrf
-                                        <button class="btn btn-danger btn-delete btn-sm">
-                                            <i class="fa fa-times"></i>
-                                        </button>
-                                    </form>
+                                            @break
 
-                                    @endif
+                                        @case(App\Article::STATUS_REJECTED)
+
+                                            <form method="POST" class="d-inline-block" action="{{ route('research-verification.create', $research) }}">
+                                                @csrf
+                                                <button class="btn btn-success btn-sm">
+                                                    <i class="fa fa-check"></i>
+                                                </button>
+                                            </form>
+
+                                            @break
+                                    @endswitch
 
                                     <form action='{{ route('research.delete', $research) }}' method='POST' class='ml-3 d-inline-block'>
                                         @csrf

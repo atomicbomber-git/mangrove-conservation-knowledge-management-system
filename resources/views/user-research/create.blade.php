@@ -15,7 +15,10 @@
             Tambah Hasil Penelitian
         </div>
         <div class="card-body" id="app">
-            <user-research-create/>
+            <user-research-create
+                submit_url="{{ route('user-research.store') }}"
+                redirect_url="{{ route('user-research.own-index') }}"
+                />
         </div>
     </div>
 

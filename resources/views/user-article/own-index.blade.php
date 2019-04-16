@@ -36,18 +36,7 @@
                             <td> {{ $article->poster->name }} </td>
                             <td> {{ $article->category->name }} </td>
                             <td>
-                                @switch($article->getOriginal('status'))
-                                @case('approved')
-                                <span class="badge badge-pill badge-success">
-                                    {{ $article->status }}
-                                </span>
-                                @break
-                                @case('unapproved')
-                                <span class="badge badge-pill badge-danger">
-                                    {{ $article->status }}
-                                </span>
-                                @break
-                                @endswitch
+                                @include("shared.status", ["status" => $article->getOriginal("status")])
                             </td>
                             <td> @localized_date($article->published_date) </td>
                             <td>

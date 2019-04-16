@@ -20,7 +20,7 @@ class ArticleVerificationController extends Controller
 
     public function delete(Article $article)
     {
-        $article->status = Article::STATUS_UNAPPROVED;
+        $article->status = Article::STATUS_REJECTED;
         $article->published_date = null;
         $article->save();
 
