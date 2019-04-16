@@ -12089,3 +12089,8 @@ a.text-dark:hover, a.text-dark:focus {
   background-image: url(/images/mangrove.jpg?2c94e085b8a428c0f9526a2f979889f3);
 }
 
+.tinymce-editor {
+  background: #fff;
+  padding: 2rem;
+}
+

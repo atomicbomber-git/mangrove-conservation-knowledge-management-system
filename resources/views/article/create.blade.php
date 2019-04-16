@@ -15,13 +15,74 @@
             Tambah Artikel
         </div>
         <div class="card-body">
-            <div id="app">
-                <article-create/>
-            </div>
+            <form action="{{ route('article.store') }}" method="POST">
+                @csrf
+                <div class='form-group'>
+                    <label for='title'> Judul: </label>
+                
+                    <input
+                        id='title' name='title' type='text'
+                        placeholder='Judul'
+                        value='{{ old('title') }}'
+                        class='form-control {{ !$errors->has('title') ?: 'is-invalid' }}'>
+                
+                    <div class='invalid-feedback'>
+                        {{ $errors->first('title') }}
+                    </div>
+                </div>
+    
+                <div class='form-group'>
+                    <label for='category_id'> Kategori: </label>
+                    <select name='category_id' id='category_id' class='form-control'>
+                        @foreach($categories as $category)
+                        <option {{ old('category_id') !== $category->id ?: 'selected' }} value='{{ $category->id }}'> {{ $category->name }} </option>
+                        @endforeach
+                    </select>
+                    <div class='invalid-feedback'>
+                        {{ $errors->first('category_id') }}
+                    </div>
+                </div>
+    
+                <div class='form-group'>
+                    <label for='content'> Isi: </label>
+                
+                    <textarea
+                        id='content' name='content'
+                        class='form-control {{ !$errors->has('content') ?: 'is-invalid' }}'
+                        ></textarea>
+                
+                    <div class='invalid-feedback'>
+                        {{ $errors->first('content') }}
+                    </div>
+                </div>
+    
+                <div class="form-group">
+                    <button class="btn btn-primary">
+                        Tambah Artikel
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
+@endsection
 
-@javascript('statuses', \App\Article::STATUSES)
-@javascript('categories', $categories)
+@section('extra-scripts')
+<script>
+    tinyMCE.init({
+        selector: '#content',
+        body_class: 'tinymce-editor',
+        plugins: 'lists,image,imagetools',
+        image_caption: true,
+        file_picker_callback: window.file_picker_callback,
+        toolbar: [
+            'undo redo | styleselect | bold italic | numlist bullist | alignleft aligncenter alignright | image'
+        ],
+        height: 400,
+        content_css: '{{ asset('css/app.css') }}',
+    })
+    .then(editors => {
+        editors[0].setContent(`{!! old('content') !!}`)
+    })
+</script>
 @endsection

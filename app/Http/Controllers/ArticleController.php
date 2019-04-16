@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Validation\Rule;
 use App\Article;
 use App\Category;
+use Illuminate\Support\Facades\Auth;
 
 class ArticleController extends Controller
 {
@@ -18,6 +19,12 @@ class ArticleController extends Controller
         return view('article.index', compact('articles'));
     }
 
+    public function create()
+    {
+        $categories = Category::select('id', 'name')->get();
+        return view('article.create', compact('categories'));
+    }
+
     public function store() {
         $category_ids = Category::select('id')->pluck('id');
 
@@ -27,28 +34,14 @@ class ArticleController extends Controller
             'category_id' => ['required', Rule::in($category_ids)]
         ]);
 
-        $data['poster_id'] = auth()->user()->id;
-        $data['status'] = Article::STATUS_APPROVED;
-        Article::create($data);
+        Article::create(array_merge($data, [
+            "poster_id" => Auth::user()->id,
+            "status" => Article::STATUS_APPROVED,
+        ]));
 
-        return [
-            'status' => 'success',
-            'redirect' => route('article.index')
-        ];
-    }
-
-    public function create()
-    {
-        $categories = Category::select('id', 'name')->get();
-        return view('article.create', compact('categories'));
-    }
-
-    public function delete(Article $article)
-    {
-        $article->delete();
-
-        return back()
-            ->with('message.success', __('messages.delete.success'));
+        return redirect()
+            ->route("article.index")
+            ->with('message.success', __('messages.create.success'));
     }
 
     public function edit(Article $article)
@@ -66,16 +59,19 @@ class ArticleController extends Controller
         $data = $this->validate(request(), [
             'title' => ['required', Rule::unique('articles')->ignore($article->id)],
             'content' => 'required|string',
-            'status' => ['required', Rule::in(array_keys(Article::STATUSES))],
             'category_id' => ['required', Rule::in($category_ids)]
         ]);
 
-        if ($data['status'] == 'approved') {
-            $data['published_date'] = now();
-        }
-
         $article->update($data);
+        return back()
+            ->with('message.success', __('messages.update.success'));
+    }
 
-        session()->flash('message.success', __('messages.update.success'));
+    public function delete(Article $article)
+    {
+        $article->delete();
+
+        return back()
+            ->with('message.success', __('messages.delete.success'));
     }
 }

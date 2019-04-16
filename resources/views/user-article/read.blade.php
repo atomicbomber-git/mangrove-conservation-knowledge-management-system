@@ -25,19 +25,21 @@
             <p class="lead">
                 <span class="badge badge-info"> {{ $article->category->name }} </span>
             </p>
+
+            <div id="content">
+                {!! $article->content !!}
+            </div>
         </div>
-
-        <article style="font-size: 110%" id="content">
-            {!! $article->content !!}
-        </article>
-
     </div>
 </div>
 @endsection
 
-@section('extra-scripts')
+@section ('extra-scripts')
 <script>
-    let editor = new Quill('#content', { theme: 'bubble' });
-    editor.disable();
+    tinyMCE.init({
+        selector: "#content",
+        inline: true,
+        readonly: true,
+    })
 </script>
 @endsection

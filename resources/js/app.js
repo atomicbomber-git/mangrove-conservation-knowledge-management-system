@@ -10,6 +10,12 @@ require('./bootstrap');
 // Load datatables
 require('datatables.net-bs4')
 
+// Load TinyMCE WYSIWYG Editor
+require('tinymce');
+
+// TinyMCE File Picker Callback
+window.file_picker_callback = require('./file_picker_callback')
+
 // Load sweetalert
 window.swal = require('sweetalert')
 

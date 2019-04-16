@@ -149,5 +149,6 @@ return [
         "document" => "dokumen",
         "year" => "tahun",
         "category_id" => "kategori",
+        "content" => "isi",
     ],
 ];
