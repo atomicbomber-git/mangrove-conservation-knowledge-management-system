@@ -22,7 +22,7 @@ class InformationController extends Controller
         ]);
 
         $information->update($data);
-        
+
         return back()
             ->with("message.success", __("messages.update.success"));
     }

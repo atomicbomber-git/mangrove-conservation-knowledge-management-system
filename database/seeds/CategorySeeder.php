@@ -15,7 +15,6 @@ class CategorySeeder extends Seeder
         Category::create(['name' => 'Pembibitan']);
         Category::create(['name' => 'Penanaman']);
         Category::create(['name' => 'Perawatan']);
-        Category::create(['name' => 'Penyakit']);
         Category::create(['name' => 'Lain-Lain']);
     }
 }

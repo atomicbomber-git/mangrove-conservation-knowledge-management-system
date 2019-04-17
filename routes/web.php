@@ -65,7 +65,7 @@ Route::group(['prefix' => '/user-article', 'as' => 'user-article.'], function() 
 
 Route::group(['prefix' => '/category', 'as' => 'category.', 'middleware' => ['can:administrate-categories', 'auth']], function() {
     Route::get('/index', 'CategoryController@index')->name('index');
-    Route::get('/create', 'CategoryController@create')->name('create');
+    // Route::get('/create', 'CategoryController@create')->name('create');
     Route::post('/store', 'CategoryController@store')->name('store');
     Route::get('/edit/{category}', 'CategoryController@edit')->name('edit');
     Route::post('/update/{category}', 'CategoryController@update')->name('update');

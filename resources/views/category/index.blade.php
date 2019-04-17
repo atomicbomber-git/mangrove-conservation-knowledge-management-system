@@ -7,12 +7,12 @@
         Seluruh Kategori
     </h1>
 
-    <div class="my-4">
+    {{-- <div class="my-4">
             <a href="{{ route('category.create') }}" class="btn btn-secondary">
             Tambahkan Kategori Baru
             <i class="fa fa-plus"></i>
         </a>
-    </div>
+    </div> --}}
 
     @include('shared.message', ['session_key' => 'message.success', 'state' => 'success'])
 
@@ -27,7 +27,7 @@
                    <tr>
                        <th> # </th>
                        <th> Nama Kategori </th>
-                       <th> Tindakan </th>
+                       {{-- <th> Tindakan </th> --}}
                    </tr>
               </thead>
               <tbody>
@@ -35,7 +35,7 @@
                    <tr>
                        <td> {{ $loop->iteration }}. </td>
                        <td> {{ $category->name }} </td>
-                       <td>
+                       {{-- <td>
                             <a href="{{ route('category.edit', $category) }}" class="btn btn-secondary btn-sm">
                                 <i class="fa fa-pencil"></i>
                             </a>
@@ -52,7 +52,7 @@
                                 <i class="fa fa-trash"></i>
                             </button>
                            @endif
-                       </td>
+                       </td> --}}
                    </tr>
                   @endforeach
               </tbody>

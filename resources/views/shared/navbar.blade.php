@@ -84,7 +84,7 @@
                     </a>
                     <div class='dropdown-menu' aria-labelledby='category'>
                         <a class='dropdown-item' href='{{ route('category.index') }}'> Seluruh Kategori </a>
-                        <a class='dropdown-item' href='{{ route('category.create') }}'> Tambah Kategori </a>
+                        {{-- <a class='dropdown-item' href='{{ route('category.create') }}'> Tambah Kategori </a> --}}
                     </div>
                 </li>
                 @endcan
