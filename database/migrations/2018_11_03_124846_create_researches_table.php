@@ -16,10 +16,10 @@ class CreateResearchesTable extends Migration
         Schema::create('researches', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->integer('poster_id')->unsigned();
-            $table->integer('category_id')->unsigned();
+            $table->integer('poster_id')->unsigned()->comment("ID pengguna pembuat hasil penelitian.");
+            $table->integer('category_id')->unsigned()->comment("ID kategori hasil penelitian.");
 
-            $table->string('title');
+            $table->string('title')->comment("Judul hasil penelitian.");
 
             $table->foreign('poster_id')->references('id')->on('users');
             $table->foreign('category_id')->references('id')->on('categories');

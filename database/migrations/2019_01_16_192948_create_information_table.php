@@ -16,9 +16,9 @@ class CreateInformationTable extends Migration
         Schema::create('information', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->string('menu_title');
-            $table->string('title');
-            $table->longtext('content');
+            $table->string('menu_title')->comment("Judul menu data informasi mangrove.");
+            $table->string('title')->comment("Judul data informasi mangrove.");
+            $table->longtext('content')->comment("Isi data informasi mangrove.");
 
             $table->timestamps();
         });

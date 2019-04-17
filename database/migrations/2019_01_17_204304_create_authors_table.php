@@ -16,9 +16,9 @@ class CreateAuthorsTable extends Migration
         Schema::create('authors', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->string("first_name");
-            $table->string("last_name");
-            $table->integer("research_id")->unsigned();
+            $table->string("first_name")->comment("Nama depan penulis hasil penelitian.");
+            $table->string("last_name")->comment("Nama belakang penulis hasil penelitian.");
+            $table->integer("research_id")->unsigned()->comment("ID hasil penelitian.");
             
             $table->foreign("research_id")
                 ->references("id")

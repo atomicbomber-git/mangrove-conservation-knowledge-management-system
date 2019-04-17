@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use App\Research;
 
 class AddStatusFieldToResearches extends Migration
 {
@@ -14,7 +15,9 @@ class AddStatusFieldToResearches extends Migration
     public function up()
     {
         Schema::table('researches', function (Blueprint $table) {
-            $table->string('status')->default('unapproved');
+            $table->string('status')
+                ->default(Research::STATUS_UNAPPROVED)
+                ->comment("Status hasil penelitian (Diterima, Ditolak, Belum Diterima).");
         });
     }
 

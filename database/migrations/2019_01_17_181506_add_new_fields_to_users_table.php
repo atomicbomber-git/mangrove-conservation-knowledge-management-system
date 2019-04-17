@@ -14,7 +14,7 @@ class AddNewFieldsToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('last_name');
+            $table->string('last_name')->comment("Nama belakang pengguna.");
         });
     }
 

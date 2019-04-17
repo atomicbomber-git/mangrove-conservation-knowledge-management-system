@@ -14,8 +14,8 @@ class AddNewFieldsToResearchesTable extends Migration
     public function up()
     {
         Schema::table('researches', function (Blueprint $table) {
-            $table->text("year");
-            $table->text("description");
+            $table->text("year")->comment("Tahun hasil penelitian.");
+            $table->text("description")->comment("Deskripsi hasil penelitian.");
         });
     }
 

@@ -15,12 +15,12 @@ class CreateArticlesTable extends Migration
     {
         Schema::create('articles', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('poster_id')->unsigned();
-            $table->string('title');
-            $table->longtext('content');
+            $table->integer('poster_id')->unsigned()->comment("ID pembuat artikel.");
+            $table->string('title')->comment("Judul artikel.");
+            $table->longtext('content')->comment("Isi artikel.");
 
-            $table->string('status');
-            $table->datetime('published_date')->nullable();
+            $table->string('status')->comment("Status artikel (Diterima, Ditolak, atau Belum Diterima).");
+            $table->datetime('published_date')->nullable()->comment("Tanggal publikasi.");
 
             $table->foreign('poster_id')
                 ->references('id')

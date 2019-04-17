@@ -31,7 +31,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'first_name', 'last_name', 'email', 'password', 'username', 'type'
+        'first_name', 'last_name', 'password', 'username', 'type'
     ];
 
     /**
@@ -40,7 +40,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password',
     ];
 
     public function getNameAttribute()

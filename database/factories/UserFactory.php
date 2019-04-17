@@ -21,10 +21,10 @@ $factory->define(App\User::class, function (Faker $faker) {
         'first_name' => $faker->firstName,
         'last_name' => $faker->lastName,
         'username' => $username,
-        'email' => $faker->unique()->safeEmail,
+        // 'email' => $faker->unique()->safeEmail,
         'type' => $faker->randomElement(['regular', 'researcher']),
-        'email_verified_at' => now(),
+        // 'email_verified_at' => now(),
         'password' => Hash::make($username),
-        'remember_token' => str_random(10),
+        // 'remember_token' => str_random(10),
     ];
 });
