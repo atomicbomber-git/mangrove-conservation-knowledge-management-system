@@ -16,7 +16,7 @@
     </div>
 
     <footer class="bg-dark text-light py-3">
-        <div class="container">
+        <div class="container text-center">
             Copyright {{ today()->format('Y') }} © Konservasi Hutan Mangrove
         </div>
     </footer>
