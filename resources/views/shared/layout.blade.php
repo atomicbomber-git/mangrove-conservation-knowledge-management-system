@@ -10,13 +10,22 @@
 </head>
 <body>
     @include('shared.navbar')
-    @yield('content')
+
+    <div style="min-height: 100vh">
+        @yield('content')
+    </div>
+
+    <footer class="bg-dark text-light py-3">
+        <div class="container">
+            Copyright {{ today()->format('Y') }} © Konservasi Hutan Mangrove
+        </div>
+    </footer>
+
     <script src="{{ asset('js/app.js') }}"></script>
     @yield('extra-scripts')
 
     <script>
         $(document).ready(function() {
-
             $(".btn-delete").each((index, elem) => {
                 $(elem).parent().submit(function(e) {
                     e.preventDefault()
@@ -40,6 +49,5 @@
             })
         })
     </script>
-
 </body>
 </html>

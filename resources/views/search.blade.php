@@ -74,8 +74,10 @@
             @endif
         </div>
 
-        <div class="d-flex justify-content-center">
-            {{ $researches->appends(['keyword' => request('keyword')])->links() }}
+        <div class="d-flex justify-content-center p-4">
+            <div>
+                {{ $researches->appends(['keyword' => request('keyword')])->links() }}
+            </div>
         </div>
     </div>
     @endif

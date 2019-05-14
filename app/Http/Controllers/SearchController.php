@@ -32,7 +32,7 @@ class SearchController extends Controller
 
         $researches = $query
             ->orderByDesc('year')
-            ->simplePaginate(5);
+            ->paginate(5);
 
         return view('search', compact('splitted_keywords', 'researches', 'researches_count'));
     }
