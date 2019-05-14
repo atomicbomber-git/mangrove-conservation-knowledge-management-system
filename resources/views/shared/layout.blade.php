@@ -11,7 +11,7 @@
 <body>
     @include('shared.navbar')
 
-    <div style="min-height: 100vh">
+    <div style="min-height: 90vh">
         @yield('content')
     </div>
 
