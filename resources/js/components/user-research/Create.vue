@@ -11,6 +11,36 @@
         </div>
 
         <div class='form-group'>
+            <label for='journal_name'> Nama Jurnal: </label>
+            <input
+                v-model='journal_name'
+                class='form-control'
+                :class="{'is-invalid': get(this.error_data, 'errors.journal_name[0]', false)}"
+                type='text' id='journal_name' placeholder='Nama Jurnal'>
+            <div class='invalid-feedback'>{{ get(this.error_data, 'errors.journal_name[0]', false) }}</div>
+        </div>
+
+        <div class='form-group'>
+            <label for='publisher_location'> Tempat Penerbit: </label>
+            <input
+                v-model='publisher_location'
+                class='form-control'
+                :class="{'is-invalid': get(this.error_data, 'errors.publisher_location[0]', false)}"
+                type='text' id='publisher_location' placeholder='Tempat Penerbit'>
+            <div class='invalid-feedback'>{{ get(this.error_data, 'errors.publisher_location[0]', false) }}</div>
+        </div>
+
+        <div class='form-group'>
+            <label for='volume'> Volume: </label>
+            <input
+                v-model='volume'
+                class='form-control'
+                :class="{'is-invalid': get(this.error_data, 'errors.volume[0]', false)}"
+                type='text' id='volume' placeholder='Volume'>
+            <div class='invalid-feedback'>{{ get(this.error_data, 'errors.volume[0]', false) }}</div>
+        </div>
+
+        <div class='form-group'>
             <label for='year'> Tahun: </label>
             <input
                 v-model='year'
@@ -104,6 +134,9 @@ export default {
             description: null,
             document: null,
             error_data: null,
+            journal_name: null,
+            publisher_location: null,
+            volume: null,
             authors: [{ first_name: window.user.first_name, last_name: window.user.last_name}],
 
             categories: window.categories,
@@ -118,6 +151,9 @@ export default {
                 year: this.year,
                 category_id: this.category_id,
                 description: this.description,
+                volume: this.volume,
+                journal_name: this.journal_name,
+                publisher_location: this.publisher_location,
             }
         }
     },

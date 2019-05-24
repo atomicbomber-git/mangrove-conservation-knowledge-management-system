@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('type')->comment("Tipe pengguna; Untuk menentukan hak akses.");
             // $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->comment("Kata sandi pengguna.");
-            // $table->rememberToken();
+            $table->rememberToken();
             $table->timestamps();
         });
     }

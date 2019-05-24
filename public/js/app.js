@@ -107210,7 +107210,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -107313,6 +107313,36 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -107323,8 +107353,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             description: null,
             document: null,
             error_data: null,
+            journal_name: null,
+            publisher_location: null,
+            volume: null,
             authors: [{ first_name: window.user.first_name, last_name: window.user.last_name }],
-
             categories: window.categories,
             get: _.get
         };
@@ -107337,7 +107369,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 title: this.title,
                 year: this.year,
                 category_id: this.category_id,
-                description: this.description
+                description: this.description,
+                volume: this.volume,
+                journal_name: this.journal_name,
+                publisher_location: this.publisher_location
             };
         }
     },
@@ -107419,6 +107454,127 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "invalid-feedback" }, [
         _vm._v(_vm._s(_vm.get(this.error_data, "errors.title[0]", false)))
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "form-group" }, [
+      _c("label", { attrs: { for: "journal_name" } }, [
+        _vm._v(" Nama Jurnal: ")
+      ]),
+      _vm._v(" "),
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.journal_name,
+            expression: "journal_name"
+          }
+        ],
+        staticClass: "form-control",
+        class: {
+          "is-invalid": _vm.get(
+            this.error_data,
+            "errors.journal_name[0]",
+            false
+          )
+        },
+        attrs: { type: "text", id: "journal_name", placeholder: "Nama Jurnal" },
+        domProps: { value: _vm.journal_name },
+        on: {
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.journal_name = $event.target.value
+          }
+        }
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "invalid-feedback" }, [
+        _vm._v(
+          _vm._s(_vm.get(this.error_data, "errors.journal_name[0]", false))
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "form-group" }, [
+      _c("label", { attrs: { for: "publisher_location" } }, [
+        _vm._v(" Tempat Penerbit: ")
+      ]),
+      _vm._v(" "),
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.publisher_location,
+            expression: "publisher_location"
+          }
+        ],
+        staticClass: "form-control",
+        class: {
+          "is-invalid": _vm.get(
+            this.error_data,
+            "errors.publisher_location[0]",
+            false
+          )
+        },
+        attrs: {
+          type: "text",
+          id: "publisher_location",
+          placeholder: "Tempat Penerbit"
+        },
+        domProps: { value: _vm.publisher_location },
+        on: {
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.publisher_location = $event.target.value
+          }
+        }
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "invalid-feedback" }, [
+        _vm._v(
+          _vm._s(
+            _vm.get(this.error_data, "errors.publisher_location[0]", false)
+          )
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "form-group" }, [
+      _c("label", { attrs: { for: "volume" } }, [_vm._v(" Volume: ")]),
+      _vm._v(" "),
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.volume,
+            expression: "volume"
+          }
+        ],
+        staticClass: "form-control",
+        class: {
+          "is-invalid": _vm.get(this.error_data, "errors.volume[0]", false)
+        },
+        attrs: { type: "text", id: "volume", placeholder: "Volume" },
+        domProps: { value: _vm.volume },
+        on: {
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.volume = $event.target.value
+          }
+        }
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "invalid-feedback" }, [
+        _vm._v(_vm._s(_vm.get(this.error_data, "errors.volume[0]", false)))
       ])
     ]),
     _vm._v(" "),
@@ -107775,7 +107931,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -107893,6 +108049,36 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -107902,6 +108088,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             year: window.research.year,
             category_id: window.research.category_id,
             description: window.research.description,
+
+            journal_name: window.research.journal_name,
+            publisher_location: window.research.publisher_location,
+            volume: window.research.volume,
+
             document: null,
             error_data: null,
             authors: window.research.authors,
@@ -107919,7 +108110,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 title: this.title,
                 year: this.year,
                 category_id: this.category_id,
-                description: this.description
+                description: this.description,
+                volume: this.volume,
+                journal_name: this.journal_name,
+                publisher_location: this.publisher_location
             };
         }
     },
@@ -108049,6 +108243,127 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "invalid-feedback" }, [
         _vm._v(_vm._s(_vm.get(this.error_data, "errors.title[0]", false)))
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "form-group" }, [
+      _c("label", { attrs: { for: "journal_name" } }, [
+        _vm._v(" Nama Jurnal: ")
+      ]),
+      _vm._v(" "),
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.journal_name,
+            expression: "journal_name"
+          }
+        ],
+        staticClass: "form-control",
+        class: {
+          "is-invalid": _vm.get(
+            this.error_data,
+            "errors.journal_name[0]",
+            false
+          )
+        },
+        attrs: { type: "text", id: "journal_name", placeholder: "Nama Jurnal" },
+        domProps: { value: _vm.journal_name },
+        on: {
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.journal_name = $event.target.value
+          }
+        }
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "invalid-feedback" }, [
+        _vm._v(
+          _vm._s(_vm.get(this.error_data, "errors.journal_name[0]", false))
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "form-group" }, [
+      _c("label", { attrs: { for: "publisher_location" } }, [
+        _vm._v(" Tempat Penerbit: ")
+      ]),
+      _vm._v(" "),
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.publisher_location,
+            expression: "publisher_location"
+          }
+        ],
+        staticClass: "form-control",
+        class: {
+          "is-invalid": _vm.get(
+            this.error_data,
+            "errors.publisher_location[0]",
+            false
+          )
+        },
+        attrs: {
+          type: "text",
+          id: "publisher_location",
+          placeholder: "Tempat Penerbit"
+        },
+        domProps: { value: _vm.publisher_location },
+        on: {
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.publisher_location = $event.target.value
+          }
+        }
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "invalid-feedback" }, [
+        _vm._v(
+          _vm._s(
+            _vm.get(this.error_data, "errors.publisher_location[0]", false)
+          )
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "form-group" }, [
+      _c("label", { attrs: { for: "volume" } }, [_vm._v(" Volume: ")]),
+      _vm._v(" "),
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.volume,
+            expression: "volume"
+          }
+        ],
+        staticClass: "form-control",
+        class: {
+          "is-invalid": _vm.get(this.error_data, "errors.volume[0]", false)
+        },
+        attrs: { type: "text", id: "volume", placeholder: "Volume" },
+        domProps: { value: _vm.volume },
+        on: {
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.volume = $event.target.value
+          }
+        }
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "invalid-feedback" }, [
+        _vm._v(_vm._s(_vm.get(this.error_data, "errors.volume[0]", false)))
       ])
     ]),
     _vm._v(" "),
@@ -108418,7 +108733,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -108429,6 +108744,36 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -108533,6 +108878,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             description: null,
             document: null,
             error_data: null,
+            journal_name: null,
+            publisher_location: null,
+            volume: null,
             authors: [{ first_name: window.user.first_name, last_name: window.user.last_name }],
 
             categories: window.categories,
@@ -108547,7 +108895,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 title: this.title,
                 year: this.year,
                 category_id: this.category_id,
-                description: this.description
+                description: this.description,
+                volume: this.volume,
+                journal_name: this.journal_name,
+                publisher_location: this.publisher_location
             };
         }
     },
@@ -108629,6 +108980,127 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "invalid-feedback" }, [
         _vm._v(_vm._s(_vm.get(this.error_data, "errors.title[0]", false)))
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "form-group" }, [
+      _c("label", { attrs: { for: "journal_name" } }, [
+        _vm._v(" Nama Jurnal: ")
+      ]),
+      _vm._v(" "),
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.journal_name,
+            expression: "journal_name"
+          }
+        ],
+        staticClass: "form-control",
+        class: {
+          "is-invalid": _vm.get(
+            this.error_data,
+            "errors.journal_name[0]",
+            false
+          )
+        },
+        attrs: { type: "text", id: "journal_name", placeholder: "Nama Jurnal" },
+        domProps: { value: _vm.journal_name },
+        on: {
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.journal_name = $event.target.value
+          }
+        }
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "invalid-feedback" }, [
+        _vm._v(
+          _vm._s(_vm.get(this.error_data, "errors.journal_name[0]", false))
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "form-group" }, [
+      _c("label", { attrs: { for: "publisher_location" } }, [
+        _vm._v(" Tempat Penerbit: ")
+      ]),
+      _vm._v(" "),
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.publisher_location,
+            expression: "publisher_location"
+          }
+        ],
+        staticClass: "form-control",
+        class: {
+          "is-invalid": _vm.get(
+            this.error_data,
+            "errors.publisher_location[0]",
+            false
+          )
+        },
+        attrs: {
+          type: "text",
+          id: "publisher_location",
+          placeholder: "Tempat Penerbit"
+        },
+        domProps: { value: _vm.publisher_location },
+        on: {
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.publisher_location = $event.target.value
+          }
+        }
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "invalid-feedback" }, [
+        _vm._v(
+          _vm._s(
+            _vm.get(this.error_data, "errors.publisher_location[0]", false)
+          )
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "form-group" }, [
+      _c("label", { attrs: { for: "volume" } }, [_vm._v(" Volume: ")]),
+      _vm._v(" "),
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.volume,
+            expression: "volume"
+          }
+        ],
+        staticClass: "form-control",
+        class: {
+          "is-invalid": _vm.get(this.error_data, "errors.volume[0]", false)
+        },
+        attrs: { type: "text", id: "volume", placeholder: "Volume" },
+        domProps: { value: _vm.volume },
+        on: {
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.volume = $event.target.value
+          }
+        }
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "invalid-feedback" }, [
+        _vm._v(_vm._s(_vm.get(this.error_data, "errors.volume[0]", false)))
       ])
     ]),
     _vm._v(" "),
@@ -108985,7 +109457,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -108996,6 +109468,36 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -109105,6 +109607,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             description: window.research.description,
             document: null,
             error_data: null,
+            journal_name: window.research.journal_name,
+            publisher_location: window.research.publisher_location,
+            volume: window.research.volume,
             authors: window.research.authors,
 
             categories: window.categories,
@@ -109120,7 +109625,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 title: this.title,
                 year: this.year,
                 category_id: this.category_id,
-                description: this.description
+                description: this.description,
+                journal_name: this.journal_name,
+                publisher_location: this.publisher_location,
+                volume: this.volume
             };
         }
     },
@@ -109202,6 +109710,127 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "invalid-feedback" }, [
         _vm._v(_vm._s(_vm.get(this.error_data, "errors.title[0]", false)))
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "form-group" }, [
+      _c("label", { attrs: { for: "journal_name" } }, [
+        _vm._v(" Nama Jurnal: ")
+      ]),
+      _vm._v(" "),
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.journal_name,
+            expression: "journal_name"
+          }
+        ],
+        staticClass: "form-control",
+        class: {
+          "is-invalid": _vm.get(
+            this.error_data,
+            "errors.journal_name[0]",
+            false
+          )
+        },
+        attrs: { type: "text", id: "journal_name", placeholder: "Nama Jurnal" },
+        domProps: { value: _vm.journal_name },
+        on: {
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.journal_name = $event.target.value
+          }
+        }
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "invalid-feedback" }, [
+        _vm._v(
+          _vm._s(_vm.get(this.error_data, "errors.journal_name[0]", false))
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "form-group" }, [
+      _c("label", { attrs: { for: "publisher_location" } }, [
+        _vm._v(" Tempat Penerbit: ")
+      ]),
+      _vm._v(" "),
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.publisher_location,
+            expression: "publisher_location"
+          }
+        ],
+        staticClass: "form-control",
+        class: {
+          "is-invalid": _vm.get(
+            this.error_data,
+            "errors.publisher_location[0]",
+            false
+          )
+        },
+        attrs: {
+          type: "text",
+          id: "publisher_location",
+          placeholder: "Tempat Penerbit"
+        },
+        domProps: { value: _vm.publisher_location },
+        on: {
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.publisher_location = $event.target.value
+          }
+        }
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "invalid-feedback" }, [
+        _vm._v(
+          _vm._s(
+            _vm.get(this.error_data, "errors.publisher_location[0]", false)
+          )
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "form-group" }, [
+      _c("label", { attrs: { for: "volume" } }, [_vm._v(" Volume: ")]),
+      _vm._v(" "),
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.volume,
+            expression: "volume"
+          }
+        ],
+        staticClass: "form-control",
+        class: {
+          "is-invalid": _vm.get(this.error_data, "errors.volume[0]", false)
+        },
+        attrs: { type: "text", id: "volume", placeholder: "Volume" },
+        domProps: { value: _vm.volume },
+        on: {
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.volume = $event.target.value
+          }
+        }
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "invalid-feedback" }, [
+        _vm._v(_vm._s(_vm.get(this.error_data, "errors.volume[0]", false)))
       ])
     ]),
     _vm._v(" "),

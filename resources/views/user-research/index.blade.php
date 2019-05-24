@@ -20,6 +20,7 @@
                    <thead>
                         <tr>
                             <th> # </th>
+                            <th> Nama Penerbit </th>
                             <th> Judul </th>
                             <th> Penulis </th>
                             <th> Kategori </th>
@@ -31,6 +32,7 @@
                        @foreach ($researches as $research)
                         <tr>
                             <td> {{ $loop->iteration }} </td>
+                            <td> {{ $research->poster->name }} </td>
                             <td> {{ $research->title }} </td>
                             <td> {{ $research->formatted_authors }} </td>
                             <td> {{ $research->category->name }} </td>

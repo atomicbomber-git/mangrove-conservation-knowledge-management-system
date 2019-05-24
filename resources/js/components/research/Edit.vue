@@ -20,6 +20,36 @@
         </div>
 
         <div class='form-group'>
+            <label for='journal_name'> Nama Jurnal: </label>
+            <input
+                v-model='journal_name'
+                class='form-control'
+                :class="{'is-invalid': get(this.error_data, 'errors.journal_name[0]', false)}"
+                type='text' id='journal_name' placeholder='Nama Jurnal'>
+            <div class='invalid-feedback'>{{ get(this.error_data, 'errors.journal_name[0]', false) }}</div>
+        </div>
+
+        <div class='form-group'>
+            <label for='publisher_location'> Tempat Penerbit: </label>
+            <input
+                v-model='publisher_location'
+                class='form-control'
+                :class="{'is-invalid': get(this.error_data, 'errors.publisher_location[0]', false)}"
+                type='text' id='publisher_location' placeholder='Tempat Penerbit'>
+            <div class='invalid-feedback'>{{ get(this.error_data, 'errors.publisher_location[0]', false) }}</div>
+        </div>
+
+        <div class='form-group'>
+            <label for='volume'> Volume: </label>
+            <input
+                v-model='volume'
+                class='form-control'
+                :class="{'is-invalid': get(this.error_data, 'errors.volume[0]', false)}"
+                type='text' id='volume' placeholder='Volume'>
+            <div class='invalid-feedback'>{{ get(this.error_data, 'errors.volume[0]', false) }}</div>
+        </div>
+
+        <div class='form-group'>
             <label for='year'> Tahun: </label>
             <input
                 v-model='year'
@@ -114,6 +144,11 @@ export default {
             year: window.research.year,
             category_id: window.research.category_id,
             description: window.research.description,
+
+            journal_name: window.research.journal_name,
+            publisher_location: window.research.publisher_location,
+            volume: window.research.volume,
+
             document: null,
             error_data: null,
             authors: window.research.authors,
@@ -131,6 +166,9 @@ export default {
                 year: this.year,
                 category_id: this.category_id,
                 description: this.description,
+                volume: this.volume,
+                journal_name: this.journal_name,
+                publisher_location: this.publisher_location,
             }
         }
     },

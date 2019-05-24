@@ -27,6 +27,7 @@
                     <thead>
                         <tr>
                             <th> # </th>
+                            <th> Nama Penerbit </th>
                             <th> Judul </th>
                             <th> Penulis </th>
                             <th> Kategori </th>
@@ -39,6 +40,8 @@
                         @foreach ($researches as $research)
                             <tr>
                                 <td> {{ $loop->iteration }} </td>
+                                
+                                <td> {{ $research->poster->name }} </td>
                                 <td style="width: 15rem"> {{ $research->title }} </td>
                                 <td style="width: 15rem"> {{ join(", ", $research->authors->pluck("name")->toArray()) }} </td>
                                 <td> {{ $research->category->name }} </td>

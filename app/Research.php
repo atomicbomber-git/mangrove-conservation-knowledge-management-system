@@ -21,7 +21,8 @@ class Research extends Model implements HasMedia
     ];
 
     public $fillable = [
-        'title', 'category_id', 'poster_id', 'status', 'description', 'year'
+        'title', 'category_id', 'poster_id', 'status', 'description', 'year',
+        'journal_name', 'publisher_location', 'volume',
     ];
 
     public function poster()

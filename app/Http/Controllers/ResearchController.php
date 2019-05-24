@@ -43,7 +43,10 @@ class ResearchController extends Controller
             'authors.*.last_name' => 'nullable|string',
             'document' => 'required|mimes:pdf',
             'description' => 'required|string',
-            'year' => 'required|integer|gte:1900'
+            'year' => 'required|integer|gte:1900',
+            'journal_name' => 'nullable|string',
+            'publisher_location' => 'nullable|string',
+            'volume' => 'nullable|string',
         ]);
         
         $data['poster_id'] = auth()->user()->id;
@@ -96,7 +99,10 @@ class ResearchController extends Controller
             'category_id' => ['required', Rule::in($category_ids)],
             'description' => 'required|string',
             'document' => 'sometimes|nullable|mimes:pdf',
-            'year' => 'required|integer|gte:1900'
+            'year' => 'required|integer|gte:1900',
+            'journal_name' => 'nullable|string',
+            'publisher_location' => 'nullable|string',
+            'volume' => 'nullable|string',
         ]);
 
         DB::transaction(function() use($research, $data) {

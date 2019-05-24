@@ -6,14 +6,17 @@ use Illuminate\Validation\Rule;
 use App\Article;
 use App\Category;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ArticleController extends Controller
 {
     public function index()
     {
-        $articles = Article::select('id', 'title', 'status', 'category_id', 'poster_id', 'published_date')
+        $articles = Article::query()
+            ->select('id', 'title', 'status', 'category_id', 'poster_id', 'published_date', DB::raw("(status = 'APPROVED') AS is_approved"))
             ->with('category:id,name', 'poster:id,first_name,last_name')
-            ->orderByDesc('status', 'published_date')
+            ->orderByDesc('is_approved')
+            ->orderBy('status')
             ->get();
 
         return view('article.index', compact('articles'));

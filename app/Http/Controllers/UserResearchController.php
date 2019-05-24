@@ -15,6 +15,7 @@ class UserResearchController extends Controller
     {
         $researches = Research::select('id', 'title', 'year', 'description', 'category_id', 'poster_id')
             ->where('status', 'approved')
+            ->with('poster:id,first_name,last_name')
             ->with('authors:id,research_id,first_name,last_name', 'category:id,name')
             ->orderByDesc('year')
             ->get()
@@ -52,7 +53,10 @@ class UserResearchController extends Controller
             'authors.*.last_name' => 'nullable|string',
             'document' => 'required|mimes:pdf',
             'description' => 'required|string',
-            'year' => 'required|integer|gte:1900'
+            'year' => 'required|integer|gte:1900',
+            'journal_name' => 'nullable|string',
+            'publisher_location' => 'nullable|string',
+            'volume' => 'nullable|string',
         ]);
         
         $data['poster_id'] = auth()->user()->id;
@@ -115,7 +119,10 @@ class UserResearchController extends Controller
             'category_id' => ['required', Rule::in($category_ids)],
             'document' => 'sometimes|nullable|mimes:pdf',
             'description' => 'required|string',
-            'year' => 'required|integer|gte:1900'
+            'year' => 'required|integer|gte:1900',
+            'journal_name' => 'nullable|string',
+            'publisher_location' => 'nullable|string',
+            'volume' => 'nullable|string',
         ]);
 
         DB::transaction(function() use($research, $data) {

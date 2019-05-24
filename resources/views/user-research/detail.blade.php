@@ -12,6 +12,19 @@
             <h1> {{ $research->title }} </h1>
             <p class="lead"> {{ join(", ", $research->authors->pluck("name")->toArray()) }} </p>
             <span class="badge badge-primary"> {{ $research->year }} </span>
+
+            <dl class="mt-3">
+                <dt> Nama Jurnal: </dt>
+                <dd> {{ $research->journal_name ?? '-' }} </dd>
+                <dt> Penerbit: </dt>
+                <dd> {{ $research->publisher_location ?? '-' }} </dd>
+                <dt> Volume: </dt>
+                <dd> {{ $research->volume ?? '-' }} </dd>
+
+                {{-- <dt>journal_name
+                    publisher_location
+                    volume</dt> --}}
+            </dl>
             
             <div class="text-right">
                 <a href="{{ route('research.document', $research) }}" class="btn btn-default">
