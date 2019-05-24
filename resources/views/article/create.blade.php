@@ -42,6 +42,39 @@
                         {{ $errors->first('category_id') }}
                     </div>
                 </div>
+
+                <div class="form-row">
+                    <div class="col">
+                        <div class='form-group'>
+                            <label for='author_first_name'> Nama Depan Penulis: </label>
+                        
+                            <input
+                                id='author_first_name' name='author_first_name' type='text'
+                                placeholder='Nama Depan Penulis'
+                                value='{{ old('author_first_name') }}'
+                                class='form-control {{ !$errors->has('author_first_name') ?: 'is-invalid' }}'>
+                        
+                            <div class='invalid-feedback'>
+                                {{ $errors->first('author_first_name') }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class='form-group'>
+                            <label for='author_last_name'> Nama Belakang Penulis: </label>
+                        
+                            <input
+                                id='author_last_name' name='author_last_name' type='text'
+                                placeholder='Nama Belakang Penulis'
+                                value='{{ old('author_last_name') }}'
+                                class='form-control {{ !$errors->has('author_last_name') ?: 'is-invalid' }}'>
+                        
+                            <div class='invalid-feedback'>
+                                {{ $errors->first('author_last_name') }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
     
                 <div class='form-group'>
                     <label for='content'> Isi: </label>

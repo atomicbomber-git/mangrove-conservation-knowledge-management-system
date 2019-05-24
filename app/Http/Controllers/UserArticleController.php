@@ -16,9 +16,8 @@ class UserArticleController extends Controller
             ->get()
             ->map(function($category) {
                 $category->articles = Article::query()
-                    ->select('id', 'title', 'poster_id', 'published_date')
+                    ->select('id', 'title', 'poster_id', 'published_date', 'author_first_name', 'author_last_name')
                     ->where('status', 'approved')
-                    ->with('poster:id,first_name,last_name')
                     ->limit(3)
                     ->orderByDesc('published_date')
                     ->where('category_id', $category->id)->get(); 
@@ -51,7 +50,11 @@ class UserArticleController extends Controller
 
     public function ownIndex()
     {
-        $articles = Article::select('id', 'title', 'category_id', 'poster_id', 'published_date', 'status')
+        $articles = Article::query()
+            ->select(
+                'id', 'title', 'category_id', 'poster_id', 'published_date', 'status',
+                'author_first_name', 'author_last_name'
+            )
             ->with('poster:id,first_name,last_name', 'category:id,name')
             ->where('poster_id', auth()->user()->id)
             ->orderByDesc('status', 'published_date')
@@ -72,6 +75,8 @@ class UserArticleController extends Controller
         $data = $this->validate(request(), [
             'title' => 'required|string|unique:articles',
             'content' => 'required|string',
+            'author_first_name' => 'required|string',
+            'author_last_name' => 'required|string',
             'category_id' => ['required', Rule::in($category_ids)]
         ]);
 
@@ -79,12 +84,9 @@ class UserArticleController extends Controller
         $data['status'] = Article::STATUS_UNAPPROVED;
         Article::create($data);
 
-        session()->flash('message.success', __('messages.update.success'));
-
-        return [
-            'status' => 'success',
-            'redirect' => route('user-article.own-index')
-        ];
+        return redirect()
+            ->route("user-article.own-index")
+            ->with('message.success', __('messages.update.success'));
     }
 
     public function edit(Article $article)
@@ -102,12 +104,15 @@ class UserArticleController extends Controller
         $data = $this->validate(request(), [
             'title' => ['required', Rule::unique('articles')->ignore($article->id)],
             'content' => 'required|string',
+            'author_first_name' => 'required|string',
+            'author_last_name' => 'required|string',
             'category_id' => ['required', Rule::in($category_ids)]
         ]);
 
         $article->update($data);
 
-        session()->flash('message.success', __('messages.update.success'));
+        return back()
+            ->with('message.success', __('messages.update.success'));
     }
 
     public function read(Article $article)

@@ -18,7 +18,7 @@
             <h1> {{ $article->title }}
                 <small class="text-muted">
                     <p class="lead">
-                        Oleh {{ $article->poster->name }}
+                        Oleh {{ $article->author_name }}
                     </p>
                 </small>
             </h1>

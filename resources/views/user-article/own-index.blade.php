@@ -20,6 +20,7 @@
                    <thead>
                         <tr>
                             <th> #. </th>
+                            <th> Penerbit </th>
                             <th> Judul </th>
                             <th> Penulis </th>
                             <th> Kategori </th>
@@ -32,8 +33,9 @@
                        @foreach ($articles as $article)
                         <tr>
                             <td> {{ $loop->iteration }} </td>
-                            <td> {{ $article->title }} </td>
                             <td> {{ $article->poster->name }} </td>
+                            <td> {{ $article->title }} </td>
+                            <td> {{ $article->author_name }} </td>
                             <td> {{ $article->category->name }} </td>
                             <td>
                                 @include("shared.status", ["status" => $article->getOriginal("status")])

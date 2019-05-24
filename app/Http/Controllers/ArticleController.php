@@ -13,10 +13,15 @@ class ArticleController extends Controller
     public function index()
     {
         $articles = Article::query()
-            ->select('id', 'title', 'status', 'category_id', 'poster_id', 'published_date', DB::raw("(status = 'APPROVED') AS is_approved"))
+            ->select(
+                'id', 'title', 'author_first_name', 'author_last_name',
+                'status', 'category_id', 'poster_id', 'published_date',
+                DB::raw("(status = 'APPROVED') AS is_approved")
+            )
             ->with('category:id,name', 'poster:id,first_name,last_name')
             ->orderByDesc('is_approved')
-            ->orderBy('status')
+            ->orderByDesc('status')
+            ->orderByDesc('published_date')
             ->get();
 
         return view('article.index', compact('articles'));
@@ -34,12 +39,15 @@ class ArticleController extends Controller
         $data = $this->validate(request(), [
             'title' => 'required|string|unique:articles',
             'content' => 'required|string',
+            'author_first_name' => 'required|string',
+            'author_last_name' => 'required|string',
             'category_id' => ['required', Rule::in($category_ids)]
         ]);
 
         Article::create(array_merge($data, [
             "poster_id" => Auth::user()->id,
             "status" => Article::STATUS_APPROVED,
+            "published_date" => now(),
         ]));
 
         return redirect()
@@ -62,7 +70,9 @@ class ArticleController extends Controller
         $data = $this->validate(request(), [
             'title' => ['required', Rule::unique('articles')->ignore($article->id)],
             'content' => 'required|string',
-            'category_id' => ['required', Rule::in($category_ids)]
+            'category_id' => ['required', Rule::in($category_ids)],
+            'author_first_name' => 'required|string',
+            'author_last_name' => 'required|string',
         ]);
 
         $article->update($data);

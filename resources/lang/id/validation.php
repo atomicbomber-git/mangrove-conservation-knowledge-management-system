@@ -150,5 +150,7 @@ return [
         "year" => "tahun",
         "category_id" => "kategori",
         "content" => "isi",
+        "author_first_name" => "nama depan penulis",
+        "author_last_name" => "nama belakang penulis",
     ],
 ];

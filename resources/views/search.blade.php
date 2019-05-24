@@ -38,7 +38,14 @@
     <div class="card">
         <div class="card-body">
             @if(null !== request('keyword'))
-            
+
+            <div class="mb-3">
+                <a target="_blank" href="{{ $google_scholar_query }}">
+                    <i class="fa fa-search"></i>
+                    Hasil pencarian di Google Scholar
+                </a>
+            </div>
+
             <div class="alert alert-info mb-5">
                 Menampilkan hasil pencarian ke {{ $researches->firstItem() }}-{{ $researches->lastItem() }} 
                 dari {{ $researches_count }} hasil

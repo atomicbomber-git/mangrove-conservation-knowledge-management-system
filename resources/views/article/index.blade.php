@@ -26,6 +26,7 @@
                <thead>
                     <tr>
                         <th> # </th>
+                        <th> Penerbit </th>
                         <th> Judul </th>
                         <th> Penulis </th>
                         <th> T. Publikasi </th>
@@ -38,8 +39,9 @@
                    @foreach ($articles as $article)
                     <tr>
                         <td> {{ $loop->iteration }} </td>
-                        <td> {{ str_limit($article->title, 30) }} </td>
                         <td> {{ $article->poster->name }} </td>
+                        <td> {{ str_limit($article->title, 30) }} </td>
+                        <td> {{ $article->author_name }} </td>
                         <td> @format_datetime($article->published_date) </td>
                         <td> {{ $article->category->name }} </td>
                         <td>

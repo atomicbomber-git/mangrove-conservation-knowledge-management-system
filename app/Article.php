@@ -17,7 +17,8 @@ class Article extends Model
     ];
 
     public $fillable = [
-        'poster_id', 'title', 'content', 'status', 'category_id', 'published_date'
+        'poster_id', 'title', 'content', 'status', 'category_id', 'published_date',
+        'author_first_name', 'author_last_name'
     ];
 
     public $dates = [
@@ -42,5 +43,10 @@ class Article extends Model
     public function getStatusAttribute($value)
     {
         return $this::STATUSES[$value];
+    }
+
+    public function getAuthorNameAttribute($value)
+    {
+        return $this->author_first_name . " " . $this->author_last_name;
     }
 }
