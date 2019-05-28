@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use App\Article;
 use App\Category;
@@ -53,7 +52,7 @@ class UserArticleController extends Controller
         $articles = Article::query()
             ->select(
                 'id', 'title', 'category_id', 'poster_id', 'published_date', 'status',
-                'author_first_name', 'author_last_name'
+                'author_first_name', 'author_last_name', 'publisher_media',
             )
             ->with('poster:id,first_name,last_name', 'category:id,name')
             ->where('poster_id', auth()->user()->id)
@@ -77,7 +76,8 @@ class UserArticleController extends Controller
             'content' => 'required|string',
             'author_first_name' => 'required|string',
             'author_last_name' => 'required|string',
-            'category_id' => ['required', Rule::in($category_ids)]
+            'category_id' => ['required', Rule::in($category_ids)],
+            'publisher_media' => 'required|string',
         ]);
 
         $data['poster_id'] = auth()->user()->id;

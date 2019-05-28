@@ -75,6 +75,20 @@
                         </div>
                     </div>
                 </div>
+
+                <div class='form-group'>
+                    <label for='publisher_media'> Media Penerbit: </label>
+                
+                    <input
+                        id='publisher_media' name='publisher_media' type='text'
+                        placeholder='Media Penerbit'
+                        value='{{ old('publisher_media') }}'
+                        class='form-control {{ !$errors->has('publisher_media') ?: 'is-invalid' }}'>
+                
+                    <div class='invalid-feedback'>
+                        {{ $errors->first('publisher_media') }}
+                    </div>
+                </div>
     
                 <div class='form-group'>
                     <label for='content'> Isi: </label>

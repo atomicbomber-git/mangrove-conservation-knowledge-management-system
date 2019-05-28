@@ -41,13 +41,15 @@ class ArticleController extends Controller
             'content' => 'required|string',
             'author_first_name' => 'required|string',
             'author_last_name' => 'required|string',
-            'category_id' => ['required', Rule::in($category_ids)]
+            'category_id' => ['required', Rule::in($category_ids)],
+            'publisher_media' => 'required|string',
         ]);
 
         Article::create(array_merge($data, [
             "poster_id" => Auth::user()->id,
             "status" => Article::STATUS_APPROVED,
             "published_date" => now(),
+            "publisher_media" => $data["publisher_media"],
         ]));
 
         return redirect()
@@ -73,6 +75,7 @@ class ArticleController extends Controller
             'category_id' => ['required', Rule::in($category_ids)],
             'author_first_name' => 'required|string',
             'author_last_name' => 'required|string',
+            'publisher_media' => 'required|string',
         ]);
 
         $article->update($data);

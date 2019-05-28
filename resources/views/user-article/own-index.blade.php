@@ -23,9 +23,10 @@
                             <th> Penerbit </th>
                             <th> Judul </th>
                             <th> Penulis </th>
+                            <th> Media Penerbit </th>
                             <th> Kategori </th>
                             <th> Status </th>
-                            <th> T. Publikasi </th>
+                            <th> Tanggal Publikasi </th>
                             <th> Tindakan </th>
                         </tr>
                    </thead>
@@ -36,6 +37,7 @@
                             <td> {{ $article->poster->name }} </td>
                             <td> {{ $article->title }} </td>
                             <td> {{ $article->author_name }} </td>
+                            <td> {{ $article->publisher_media ?? '-' }} </td>
                             <td> {{ $article->category->name }} </td>
                             <td>
                                 @include("shared.status", ["status" => $article->getOriginal("status")])

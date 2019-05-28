@@ -18,7 +18,7 @@ class Article extends Model
 
     public $fillable = [
         'poster_id', 'title', 'content', 'status', 'category_id', 'published_date',
-        'author_first_name', 'author_last_name'
+        'author_first_name', 'author_last_name', 'publisher_media'
     ];
 
     public $dates = [
