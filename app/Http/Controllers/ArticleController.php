@@ -16,6 +16,7 @@ class ArticleController extends Controller
             ->select(
                 'id', 'title', 'author_first_name', 'author_last_name',
                 'status', 'category_id', 'poster_id', 'published_date',
+                'publisher_media',
                 DB::raw("(status = 'APPROVED') AS is_approved")
             )
             ->with('category:id,name', 'poster:id,first_name,last_name')

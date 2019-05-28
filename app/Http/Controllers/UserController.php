@@ -74,7 +74,7 @@ class UserController extends Controller
         if (auth()->user()->cannot('delete', $user)) {
             return back()
                 ->with('message_state', 'danger')
-                ->with('message_text', __('messages.unauthorized'));
+                ->with('message_text', __('messages.delete.failure'));
         }
 
         $user->delete();

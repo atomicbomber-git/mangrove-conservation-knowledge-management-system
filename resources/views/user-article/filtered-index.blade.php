@@ -21,7 +21,7 @@
             @foreach($articles as $article)
             <div class="mb-4">
                 <a href="{{ route('user-article.read', $article) }}" class="d-block text-muted"> {{ $article->title }} </a>
-                <small> @localized_date($article->published_date) oleh <span class="font-weight-bold"> {{ $article->poster->name }} </span> </small>
+                <small> @localized_date($article->published_date) ({{ $article->publisher_media ?? '-' }}) oleh <span class="font-weight-bold"> {{ $article->poster->name }} </span> </small>
             </div>
             @endforeach
         </div>

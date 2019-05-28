@@ -32,7 +32,7 @@
                             <th> Penulis </th>
                             <th> Kategori </th>
                             <th> Tahun </th>
-                            <th> Status </th>
+                            <th class="text-center"> Status </th>
                             <th> Tindakan </th>
                         </tr>
                     </thead>
@@ -46,8 +46,8 @@
                                 <td style="width: 15rem"> {{ join(", ", $research->authors->pluck("name")->toArray()) }} </td>
                                 <td> {{ $research->category->name }} </td>
                                 <td> {{ $research->year }} </td>
-                                <td>
-                                    @include("shared.research-status", ["article" => $research])
+                                <td class="text-center">
+                                    @include("shared.research-status")
                                 </td>
                                 <td>
                                     <a href="{{ route('research.edit', $research) }}" class="btn btn-secondary btn-sm">
@@ -99,7 +99,7 @@
                                             @break
                                     @endswitch
 
-                                    <form action='{{ route('research.delete', $research) }}' method='POST' class='ml-3 d-inline-block'>
+                                    <form action='{{ route('research.delete', $research) }}' method='POST' class='d-inline-block'>
                                         @csrf
                                         <button type='submit' class='btn btn-danger btn-delete btn-sm'>
                                             <i class='fa fa-trash'></i>

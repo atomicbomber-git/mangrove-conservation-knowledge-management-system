@@ -15,7 +15,7 @@ class UserArticleController extends Controller
             ->get()
             ->map(function($category) {
                 $category->articles = Article::query()
-                    ->select('id', 'title', 'poster_id', 'published_date', 'author_first_name', 'author_last_name')
+                    ->select('id', 'title', 'poster_id', 'published_date', 'author_first_name', 'author_last_name', 'publisher_media')
                     ->where('status', 'approved')
                     ->limit(3)
                     ->orderByDesc('published_date')
@@ -39,7 +39,7 @@ class UserArticleController extends Controller
         $articles = Article::query()
             ->where('category_id', $categoryId)
             ->where('status', 'approved')
-            ->select('id', 'title', 'poster_id', 'published_date')
+            ->select('id', 'title', 'poster_id', 'status', 'published_date', 'publisher_media')
             ->with('poster:id,first_name,last_name')
             ->orderByDesc('published_date')
             ->get();
@@ -52,7 +52,7 @@ class UserArticleController extends Controller
         $articles = Article::query()
             ->select(
                 'id', 'title', 'category_id', 'poster_id', 'published_date', 'status',
-                'author_first_name', 'author_last_name', 'publisher_media',
+                'author_first_name', 'author_last_name', 'publisher_media'
             )
             ->with('poster:id,first_name,last_name', 'category:id,name')
             ->where('poster_id', auth()->user()->id)
