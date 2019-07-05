@@ -82,7 +82,7 @@
         </div>
 
         <div class="d-flex justify-content-center p-4">
-            <div style="max-width: 200px; overflow-x: scroll">
+            <div style="overflow-x: scroll">
                 {{ $researches->appends(['keyword' => request('keyword')])->links() }}
             </div>
         </div>
