@@ -45,7 +45,6 @@ class ResearchController extends Controller
             'description' => 'required|string',
             'year' => 'required|integer|gte:1900',
             'journal_name' => 'nullable|string',
-            'publisher_location' => 'nullable|string',
             'volume' => 'nullable|string',
         ]);
         

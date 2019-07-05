@@ -14,7 +14,7 @@
 
             <div class="row mb-5">
             @foreach ($category_chunk as $category)
-                <div class="col">
+                <div class="col-md">
                     <h4 class="text-primary"> {{ $category->name }} </h4>
                     <hr class="mt-0 mb-2">
 

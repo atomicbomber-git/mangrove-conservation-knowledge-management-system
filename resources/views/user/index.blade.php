@@ -15,53 +15,55 @@
             <i class="fa fa-plus"></i>
         </a>
     </div>
-    
+
     <div class="card">
         <div class="card-header">
             <i class="fa fa-users"></i>
             Seluruh Pengguna
         </div>
         <div class="card-body">
-           <table class='table table-sm table-striped table-bordered'>
-              <thead>
-                   <tr>
-                       <th> # </th>
-                       <th> Nama Asli </th>
-                       <th> Nama Pengguna </th>
-                       <th> Status </th>
-                       <th> Tindakan </th>
-                   </tr>
-              </thead>
-              <tbody>
-                  @foreach ($users as $user)
-                   <tr>
-                        <td> {{ $loop->iteration }} </td>
-                        <td> {{ $user->name }} </td>
-                        <td> {{ $user->username }} </td>
-                        <td> {{ $user->type }} </td>
-                        <td>
+            <div class="table-responsive">
+                <table class='table table-sm table-striped table-bordered'>
+                    <thead>
+                        <tr>
+                            <th> # </th>
+                            <th> Nama Asli </th>
+                            <th> Nama Pengguna </th>
+                            <th> Status </th>
+                            <th> Tindakan </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($users as $user)
+                        <tr>
+                            <td> {{ $loop->iteration }} </td>
+                            <td> {{ $user->name }} </td>
+                            <td> {{ $user->username }} </td>
+                            <td> {{ $user->type }} </td>
+                            <td>
 
-                            <a href="{{ route('user.edit', $user) }}" class="btn btn-secondary btn-sm">
-                                <i class="fa fa-pencil"></i>
-                            </a>
+                                <a href="{{ route('user.edit', $user) }}" class="btn btn-secondary btn-sm">
+                                    <i class="fa fa-pencil"></i>
+                                </a>
 
-                            <form action='{{ route('user.delete', $user) }}' method='POST' class='d-inline-block'>
-                                @csrf
-                                <button type='submit' class='btn btn-danger btn-delete btn-sm'>
-                                    <i class='fa fa-trash'></i>
-                                </button>
-                            </form>
+                                <form action='{{ route('user.delete', $user) }}' method='POST' class='d-inline-block'>
+                                    @csrf
+                                    <button type='submit' class='btn btn-danger btn-delete btn-sm'>
+                                        <i class='fa fa-trash'></i>
+                                    </button>
+                                </form>
 
-                        </td>
-                   </tr>
-                  @endforeach
-              </tbody>
-           </table>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>
 @endsection
 
 @section('extra-scripts')
-    @include('shared.datatables')
+@include('shared.datatables')
 @endsection

@@ -75,7 +75,7 @@ class UserArticleController extends Controller
             'title' => 'required|string|unique:articles',
             'content' => 'required|string',
             'author_first_name' => 'required|string',
-            'author_last_name' => 'required|string',
+            'author_last_name' => 'nullable|string',
             'category_id' => ['required', Rule::in($category_ids)],
             'publisher_media' => 'required|string',
         ]);

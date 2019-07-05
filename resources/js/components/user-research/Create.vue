@@ -21,16 +21,6 @@
         </div>
 
         <div class='form-group'>
-            <label for='publisher_location'> Tempat Penerbit: </label>
-            <input
-                v-model='publisher_location'
-                class='form-control'
-                :class="{'is-invalid': get(this.error_data, 'errors.publisher_location[0]', false)}"
-                type='text' id='publisher_location' placeholder='Tempat Penerbit'>
-            <div class='invalid-feedback'>{{ get(this.error_data, 'errors.publisher_location[0]', false) }}</div>
-        </div>
-
-        <div class='form-group'>
             <label for='volume'> Volume: </label>
             <input
                 v-model='volume'

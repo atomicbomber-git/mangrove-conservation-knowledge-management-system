@@ -30,12 +30,12 @@
     </h1>
     
     <div class="row">
-        <div class="col-9">
+        <div class="col-md-9">
             <p>
                 <em> Knowledge Management System </em> (KMS) Konservasi Hutan Mangrove merupakan sebuah <em> website </em> yang mendukung manajemen dan pengelolaan pengetahuan terkait konservasi mangrove. <em> Website </em> ini bertujuan untuk memberikan pengetahuan dan informasi kepada masyarakat, pemerintah, dan peneliti dalam melakukan pelestarian mangrove. <em> Knowledge Management System </em> hutan mangrove dapat membantu dalam pencarian, pemilihan, pengaturan, penyaringan dan penyajian informasi, menawarkan sebuah pendekatan yang saling terintegrasi. <em> Knowledge Management System </em> ini terdiri dari <em> tacit knowledge </em> dan <em> explicit knowledge </em> yang meliputi pembibitan, penanaman, dan perawatan untuk konservasi hutan mangrove. Tersedia artikel dan hasil penelitian yang dikelola oleh <em> Knowledge Management System </em>. <em> Knowledge Management System </em> ini terbuka untuk umum, terutama masyarakat yang dapat membagikan pengalamannya menjadi sebuah pengetahuan di <em> Knowledge Management System </em> ini.
             </p>
         </div>
-        <div class="col-3" style="border-left: thin solid gray">
+        <div class="col-md-3" style="border-left: thin solid gray">
             <div class="mb-5">
                 <h5 class="text-primary"> Artikel Terbaru </h5>
                 <hr class="mt-0 mb-2">

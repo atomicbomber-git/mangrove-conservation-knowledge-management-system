@@ -16,8 +16,6 @@
             <dl class="mt-3">
                 <dt> Nama Jurnal: </dt>
                 <dd> {{ $research->journal_name ?? '-' }} </dd>
-                <dt> Penerbit: </dt>
-                <dd> {{ $research->publisher_location ?? '-' }} </dd>
                 <dt> Volume: </dt>
                 <dd> {{ $research->volume ?? '-' }} </dd>
 
