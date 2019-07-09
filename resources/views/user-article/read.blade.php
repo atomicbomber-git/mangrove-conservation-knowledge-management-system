@@ -37,10 +37,12 @@
 
 @section ('extra-scripts')
 <script>
-    tinyMCE.init({
-        selector: "#content",
-        inline: true,
-        readonly: true,
-    })
+
+tinyMCE.init(Object.assign(window.tinymce_settings, {
+    content_css: '{{ asset('css/app.css') }}',
+    inline: true,
+    readonly: true,
+}))
+
 </script>
 @endsection

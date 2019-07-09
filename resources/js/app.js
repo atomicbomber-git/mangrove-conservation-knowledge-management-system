@@ -15,6 +15,7 @@ require('tinymce');
 
 // TinyMCE File Picker Callback
 window.file_picker_callback = require('./file_picker_callback')
+window.tinymce_settings = require('./tinymce_settings').default
 
 // Load sweetalert
 window.swal = require('sweetalert')

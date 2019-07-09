@@ -44,7 +44,7 @@
                 </div>
 
                 <div class="form-row">
-                    <div class="col">
+                    <div class="col-md">
                         <div class='form-group'>
                             <label for='author_first_name'> Nama Depan Penulis: </label>
                         
@@ -59,7 +59,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col">
+                    <div class="col-md">
                         <div class='form-group'>
                             <label for='author_last_name'> Nama Belakang Penulis: </label>
                         
@@ -117,18 +117,9 @@
 @section('extra-scripts')
 <script>
 
-tinyMCE.init({
-    selector: '#content',
-    body_class: 'tinymce-editor',
-    plugins: 'lists,image,imagetools',
-    image_caption: true,
-    file_picker_callback: window.file_picker_callback,
-    toolbar: [
-        'undo redo | styleselect | bold italic | numlist bullist | alignleft aligncenter alignright | image'
-    ],
-    height: 400,
+tinyMCE.init(Object.assign(window.tinymce_settings, {
     content_css: '{{ asset('css/app.css') }}',
-})
+}))
 .then(editors => {
     editors[0].setContent(`{!! old('content') !!}`)
 })
