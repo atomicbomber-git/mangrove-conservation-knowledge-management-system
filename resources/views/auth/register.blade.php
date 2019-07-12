@@ -16,30 +16,40 @@
                    @csrf
 
                    <div class='form-group'>
-                       <label for='first_name'> Nama Depan: </label>
 
-                       <input
-                           id='first_name' name='first_name' type='text'
-                           placeholder='Nama Depan'
-                           value='{{ old('first_name') }}'
-                           class='form-control {{ !$errors->has('first_name') ?: 'is-invalid' }}'>
-
-                       <div class='invalid-feedback'>
-                           {{ $errors->first('first_name') }}
-                       </div>
                    </div>
 
-                   <div class='form-group'>
-                       <label for='last_name'> Nama Belakang: </label>
+                   <div class="form-row">
+                       <div class="col-md">
+                            <div class="form-group">
+                                <label for='first_name'> Nama Depan: </label>
 
-                       <input
-                           id='last_name' name='last_name' type='text'
-                           placeholder='Nama Belakang'
-                           value='{{ old('last_name') }}'
-                           class='form-control {{ !$errors->has('last_name') ?: 'is-invalid' }}'>
+                                <input
+                                    id='first_name' name='first_name' type='text'
+                                    placeholder='Nama Depan'
+                                    value='{{ old('first_name') }}'
+                                    class='form-control {{ !$errors->has('first_name') ?: 'is-invalid' }}'>
 
-                       <div class='invalid-feedback'>
-                           {{ $errors->first('last_name') }}
+                                <div class='invalid-feedback'>
+                                    {{ $errors->first('first_name') }}
+                                </div>
+                            </div>
+                       </div>
+
+                       <div class="col-md">
+                            <div class="form-group">
+                                <label for='last_name'> Nama Belakang: </label>
+
+                                <input
+                                    id='last_name' name='last_name' type='text'
+                                    placeholder='Nama Belakang'
+                                    value='{{ old('last_name') }}'
+                                    class='form-control {{ !$errors->has('last_name') ?: 'is-invalid' }}'>
+
+                                <div class='invalid-feedback'>
+                                    {{ $errors->first('last_name') }}
+                                </div>
+                            </div>
                        </div>
                    </div>
 
@@ -85,7 +95,7 @@
                        </div>
                    </div>
 
-                   <div class="form-group mt-5">
+                   <div class="form-group mt-2">
                        <button class="btn btn-primary">
                            <i class="fa fa-plus"></i>
                            Tambah Data
