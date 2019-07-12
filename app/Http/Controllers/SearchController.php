@@ -29,8 +29,10 @@ class SearchController extends Controller
             });
 
         $researches_count = $query->count();
-
-        $joined_keywords = join("+", $splitted_keywords);
+        
+        $joined_keywords = join("+", array_merge(
+            ["mangrove"], $splitted_keywords
+        ));
         $google_scholar_query = "https://scholar.google.co.id/scholar?hl=en&as_sdt=0%2C5&q={$joined_keywords}&btnG=";
 
         $researches = $query
