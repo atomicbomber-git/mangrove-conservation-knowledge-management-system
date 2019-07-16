@@ -83,7 +83,7 @@
                         <td> {{ added_bibit.nama }} </td>
                         <td>
                             <input
-                                :value="added_bibit.jumlah"
+                                v-model="added_bibit.jumlah"
                                 class="form-control form-control-sm"
                                 type="number">
                         </td>
@@ -181,7 +181,7 @@ export default {
         onFormSubmit() {
             axios.post(this.submit_url, this.form_data)
                .then(response => {
-                    // window.location.replace(this.redirect_url)
+                    window.location.replace(this.redirect_url)
                })
                .catch(error => {
                    this.error_data = error.response.data

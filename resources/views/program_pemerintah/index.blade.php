@@ -7,6 +7,8 @@
         Program Pemerintah
     </h1>
 
+    @include('shared.message', ['session_key' => 'message.success', 'state' => 'success'])
+
     <div class="card">
         <div class="card-header">
             <i class="fa fa-product-hunt"></i>
@@ -18,8 +20,8 @@
                    <thead class='thead thead-dark'>
                         <tr>
                             <th> # </th>
-                            <th> Nama </th>
-                            <th> Dana </th>
+                            <th style="width: 10rem"> Nama </th>
+                            <th class="text-right"> Dana (Rp.) </th>
                             <th> Durasi </th>
                             <th> Penanggung Jawab </th>
                             <th> Tindakan </th>
@@ -31,9 +33,9 @@
                          <tr>
                              <td> {{ $programPemerintah->id }} </td>
                              <td> {{ $programPemerintah->nama }} </td>
-                             <td> {{ $formatter->currency($programPemerintah->dana) }} </td>
+                             <td class="text-right"> {{ $formatter->currency($programPemerintah->dana) }} </td>
                              <td>
-                                 {{ $formatter->date($programPemerintah->tanggal_mulai) }} - <br>
+                                 {{ $formatter->date($programPemerintah->tanggal_mulai) }} -
                                  {{ $formatter->date($programPemerintah->tanggal_selesai) }}
                              </td>
                              <td> {{ $programPemerintah->penanggung_jawab }} </td>

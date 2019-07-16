@@ -8,11 +8,11 @@ class Formatter implements FormatterInterface
 {
     public function date($value): string
     {
-        return (new Date($value))->format("j F Y");
+        return (new Date($value))->format("m/d/Y");
     }
 
     public function currency($value): string
     {
-        return "Rp. " . number_format($value, 2, ",", ".");
+        return number_format($value, 2, ",", ".");
     }
 }

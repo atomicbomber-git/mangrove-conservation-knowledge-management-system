@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\ProgramPemerintah;
 use App\Bibit;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class ProgramPemerintahController extends Controller
 {
@@ -12,6 +14,8 @@ class ProgramPemerintahController extends Controller
     {
         $programPemerintahs = ProgramPemerintah::query()
             ->select("id", "nama", "tanggal_mulai", "tanggal_selesai", "dana", "penanggung_jawab")
+            ->orderBy("tanggal_mulai", "desc")
+            ->orderBy("tanggal_selesai", "desc")
             ->get();
 
         return view("program_pemerintah.index", compact("programPemerintahs"));
@@ -26,7 +30,7 @@ class ProgramPemerintahController extends Controller
     public function create()
     {
         $bibits = Bibit::query()
-            ->select("nama")
+            ->select("id", "nama")
             ->get();
 
         return view("program_pemerintah.create", compact("bibits"));
@@ -35,15 +39,28 @@ class ProgramPemerintahController extends Controller
     public function store()
     {
         $data = $this->validate(request(), [
-            "nama" => "required",
+            "nama" => "required|unique:program_pemerintahs",
             "tanggal_mulai" => "required",
             "tanggal_selesai" => "required",
-            "dana" => "required",
-            "penanggung_jawab" => "required",
+            "dana" => "required|numeric",
+            "penanggung_jawab" => "required|string",
             "bibits" => "required|array",
+            "bibits.*.id" => "required|numeric",
+            "bibits.*.jumlah" => "required|numeric|gt:0",
         ]);
 
-return $data;
+        DB::transaction(function() use ($data) {
+            $programPemerintahData = collect($data)->except("bibits")->toArray();
+            $programPemerintah = ProgramPemerintah::create($programPemerintahData);
+            foreach ($data["bibits"] as $bibit) {
+                $bibitModelObject = Bibit::find($bibit["id"]);
+                $programPemerintah->bibits()->attach($bibitModelObject, [
+                    "jumlah" => $bibit["jumlah"],
+                ]);
+            }
+        });
+
+        Session::flash("message.success", __('messages.create.success'));
     }
 
     public function edit(ProgramPemerintah $programPemerintah)
