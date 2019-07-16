@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class ProgramPemerintah extends Model
 {
     public $fillable = [
-        "nama", "tanggal_mulai", "tanggal_selesai", "dana", "penanggung_jawab"
+        "nama", "tanggal_mulai", "tanggal_selesai", "dana", "penanggung_jawab",
+        "nama_instansi", "nama_instansi_penerima", "penanggung_jawab_penerima", "bentuk",
+        "hasil", "persentase_hasil"
     ];
 }

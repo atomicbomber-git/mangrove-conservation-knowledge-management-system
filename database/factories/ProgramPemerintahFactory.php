@@ -14,7 +14,7 @@ $factory->define(App\ProgramPemerintah::class, function (Faker $faker) {
         "penanggung_jawab" => $faker->name,
         "nama_instansi" => $faker->company,
         "nama_instansi_penerima" => $faker->company,
-        "penanggung_jawab_pemerima" => $faker->name,
+        "penanggung_jawab_penerima" => $faker->name,
         "bentuk" => $faker->realText,
         "hasil" => $faker->realText,
         "persentase_hasil" => rand(0, 10000) / 100,

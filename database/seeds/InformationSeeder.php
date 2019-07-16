@@ -15,7 +15,6 @@ class InformationSeeder extends Seeder
         Information::create(['menu_title' => 'Pembibitan', 'title' => 'Pembibitan', 'content' => '']);
         Information::create(['menu_title' => 'Penanaman', 'title' => 'Penanaman', 'content' => '']);
         Information::create(['menu_title' => 'Perawatan', 'title' => 'Perawatan', 'content' => '']);
-        Information::create(['menu_title' => 'Program Pemerintah', 'title' => 'Program Pemerintah', 'content' => '']);
         Information::create(['menu_title' => 'Peraturan Pemerintah', 'title' => 'Peraturan Pemerintah', 'content' => '']);
     }
 }

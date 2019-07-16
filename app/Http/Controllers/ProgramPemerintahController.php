@@ -28,37 +28,26 @@ class ProgramPemerintahController extends Controller
 
     public function create()
     {
-        $bibits = Bibit::query()
-            ->select("id", "nama")
-            ->get();
-
-        return view("program_pemerintah.create", compact("bibits"));
+        return view("program_pemerintah.create");
     }
 
     public function store()
     {
         $data = $this->validate(request(), [
-            "nama" => "required|unique:program_pemerintahs",
-            "tanggal_mulai" => "required",
-            "tanggal_selesai" => "required",
+            "nama" => "required|unique:program_pemerintahs|max:255",
+            "tanggal_mulai" => "required|date",
+            "tanggal_selesai" => "required|date",
             "dana" => "required|numeric",
-            "penanggung_jawab" => "required|string",
-            "bibits" => "required|array",
-            "bibits.*.id" => "required|numeric",
-            "bibits.*.jumlah" => "required|numeric|gt:0",
+            "penanggung_jawab" => "required|string|max:255",
+            "nama_instansi" => "required|string|max:255",
+            "nama_instansi_penerima" => "required|string|max:255",
+            "penanggung_jawab_penerima" => "required|string|max:255",
+            "bentuk" => "required|string|max:1000",
+            "hasil" => "required|string|max:1000",
+            "persentase_hasil" => "required|numeric|gte:0|lte:100",
         ]);
 
-        DB::transaction(function() use ($data) {
-            $programPemerintahData = collect($data)->except("bibits")->toArray();
-            $programPemerintah = ProgramPemerintah::create($programPemerintahData);
-            foreach ($data["bibits"] as $bibit) {
-                $bibitModelObject = Bibit::find($bibit["id"]);
-                $programPemerintah->bibits()->attach($bibitModelObject, [
-                    "jumlah" => $bibit["jumlah"],
-                ]);
-            }
-        });
-
+        ProgramPemerintah::create($data);
         Session::flash("message.success", __('messages.create.success'));
     }
 
