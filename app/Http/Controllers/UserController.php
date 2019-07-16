@@ -38,7 +38,7 @@ class UserController extends Controller
 
         return redirect()
             ->route('user.index')
-            ->with('message.success', __('messages.update.success'));
+            ->with('message.success', __('messages.create.success'));
     }
 
     public function edit(User $user)

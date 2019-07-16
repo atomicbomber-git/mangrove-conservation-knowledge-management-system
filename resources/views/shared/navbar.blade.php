@@ -40,6 +40,19 @@
                     </div>
                 </li>
 
+                <li class='nav-item dropdown {{ Route::is('bibit.*') ? 'active' : '' }}'>
+                    <a
+                        class='nav-link dropdown-toggle' href='#' id='bibit' role='button'
+                        data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+                        <i class='fa fa-circle'></i>
+                        Bibit
+                    </a>
+                    <div class='dropdown-menu' aria-labelledby='bibit'>
+                        <a class='dropdown-item' href='{{ route('bibit.index') }}'> Seluruh Bibit </a>
+                        <a class='dropdown-item' href='{{ route('bibit.create') }}'> Tambah Bibit </a>
+                    </div>
+                </li>
+
                 @can('administrate-users')
                 <li class='nav-item dropdown {{ Route::is('user.*') ? 'active' : '' }}'>
                     <a
