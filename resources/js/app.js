@@ -28,6 +28,10 @@ window.swal = require('sweetalert')
 
 window.Vue = require('vue');
 
+import Multiselect from 'vue-multiselect'
+Vue.component('multiselect', Multiselect)
+import 'vue-multiselect/dist/vue-multiselect.min.css'
+
 Vue.component('article-create', require('./components/article/Create.vue'));
 Vue.component('user-article-create', require('./components/user-article/Create.vue'));
 Vue.component('user-article-edit', require('./components/user-article/Edit.vue'));
@@ -37,6 +41,7 @@ Vue.component('research-create', require('./components/research/Create.vue'));
 Vue.component('research-edit', require('./components/research/Edit.vue'));
 Vue.component('user-research-create', require('./components/user-research/Create.vue'));
 Vue.component('user-research-edit', require('./components/user-research/Edit.vue'));
+Vue.component('program-pemerintah-create', require('./components/ProgramPemerintahCreate'));
 
 const app = new Vue({
     el: '#app'

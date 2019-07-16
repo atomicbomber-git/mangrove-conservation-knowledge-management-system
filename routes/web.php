@@ -129,3 +129,13 @@ Route::group(['prefix' => '/slide', 'as' => 'slide.'], function() {
 
     Route::get('/image/{slide}', 'SlideController@image')->name('image');
 });
+
+Route::group(['prefix' => '/program-pemerintah', 'as' => 'program-pemerintah.'], function() {
+    Route::get('/index', 'ProgramPemerintahController@index')->name('index');
+    Route::get('/show/{programPemerintah}', 'ProgramPemerintahController@show')->name('show');
+    Route::get('/create', 'ProgramPemerintahController@create')->name('create');
+    Route::post('/store', 'ProgramPemerintahController@store')->name('store');
+    Route::get('/edit/{programPemerintah}', 'ProgramPemerintahController@edit')->name('edit');
+    Route::post('/update/{programPemerintah}', 'ProgramPemerintahController@update')->name('update');
+    Route::post('/delete/{programPemerintah}', 'ProgramPemerintahController@delete')->name('delete');
+});

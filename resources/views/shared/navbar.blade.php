@@ -1,5 +1,5 @@
 <nav class="navbar navbar-dark bg-dark navbar-expand-lg navbar-light bg-light">
-    <div class="container">
+    <div class="container-fluid">
         <a class="navbar-brand" href="{{ route('home') }}"> {{ @config('app.name') }} </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -27,6 +27,19 @@
                 </li>
                 @endcan
 
+                <li class='nav-item dropdown {{ Route::is('program-pemerintah.*') ? 'active' : '' }}'>
+                    <a
+                        class='nav-link dropdown-toggle' href='#' id='program-pemerintah' role='button'
+                        data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+                        <i class='fa fa-product-hunt'></i>
+                        Program Pemerintah
+                    </a>
+                    <div class='dropdown-menu' aria-labelledby='program-pemerintah'>
+                        <a class='dropdown-item' href='{{ route('program-pemerintah.index') }}'> Seluruh Program </a>
+                        <a class='dropdown-item' href='{{ route('program-pemerintah.create') }}'> Tambah Program </a>
+                    </div>
+                </li>
+
                 @can('administrate-users')
                 <li class='nav-item dropdown {{ Route::is('user.*') ? 'active' : '' }}'>
                     <a
@@ -35,7 +48,7 @@
                         <i class='fa fa-users'></i>
                         Pengguna
                     </a>
-                    
+
                     <div class='dropdown-menu' aria-labelledby='user'>
                         <a class='dropdown-item' href='{{ route('user.index') }}'> Seluruh Pengguna </a>
                         <a class='dropdown-item' href='{{ route('user.create') }}'> Tambah Pengguna </a>
@@ -103,7 +116,7 @@
                     </div>
                 </li>
                 @endcan
-                
+
                 @can('view-researches')
                 <li class='nav-item dropdown {{ Route::is('user-research.*') ? 'active' : '' }}'>
                     <a
@@ -130,7 +143,7 @@
                         <i class='fa fa-info'></i>
                         Mangrove
                     </a>
-                    
+
                     <div class='dropdown-menu' aria-labelledby='information'>
                         @foreach ($information as $record)
                         <a class='dropdown-item' href='{{ route('information.index', $record) }}'> {{ $record->menu_title }} </a>

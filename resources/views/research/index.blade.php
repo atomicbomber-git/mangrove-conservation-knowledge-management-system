@@ -40,7 +40,7 @@
                         @foreach ($researches as $research)
                             <tr>
                                 <td> {{ $loop->iteration }} </td>
-                                
+
                                 <td> {{ $research->poster->name }} </td>
                                 <td style="width: 15rem"> {{ $research->title }} </td>
                                 <td style="width: 15rem"> {{ join(", ", $research->authors->pluck("name")->toArray()) }} </td>
@@ -60,7 +60,7 @@
 
                                     @switch($research->getOriginal('status'))
                                         @case(App\Research::STATUS_UNAPPROVED)
-                                            
+
                                             <form method="POST" class="d-inline-block" action="{{ route('research-verification.create', $research) }}">
                                                 @csrf
                                                 <button class="btn btn-success btn-sm">
@@ -77,7 +77,7 @@
 
                                             @break
                                         @case(App\Research::STATUS_APPROVED)
-                                            
+
                                             <form method="POST" class="d-inline-block" action="{{ route('research-verification.delete', $research) }}">
                                                 @csrf
                                                 <button class="btn btn-danger btn-sm">

@@ -10,20 +10,20 @@
 
         <div class="card-body" id="app">
             @include('shared.message', ['session_key' => 'message.success', 'state' => 'success'])
-            
+
 
             <form method='POST' action='{{ route('information.update', $information) }}'>
                 @csrf
-                
+
                 <div class='form-group'>
                     <label for='title'> Judul: </label>
-                
+
                     <input
                         id='title' name='title' type='text'
                         placeholder='Judul'
                         value='{{ old('title', $information->title) }}'
                         class='form-control {{ !$errors->has('title') ?: 'is-invalid' }}'>
-                
+
                     <div class='invalid-feedback'>
                         {{ $errors->first('title') }}
                     </div>
@@ -31,13 +31,13 @@
 
                 <div class='form-group'>
                     <label for='content'> Isi: </label>
-                
+
                     <textarea
                         id='content' name='content'
                         class='form-control {{ !$errors->has('content') ?: 'is-invalid' }}'
                         col='30' row='6'
                         ></textarea>
-                
+
                     <div class='invalid-feedback'>
                         {{ $errors->first('content') }}
                     </div>
