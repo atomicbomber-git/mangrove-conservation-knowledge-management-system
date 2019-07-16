@@ -18,8 +18,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ResearchSeeder::class);
         $this->call(SlideSeeder::class);
         $this->call(InformationSeeder::class);
-
-        $this->call(BibitSeeder::class);
         $this->call(ProgramPemerintahSeeder::class);
     }
 }

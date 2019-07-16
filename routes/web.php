@@ -130,15 +130,6 @@ Route::group(['prefix' => '/slide', 'as' => 'slide.'], function() {
     Route::get('/image/{slide}', 'SlideController@image')->name('image');
 });
 
-Route::group(['prefix' => '/bibit', 'as' => 'bibit.'], function() {
-    Route::get('/index', 'BibitController@index')->name('index');
-    Route::get('/create', 'BibitController@create')->name('create');
-    Route::post('/store', 'BibitController@store')->name('store');
-    Route::get('/edit/{bibit}', 'BibitController@edit')->name('edit');
-    Route::post('/update/{bibit}', 'BibitController@update')->name('update');
-    Route::post('/delete/{bibit}', 'BibitController@delete')->name('delete');
-});
-
 Route::group(['prefix' => '/program-pemerintah', 'as' => 'program-pemerintah.'], function() {
     Route::get('/index', 'ProgramPemerintahController@index')->name('index');
     Route::get('/show/{programPemerintah}', 'ProgramPemerintahController@show')->name('show');

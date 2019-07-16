@@ -23,7 +23,6 @@ class ProgramPemerintahController extends Controller
 
     public function show(ProgramPemerintah $programPemerintah)
     {
-        $programPemerintah->load("bibits");
         return view("program_pemerintah.show", compact("programPemerintah"));
     }
 

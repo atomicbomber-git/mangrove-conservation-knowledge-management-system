@@ -27,27 +27,6 @@
                 </dd>
                 <dt> Penanggung Jawab </dt>
                 <dd> {{ $programPemerintah->penanggung_jawab }} </dd>
-                <dt> Bibit </dt>
-                <dd>
-                    <table class="table table-sm table-bordered table-striped">
-                        <thead class="thead thead-dark">
-                            <tr>
-                                <th> # </th>
-                                <th> Nama </th>
-                                <th class="text-right"> Jumlah </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($programPemerintah->bibits as $bibit)
-                            <tr>
-                                <td> {{ $loop->iteration }} </td>
-                                <td> {{ $bibit->nama }} </td>
-                                <td class="text-right"> {{ $bibit->data->jumlah }} </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </dd>
             </dl>
         </div>
     </div>
