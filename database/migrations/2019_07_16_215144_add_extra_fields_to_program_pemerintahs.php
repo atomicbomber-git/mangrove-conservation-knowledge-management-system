@@ -14,12 +14,12 @@ class AddExtraFieldsToProgramPemerintahs extends Migration
     public function up()
     {
         Schema::table('program_pemerintahs', function (Blueprint $table) {
-            $table->string("nama_instansi")->comment("Instansi pemberi program pemerintah.");
-            $table->string("nama_instansi_penerima")->comment("Instansi penerima program pemerintah.");
-            $table->string("penanggung_jawab_penerima")->comment("Penanggung jawab penerimaan program pemerintah.");
-            $table->longText("bentuk")->comment("Bentuk program yang diberikan.");
-            $table->longText("hasil")->comment("Hasil program yang diberikan.");
-            $table->decimal("persentase_hasil")->comment("Persentasi hasil program yang diberikan");
+            $table->string("nama_instansi")->nullable()->comment("Instansi pemberi program pemerintah.");
+            $table->string("nama_instansi_penerima")->nullable()->comment("Instansi penerima program pemerintah.");
+            $table->string("penanggung_jawab_penerima")->nullable()->comment("Penanggung jawab penerimaan program pemerintah.");
+            $table->longText("bentuk")->nullable()->comment("Bentuk program yang diberikan.");
+            $table->longText("hasil")->nullable()->comment("Hasil program yang diberikan.");
+            $table->decimal("persentase_hasil")->nullable()->comment("Persentasi hasil program yang diberikan");
         });
     }
 

@@ -41,8 +41,15 @@
                              <td> {{ $programPemerintah->penanggung_jawab }} </td>
                              <td class="text-center">
                                  <a href="{{ route("program-pemerintah.show", $programPemerintah) }}" class="btn btn-sm btn-secondary">
-                                    Detail
+                                    <i class="fa fa-list"></i>
                                  </a>
+
+                                 <form action='{{ route("program-pemerintah.delete", $programPemerintah) }}' method='POST' class='d-inline-block'>
+                                     @csrf
+                                     <button type='submit' class='btn btn-danger btn-sm btn-delete'>
+                                         <i class='fa fa-trash'></i>
+                                     </button>
+                                 </form>
                             </td>
                          </tr>
                         @endforeach

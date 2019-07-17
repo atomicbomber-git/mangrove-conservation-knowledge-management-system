@@ -14,7 +14,9 @@ class AddCategoryIdFieldToArticles extends Migration
     public function up()
     {
         Schema::table('articles', function (Blueprint $table) {
-            $table->integer('category_id')->unsigned()->comment("ID kategori artikel.");
+            $table->integer('category_id')->unsigned()
+                ->nullable()
+                ->comment("ID kategori artikel.");
         });
     }
 

@@ -15,7 +15,7 @@ class UpdateUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('name');
-            $table->string('first_name')->comment("Nama depan pengguna.");
+            $table->string('first_name')->nullable()->comment("Nama depan pengguna.");
         });
     }
 

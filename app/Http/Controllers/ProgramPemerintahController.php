@@ -48,7 +48,9 @@ class ProgramPemerintahController extends Controller
         ]);
 
         ProgramPemerintah::create($data);
-        Session::flash("message.success", __('messages.create.success'));
+        return redirect()
+            ->route("program-pemerintah.index")
+            ->with("message.success", __('messages.create.success'));
     }
 
     public function edit(ProgramPemerintah $programPemerintah)
@@ -61,5 +63,8 @@ class ProgramPemerintahController extends Controller
 
     public function delete(ProgramPemerintah $programPemerintah)
     {
+        $programPemerintah->delete();
+        return back()
+            ->with("message.success", __('messages.delete.success'));
     }
 }

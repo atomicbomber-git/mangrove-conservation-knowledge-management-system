@@ -163,6 +163,7 @@
                     <input
                         id='persentase_hasil' name='persentase_hasil' type='number'
                         placeholder='Persentase Hasil (%)'
+                        step="0.01"
                         value='{{ old('persentase_hasil') }}'
                         class='form-control {{ !$errors->has('persentase_hasil') ?: 'is-invalid' }}'>
 
@@ -172,9 +173,7 @@
                 </div>
 
                 <div>
-                    <button class="btn btn-primary">
-                        Tambah Program Pemerintah
-                    </button>
+                    <input id="submit" type="submit" value="Tambah Program Pemerintah" class="btn btn-primary">
                 </div>
             </form>
         </div>

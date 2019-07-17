@@ -1,6 +1,6 @@
 <nav class="navbar navbar-dark bg-dark navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-        <a class="navbar-brand" href="{{ route('home') }}"> {{ @config('app.name') }} </a>
+        <a class="navbar-brand" href="{{ route('home') }}"> {{ config('app.name') }} </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -35,10 +35,13 @@
                         Program Pemerintah
                     </a>
                     <div class='dropdown-menu' aria-labelledby='program-pemerintah'>
+                        @can("manageAny", "App\ProgramPemerintah")
                         <a class='dropdown-item' href='{{ route('program-pemerintah.index') }}'> Seluruh Program </a>
                         <a class='dropdown-item' href='{{ route('program-pemerintah.create') }}'> Tambah Program </a>
+                        @endcan
                     </div>
                 </li>
+
 
                 @can('administrate-users')
                 <li class='nav-item dropdown {{ Route::is('user.*') ? 'active' : '' }}'>
