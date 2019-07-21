@@ -28,7 +28,7 @@
     <h1 class='mb-5'>
         Knowledge Management System Konservasi Mangrove
     </h1>
-    
+
     <div class="row">
         <div class="col-md-9">
             <p>
@@ -48,7 +48,7 @@
                 @endforeach
 
                 <a href="{{ route('user-article.index') }}" class="text-info font-weight-bold">
-                    SELURUH ARTIKEL
+                    Kelola ARTIKEL
                 </a>
             </div>
 
@@ -62,7 +62,7 @@
                 </div>
                 @endforeach
                 <a href="{{ route('user-research.index') }}" class="text-info font-weight-bold">
-                    SELURUH HASIL PENELITIAN
+                    Kelola HASIL PENELITIAN
                 </a>
             </div>
         </div>

@@ -18,6 +18,11 @@ class PengalamanController extends Controller
         return view("pengalaman.index", compact("pengalamans"));
     }
 
+    public function detail(Pengalaman $pengalaman)
+    {
+        return view("pengalaman.detail", compact("pengalaman"));
+    }
+
     public function guestIndex()
     {
         $pengalamans = Pengalaman::query()

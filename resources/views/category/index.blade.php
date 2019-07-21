@@ -1,10 +1,10 @@
 @extends('shared.layout')
-@section('title', 'Seluruh Kategori')
+@section('title', 'Kelola Kategori')
 @section('content')
 <div class="container my-5">
     <h1 class='mb-5'>
         <i class='fa fa-list'></i>
-        Seluruh Kategori
+        Kelola Kategori
     </h1>
 
     {{-- <div class="my-4">
@@ -19,7 +19,7 @@
     <div class="card">
         <div class="card-header">
             <i class="fa fa-list"></i>
-            Seluruh Kategori
+            Kelola Kategori
         </div>
         <div class="card-body">
            <table class='table table-sm table-bordered table-striped'>

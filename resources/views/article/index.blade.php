@@ -1,25 +1,18 @@
 @extends('shared.layout')
-@section('title', 'Seluruh Artikel')
+@section('title', 'Kelola Artikel')
 @section('content')
 <div class="container my-5">
     <h1 class='mb-5'>
         <i class='fa fa-list'></i>
-        Seluruh Artikel
+        Kelola Artikel
     </h1>
-
-    <div class="my-4">
-        <a href="{{ route('article.create') }}" class="btn btn-secondary">
-            Tambahkan Artikel Baru
-            <i class="fa fa-plus"></i>
-        </a>
-    </div>
 
     @include('shared.message', ['session_key' => 'message.success', 'state' => 'success'])
 
     <div class="card">
         <div class="card-header">
             <i class="fa fa-file-text"></i>
-            Seluruh Artikel
+            Kelola Artikel
         </div>
         <div class="card-body">
             <div class="table-responsive-lg">
@@ -34,7 +27,7 @@
                              <th> Tanggal Publikasi </th>
                              <th> Kategori </th>
                              <th class="text-center"> Status </th>
-                             <th> Tindakan </th>
+                             <th class="text-center" style="width: 13rem"> Tindakan </th>
                          </tr>
                     </thead>
                     <tbody>
@@ -50,55 +43,55 @@
                              <td class="text-center">
                                  @include("shared.status", ["status" => $article->getOriginal("status")])
                              </td>
-                             <td>
+                             <td class="text-center">
                                  <a href="{{ route('user-article.read', $article) }}" class="btn btn-secondary btn-sm">
                                      <i class="fa fa-eye"></i>
                                  </a>
-     
+
                                  <a href="{{ route('article.edit', $article) }}" class="btn btn-secondary btn-sm">
                                      <i class="fa fa-pencil"></i>
                                  </a>
-     
+
                                  @switch($article->getOriginal('status'))
                                      @case(App\Article::STATUS_UNAPPROVED)
-     
+
                                          <form method="POST" class="d-inline-block" action="{{ route('article-verification.create', $article) }}">
                                              @csrf
                                              <button class="btn btn-success btn-sm">
                                                  <i class="fa fa-check"></i>
                                              </button>
                                          </form>
-     
+
                                          <form method="POST" class="d-inline-block" action="{{ route('article-verification.delete', $article) }}">
                                              @csrf
                                              <button class="btn btn-danger btn-sm">
                                                  <i class="fa fa-times"></i>
                                              </button>
                                          </form>
-                                         
+
                                          @break
                                      @case(App\Article::STATUS_APPROVED)
-     
+
                                          <form method="POST" class="d-inline-block" action="{{ route('article-verification.delete', $article) }}">
                                              @csrf
                                              <button class="btn btn-danger btn-sm">
                                                  <i class="fa fa-times"></i>
                                              </button>
                                          </form>
-                                         
+
                                          @break
                                      @case(App\Article::STATUS_REJECTED)
-     
+
                                          <form method="POST" class="d-inline-block" action="{{ route('article-verification.create', $article) }}">
                                              @csrf
                                              <button class="btn btn-success btn-sm">
                                                  <i class="fa fa-check"></i>
                                              </button>
                                          </form>
-     
-                                         @break 
+
+                                         @break
                                  @endswitch
-     
+
                                  <form action='{{ route('article.delete', $article) }}' method='POST' class='d-inline-block'>
                                      @csrf
                                      <button type='submit' class='btn btn-danger btn-delete btn-sm'>

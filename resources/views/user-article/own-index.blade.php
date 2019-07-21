@@ -1,10 +1,10 @@
 @extends('shared.layout')
-@section('title', 'Daftar Seluruh Artikel')
+@section('title', 'Daftar Kelola Artikel')
 @section('content')
 <div class="container my-5">
     <h1 class='mb-5'>
         <i class='fa fa-file-text'></i>
-        Daftar Seluruh Artikel Saya
+        Daftar Kelola Artikel Saya
     </h1>
 
     @include('shared.message', ['session_key' => 'message.success', 'state' => 'success'])
@@ -12,7 +12,7 @@
     <div class="card">
         <div class="card-header">
             <i class="fa fa-file-text"></i>
-            Daftar Seluruh Artikel Saya
+            Daftar Kelola Artikel Saya
         </div>
         <div class="card-body">
             <div class='table-responsive'>
@@ -47,7 +47,7 @@
                                 <a href="{{ route('user-article.read', $article) }}" class="btn btn-secondary btn-sm">
                                     <i class="fa fa-eye"></i>
                                 </a>
-                                
+
                                 <a href="{{ route('user-article.edit', $article) }}" class="btn btn-secondary btn-sm">
                                     <i class="fa fa-pencil"></i>
                                 </a>

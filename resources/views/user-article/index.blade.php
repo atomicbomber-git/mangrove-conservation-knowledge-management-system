@@ -26,7 +26,7 @@
                     @endforeach
 
                     <a href="{{ route('user-article.filtered-index', ['category_id' => $category->id]) }}" class="text-info font-weight-bold">
-                        SELURUH ARTIKEL
+                        Kelola ARTIKEL
                     </a>
                 </div>
             @endforeach

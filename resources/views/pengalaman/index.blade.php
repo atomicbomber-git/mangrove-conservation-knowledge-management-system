@@ -4,7 +4,7 @@
 <div class="container my-5">
     <h1 class='mb-5'>
         <i class='fa fa-address-book'></i>
-        Pengalaman
+        Kelola Pengalaman
     </h1>
 
     @include('shared.message', ['session_key' => 'message.success', 'state' => 'success'])
@@ -21,7 +21,7 @@
                             <th> Tema </th>
                             <th> Cerita </th>
                             <th style="width: 12rem"> Tanggal / Waktu </th>
-                            <th class="text-center"> Kendali </th>
+                            <th style="width: 8rem" class="text-center"> Kendali </th>
                         </tr>
                    </thead>
                    <tbody>
@@ -32,6 +32,10 @@
                             <td> {{ $pengalaman->cerita }} </td>
                             <td> {{ $formatter->localizedDatetime($pengalaman->created_at) }} </td>
                             <td class="text-center">
+                                <a href="{{ route('pengalaman.detail', $pengalaman) }}" class="btn btn-secondary btn-sm">
+                                    <i class="fa fa-eye"></i>
+                                </a>
+
                                 <form action='{{ route('pengalaman.delete', $pengalaman) }}' method='POST' class='d-inline-block'>
                                     @csrf
                                     <button type='submit' class='btn btn-danger btn-sm btn-delete'>

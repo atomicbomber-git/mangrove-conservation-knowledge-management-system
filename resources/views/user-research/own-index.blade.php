@@ -1,10 +1,10 @@
 @extends('shared.layout')
-@section('title', 'Seluruh Hasil Penelitian Saya')
+@section('title', 'Kelola Hasil Penelitian Saya')
 @section('content')
 <div class="container my-5">
     <h1 class='mb-5'>
         <i class='fa fa-flask'></i>
-        Seluruh Hasil Penelitian Saya
+        Kelola Hasil Penelitian Saya
     </h1>
 
     @include('shared.message', ['session_key' => 'message.success', 'state' => 'success'])
@@ -12,7 +12,7 @@
     <div class="card">
         <div class="card-header">
             <i class="fa fa-flask"></i>
-            Seluruh Hasil Penelitian Saya
+            Kelola Hasil Penelitian Saya
         </div>
         <div class="card-body">
             <div class='table-responsive'>

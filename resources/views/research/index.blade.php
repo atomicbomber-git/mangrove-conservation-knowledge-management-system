@@ -1,10 +1,10 @@
 @extends('shared.layout')
-@section('title', 'Seluruh Hasil Penelitian')
+@section('title', 'Kelola Hasil Penelitian')
 @section('content')
 <div class="container my-5">
     <h1 class='mb-5'>
         <i class='fa fa-flask'></i>
-        Seluruh Hasil Penelitian
+        Kelola Hasil Penelitian
     </h1>
 
     <div class="my-4">
@@ -19,7 +19,7 @@
     <div class="card">
         <div class="card-header">
             <i class="fa fa-flask"></i>
-            Seluruh Hasil Penelitian
+            Kelola Hasil Penelitian
         </div>
         <div class="card-body">
             <div class="table-responsive">

@@ -1,10 +1,10 @@
 @extends('shared.layout')
-@section('title', 'Seluruh Slide')
+@section('title', 'Kelola Slide')
 @section('content')
 <div class="container my-5">
     <h1 class='mb-5'>
         <i class='fa fa-image'></i>
-        Seluruh Slide
+        Kelola Slide
     </h1>
 
     @foreach ($slides as $slide)

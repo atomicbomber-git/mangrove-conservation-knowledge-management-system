@@ -12,13 +12,13 @@
             <form action="{{ route('search') }}" method="GET">
                 <div class='form-group'>
                     <label for='keyword'> Kata Kunci: </label>
-                
+
                     <input
                         id='keyword' name='keyword' type='text'
                         placeholder='Kata Kunci'
                         value='{{ old('keyword') }}'
                         class='form-control {{ !$errors->has('keyword') ?: 'is-invalid' }}'>
-                
+
                     <div class='invalid-feedback'>
                         {{ $errors->first('keyword') }}
                     </div>
@@ -47,7 +47,7 @@
             </div>
 
             <div class="alert alert-info mb-5">
-                Menampilkan hasil pencarian ke {{ $researches->firstItem() }}-{{ $researches->lastItem() }} 
+                Menampilkan hasil pencarian ke {{ $researches->firstItem() }}-{{ $researches->lastItem() }}
                 dari {{ $researches_count }} hasil
                 untuk kata kunci: <strong> {{ implode(", ", $splitted_keywords) }} </strong>
             </div>
@@ -55,7 +55,7 @@
             @else
 
             <div class="alert alert-info mb-5">
-                Menampilkan seluruh hasil penelitian
+                Menampilkan Kelola hasil penelitian
             </div>
 
             @endif
@@ -75,7 +75,7 @@
             <a href="{{ route('user-research.detail', $research) }}"> Detail </a> | <a href="{{ route('research.document', $research) }}"> Unduh Dokumen </a>
             <hr/>
             @empty
-                
+
             @endforelse
 
             @endif

@@ -36,7 +36,7 @@
                     </a>
                     <div class='dropdown-menu' aria-labelledby='program-pemerintah'>
                         @can("manageAny", "App\ProgramPemerintah")
-                        <a class='dropdown-item' href='{{ route('program-pemerintah.index') }}'> Seluruh Program </a>
+                        <a class='dropdown-item' href='{{ route('program-pemerintah.index') }}'> Kelola Program </a>
                         <a class='dropdown-item' href='{{ route('program-pemerintah.create') }}'> Tambah Program </a>
                         @endcan
                     </div>
@@ -52,8 +52,10 @@
                     </a>
                     <div class='dropdown-menu' aria-labelledby='pengalaman'>
                         @can('manage', 'App\Pengalaman')
-                        <a class='dropdown-item' href='{{ route('pengalaman.index') }}'> Seluruh Pengalaman </a>
+                        <a class='dropdown-item' href='{{ route('pengalaman.index') }}'> Kelola Pengalaman </a>
                         @endcan
+
+                        <a class='dropdown-item' href='{{ route('pengalaman.guest.index') }}'> Seluruh Pengalaman </a>
 
                         @can('create', 'App\Pengalaman')
                         <a class='dropdown-item' href='{{ route('pengalaman.create') }}'> Tambah Pengalaman </a>
@@ -76,7 +78,7 @@
                     </a>
 
                     <div class='dropdown-menu' aria-labelledby='user'>
-                        <a class='dropdown-item' href='{{ route('user.index') }}'> Seluruh Pengguna </a>
+                        <a class='dropdown-item' href='{{ route('user.index') }}'> Kelola Pengguna </a>
                         <a class='dropdown-item' href='{{ route('user.create') }}'> Tambah Pengguna </a>
                     </div>
                 </li>
@@ -91,7 +93,7 @@
                         Artikel
                     </a>
                     <div class='dropdown-menu' aria-labelledby='article'>
-                        <a class='dropdown-item' href='{{ route('article.index') }}'> Seluruh Artikel </a>
+                        <a class='dropdown-item' href='{{ route('article.index') }}'> Kelola Artikel </a>
                         <a class='dropdown-item' href='{{ route('article.create') }}'> Tambah Artikel </a>
                     </div>
                 </li>
@@ -122,7 +124,7 @@
                         Hasil Penelitian
                     </a>
                     <div class='dropdown-menu' aria-labelledby='research'>
-                        <a class='dropdown-item' href='{{ route('research.index') }}'> Seluruh Hasil Penelitian </a>
+                        <a class='dropdown-item' href='{{ route('research.index') }}'> Kelola Hasil Penelitian </a>
                         <a class='dropdown-item' href='{{ route('research.create') }}'> Tambah Hasil Penelitian </a>
                     </div>
                 </li>
