@@ -41,7 +41,11 @@
                              <td> {{ $programPemerintah->penanggung_jawab }} </td>
                              <td class="text-center">
                                  <a href="{{ route("program-pemerintah.show", $programPemerintah) }}" class="btn btn-sm btn-secondary">
-                                    <i class="fa fa-list"></i>
+                                    <i class="fa fa-eye"></i>
+                                 </a>
+
+                                 <a href="{{ route('program-pemerintah.edit', $programPemerintah) }}" class="btn btn-secondary btn-sm">
+                                    <i class="fa fa-pencil"></i>
                                  </a>
 
                                  <form action='{{ route("program-pemerintah.delete", $programPemerintah) }}' method='POST' class='d-inline-block'>
