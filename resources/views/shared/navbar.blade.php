@@ -42,6 +42,27 @@
                     </div>
                 </li>
 
+                <li class='nav-item dropdown {{ Route::is('pengalaman.*') ? 'active' : '' }}'>
+                    <a
+                        class='nav-link dropdown-toggle' href='#' id='pengalaman' role='button'
+                        data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+                        <i class='fa fa-address-book'></i>
+                        Pengalaman
+
+                    </a>
+                    <div class='dropdown-menu' aria-labelledby='pengalaman'>
+                        <a class='dropdown-item' href='{{ route('pengalaman.index') }}'> Seluruh Pengalaman </a>
+
+                        @can('create', 'App\Pengalaman')
+                        <a class='dropdown-item' href='{{ route('pengalaman.create') }}'> Tambah Pengalaman </a>
+                        @endcan
+
+                        @can('manageOwn', 'App\Pengalaman')
+                        <a class='dropdown-item' href='{{ route('pengalaman.own-index') }}'> Pengalaman Saya </a>
+                        @endcan
+                    </div>
+                </li>
+
 
                 @can('administrate-users')
                 <li class='nav-item dropdown {{ Route::is('user.*') ? 'active' : '' }}'>
@@ -86,21 +107,6 @@
                         <a class='dropdown-item' href='{{ route('user-article.index') }}'> Seluruh Artikel </a>
                         <a class='dropdown-item' href='{{ route('user-article.create') }}'> Tambah Artikel </a>
                         <a class='dropdown-item' href='{{ route('user-article.own-index') }}'> Artikel Saya </a>
-                    </div>
-                </li>
-                @endcan
-
-                @can('administrate-categories')
-                <li class='nav-item dropdown {{ Route::is('category.*') ? 'active' : '' }}'>
-                    <a
-                        class='nav-link dropdown-toggle' href='#' id='category' role='button'
-                        data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
-                        <i class='fa fa-list'></i>
-                        Kategori
-                    </a>
-                    <div class='dropdown-menu' aria-labelledby='category'>
-                        <a class='dropdown-item' href='{{ route('category.index') }}'> Seluruh Kategori </a>
-                        {{-- <a class='dropdown-item' href='{{ route('category.create') }}'> Tambah Kategori </a> --}}
                     </div>
                 </li>
                 @endcan

@@ -17,7 +17,7 @@
         <div class="card-body">
             <div class='table-responsive'>
                 <table class='table table-sm table-bordered table-striped'>
-                   <thead class='thead thead-dark'>
+                   <thead>
                         <tr>
                             <th> # </th>
                             <th style="width: 10rem"> Nama </th>

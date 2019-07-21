@@ -8,6 +8,8 @@ use App\User;
 use App\Article;
 use App\Research;
 use App\Policies\ResearchPolicy;
+use App\Pengalaman;
+use App\Policies\PengalamanPolicy;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -18,6 +20,7 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         Research::class => ResearchPolicy::class,
+        Pengalaman::class => PengalamanPolicy::class,
     ];
 
     /**

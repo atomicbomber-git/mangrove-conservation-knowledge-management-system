@@ -13,11 +13,14 @@ class User extends Authenticatable
     const TYPE_ADMIN = "admin";
     const TYPE_RESEARCHER = "researcher";
     const TYPE_REGULAR = "regular";
+    const TYPE_GOVERNMENT = "government";
+
 
     const TYPES = [
         self::TYPE_ADMIN => 'Administator',
         self::TYPE_RESEARCHER => 'Peneliti',
         self::TYPE_REGULAR => 'Umum',
+        self::TYPE_GOVERNMENT => 'Pemerintah',
     ];
 
     public function getTypeAttribute($value)
@@ -56,5 +59,10 @@ class User extends Authenticatable
     public function researches()
     {
         return $this->hasMany(Research::class, 'poster_id');
+    }
+
+    public function pengalamans()
+    {
+        return $this->hasMany(Pengalaman::class, 'poster_id');
     }
 }

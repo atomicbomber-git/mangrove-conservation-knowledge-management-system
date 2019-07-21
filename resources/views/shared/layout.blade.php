@@ -32,7 +32,7 @@
 
                     let form = this
 
-                    swal("Apakah Anda yakin ingin melakukan tindakan ini?", {
+                    swal("Apakah Anda yakin ingin menghapus berkas ini?", {
                         dangerMode: true,
                         icon: "warning",
                         buttons: {

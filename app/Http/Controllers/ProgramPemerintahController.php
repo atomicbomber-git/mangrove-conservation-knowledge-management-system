@@ -2,12 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\ProgramPemerintah;
-use App\Bibit;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Session;
-use Illuminate\Validation\Rule;
 
 class ProgramPemerintahController extends Controller
 {
@@ -20,6 +15,11 @@ class ProgramPemerintahController extends Controller
             ->get();
 
         return view("program_pemerintah.index", compact("programPemerintahs"));
+    }
+
+    public function guestIndex()
+    {
+        return view("program_pemerintah.guest_index");
     }
 
     public function show(ProgramPemerintah $programPemerintah)

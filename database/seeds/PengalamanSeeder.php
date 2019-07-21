@@ -13,7 +13,7 @@ class PengalamanSeeder extends Seeder
     public function run()
     {
         DB::transaction(function() {
-            factory(Pengalaman::class, 100);
+            factory(Pengalaman::class, 100)->create();
         });
     }
 }

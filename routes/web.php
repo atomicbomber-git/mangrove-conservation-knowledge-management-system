@@ -131,6 +131,7 @@ Route::group(['prefix' => '/slide', 'as' => 'slide.'], function() {
 });
 
 Route::group(['prefix' => '/program-pemerintah', 'as' => 'program-pemerintah.'], function() {
+    Route::get('/', 'ProgramPemerintahController@guestIndex')->name('index');
     Route::get('/index', 'ProgramPemerintahController@index')->name('index');
     Route::get('/show/{programPemerintah}', 'ProgramPemerintahController@show')->name('show');
     Route::get('/create', 'ProgramPemerintahController@create')->name('create');
@@ -138,4 +139,14 @@ Route::group(['prefix' => '/program-pemerintah', 'as' => 'program-pemerintah.'],
     Route::get('/edit/{programPemerintah}', 'ProgramPemerintahController@edit')->name('edit');
     Route::post('/update/{programPemerintah}', 'ProgramPemerintahController@update')->name('update');
     Route::post('/delete/{programPemerintah}', 'ProgramPemerintahController@delete')->name('delete');
+});
+
+Route::group(['prefix' => '/pengalaman', 'as' => 'pengalaman.'], function() {
+    Route::get('/index', 'PengalamanController@index')->name('index');
+    Route::get('/own-index', 'PengalamanController@ownIndex')->name('own-index');
+    Route::get('/create', 'PengalamanController@create')->name('create');
+    Route::post('/store', 'PengalamanController@store')->name('store');
+    Route::get('/edit/{pengalaman}', 'PengalamanController@edit')->name('edit');
+    Route::post('/update/{pengalaman}', 'PengalamanController@update')->name('update');
+    Route::post('/delete/{pengalaman}', 'PengalamanController@delete')->name('delete');
 });
