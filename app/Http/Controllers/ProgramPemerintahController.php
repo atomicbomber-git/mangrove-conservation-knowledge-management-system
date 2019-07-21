@@ -17,11 +17,6 @@ class ProgramPemerintahController extends Controller
         return view("program_pemerintah.index", compact("programPemerintahs"));
     }
 
-    public function guestIndex()
-    {
-        return view("program_pemerintah.guest_index");
-    }
-
     public function show(ProgramPemerintah $programPemerintah)
     {
         return view("program_pemerintah.show", compact("programPemerintah"));

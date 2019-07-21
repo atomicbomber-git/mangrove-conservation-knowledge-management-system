@@ -46,9 +46,17 @@ class PengalamanPolicy
         ]);
     }
 
+    public function manage(User $user)
+    {
+        return true;
+        //return !in_array($user->getOriginal("type"), [User::TYPE_ADMIN]);
+    }
+
     public function manageOwn(User $user)
     {
-        return !in_array($user->getOriginal("type"), [User::TYPE_ADMIN]);
+        return in_array($user->getOriginal("type"), [
+            User::TYPE_REGULAR, User::TYPE_RESEARCHER, User::TYPE_GOVERNMENT
+        ]);
     }
 
     /**

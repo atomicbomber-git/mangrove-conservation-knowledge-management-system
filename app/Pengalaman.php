@@ -8,6 +8,8 @@ class Pengalaman extends Model
 {
     protected $table = "pengalamans";
 
+    protected $perPage = 10;
+
     public $fillable = [
         "tema",
         "cerita",

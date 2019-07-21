@@ -18,6 +18,22 @@ class PengalamanController extends Controller
         return view("pengalaman.index", compact("pengalamans"));
     }
 
+    public function guestIndex()
+    {
+        $pengalamans = Pengalaman::query()
+            ->select("id", "tema", "cerita", "created_at", "poster_id")
+            ->with("poster:id,first_name,last_name")
+            ->orderBy("created_at", "desc")
+            ->paginate();
+
+        return view("pengalaman.guest-index", compact("pengalamans"));
+    }
+
+    public function guestDetail(Pengalaman $pengalaman)
+    {
+        return view("pengalaman.guest-detail", compact("pengalaman"));
+    }
+
     public function ownIndex()
     {
         $pengalamans = auth()->user()->pengalamans()

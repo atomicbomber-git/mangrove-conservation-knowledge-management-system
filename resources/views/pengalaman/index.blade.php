@@ -7,34 +7,49 @@
         Pengalaman
     </h1>
 
+    @include('shared.message', ['session_key' => 'message.success', 'state' => 'success'])
+
     <div class="card">
         <div class="card-body">
             @inject('formatter', 'App\Helpers\FormatterInterface')
 
-            @foreach ($pengalamans as $pengalaman)
-            <a href="" class="d-block text-muted">
-                {{ $pengalaman->tema }}
-            </a>
-            <div class="small">
-                {{ $formatter->localizedDate($pengalaman->created_at) }} oleh <span class="text-primary font-weight-bold"> {{ $pengalaman->poster->name }} </span>
+            <div class='table-responsive'>
+                <table class='table table-sm table-bordered table-striped'>
+                   <thead>
+                        <tr>
+                            <th> # </th>
+                            <th> Tema </th>
+                            <th> Cerita </th>
+                            <th style="width: 12rem"> Tanggal / Waktu </th>
+                            <th class="text-center"> Kendali </th>
+                        </tr>
+                   </thead>
+                   <tbody>
+                       @foreach ($pengalamans as $pengalaman)
+                        <tr>
+                            <td> {{ $loop->iteration }}. </td>
+                            <td> {{ $pengalaman->tema }} </td>
+                            <td> {{ $pengalaman->cerita }} </td>
+                            <td> {{ $formatter->localizedDatetime($pengalaman->created_at) }} </td>
+                            <td class="text-center">
+                                <form action='{{ route('pengalaman.delete', $pengalaman) }}' method='POST' class='d-inline-block'>
+                                    @csrf
+                                    <button type='submit' class='btn btn-danger btn-sm btn-delete'>
+                                        <i class='fa fa-trash'></i>
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                       @endforeach
+                   </tbody>
+                </table>
             </div>
-            <p>
-                {{ $pengalaman->cerita }}
-            </p>
 
-            @endforeach
-
-            <div class="alert alert-info mb-5">
-                Menampilkan pengalaman ke {{ $pengalamans->firstItem() }}-{{ $pengalamans->lastItem() }}
-                dari {{ $pengalamans->total() }} pengalaman yang ada
-            </div>
-
-            <div class="d-flex justify-content-center p-4">
-                <div style="overflow-x: scroll">
-                    {{ $pengalamans->links() }}
-                </div>
-            </div>
         </div>
     </div>
 </div>
+@endsection
+
+@section('extra-scripts')
+    @include('shared.datatables')
 @endsection

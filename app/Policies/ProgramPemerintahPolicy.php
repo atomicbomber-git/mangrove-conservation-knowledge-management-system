@@ -26,6 +26,11 @@ class ProgramPemerintahPolicy
         return $user->getOriginal("type") === User::TYPE_ADMIN;
     }
 
+    public function viewGuestIndex(?User $user)
+    {
+        return $user === null;
+    }
+
     /**
      * Determine whether the user can view the program pemerintah.
      *

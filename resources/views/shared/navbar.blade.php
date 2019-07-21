@@ -51,7 +51,9 @@
 
                     </a>
                     <div class='dropdown-menu' aria-labelledby='pengalaman'>
+                        @can('manage', 'App\Pengalaman')
                         <a class='dropdown-item' href='{{ route('pengalaman.index') }}'> Seluruh Pengalaman </a>
+                        @endcan
 
                         @can('create', 'App\Pengalaman')
                         <a class='dropdown-item' href='{{ route('pengalaman.create') }}'> Tambah Pengalaman </a>
@@ -164,6 +166,13 @@
                     <a class='nav-link' href='{{ route('user-article.index') }}'>
                         <i class='fa fa-file-text'></i>
                         Artikel
+                    </a>
+                </li>
+
+                <li class='nav-item {{ Route::is('pengalaman.guest.*') ? 'active' : '' }}'>
+                    <a class='nav-link' href='{{ route('pengalaman.guest.index') }}'>
+                        <i class='fa fa-list-alt'></i>
+                        Pengalaman
                     </a>
                 </li>
 

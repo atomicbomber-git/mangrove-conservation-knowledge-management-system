@@ -16,6 +16,11 @@ class Formatter implements FormatterInterface
         return (new Date($value))->format('l, j F Y');
     }
 
+    public function localizedDatetime($value): string
+    {
+        return (new Date($value))->format('l, j F Y H:i:s');
+    }
+
     public function currency($value): string
     {
         return number_format($value, 2, ",", ".");

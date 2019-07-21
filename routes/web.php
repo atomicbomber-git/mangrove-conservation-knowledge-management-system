@@ -131,7 +131,6 @@ Route::group(['prefix' => '/slide', 'as' => 'slide.'], function() {
 });
 
 Route::group(['prefix' => '/program-pemerintah', 'as' => 'program-pemerintah.'], function() {
-    Route::get('/', 'ProgramPemerintahController@guestIndex')->name('index');
     Route::get('/index', 'ProgramPemerintahController@index')->name('index');
     Route::get('/show/{programPemerintah}', 'ProgramPemerintahController@show')->name('show');
     Route::get('/create', 'ProgramPemerintahController@create')->name('create');
@@ -142,6 +141,8 @@ Route::group(['prefix' => '/program-pemerintah', 'as' => 'program-pemerintah.'],
 });
 
 Route::group(['prefix' => '/pengalaman', 'as' => 'pengalaman.'], function() {
+    Route::get('/', 'PengalamanController@guestIndex')->name('guest.index');
+    Route::get('/detail/{pengalaman}', 'PengalamanController@guestDetail')->name('guest.detail');
     Route::get('/index', 'PengalamanController@index')->name('index');
     Route::get('/own-index', 'PengalamanController@ownIndex')->name('own-index');
     Route::get('/create', 'PengalamanController@create')->name('create');

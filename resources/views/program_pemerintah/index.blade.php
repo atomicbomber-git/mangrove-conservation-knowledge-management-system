@@ -49,10 +49,10 @@
                                  </a>
 
                                  <form action='{{ route("program-pemerintah.delete", $programPemerintah) }}' method='POST' class='d-inline-block'>
-                                     @csrf
-                                     <button type='submit' class='btn btn-danger btn-sm btn-delete'>
-                                         <i class='fa fa-trash'></i>
-                                     </button>
+                                    @csrf
+                                    <button type='submit' class='btn btn-danger btn-sm btn-delete'>
+                                        <i class='fa fa-trash'></i>
+                                    </button>
                                  </form>
                             </td>
                          </tr>
