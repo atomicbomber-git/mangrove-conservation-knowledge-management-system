@@ -115,22 +115,7 @@
                 </li>
                 @endcan
 
-                @can('administrate-researches')
-                <li class='nav-item dropdown {{ Route::is('research.*') ? 'active' : '' }}'>
-                    <a
-                        class='nav-link dropdown-toggle' href='#' id='research' role='button'
-                        data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
-                        <i class='fa fa-flask'></i>
-                        Hasil Penelitian
-                    </a>
-                    <div class='dropdown-menu' aria-labelledby='research'>
-                        <a class='dropdown-item' href='{{ route('research.index') }}'> Kelola Hasil Penelitian </a>
-                        <a class='dropdown-item' href='{{ route('research.create') }}'> Tambah Hasil Penelitian </a>
-                    </div>
-                </li>
-                @endcan
-
-                @can('view-researches')
+                @can('seeManagementMenu', \App\Research::class)
                 <li class='nav-item dropdown {{ Route::is('user-research.*') ? 'active' : '' }}'>
                     <a
                         class='nav-link dropdown-toggle' href='#' id='user-research' role='button'
@@ -140,8 +125,9 @@
                     </a>
                     <div class='dropdown-menu' aria-labelledby='user-research'>
                         <a class='dropdown-item' href='{{ route('user-research.index') }}'> Seluruh Hasil Penelitian </a>
-                        @can('manage-researches')
                         <a class='dropdown-item' href='{{ route('user-research.create') }}'> Tambah Hasil Penelitian </a>
+
+                        @can('manageOwn', \App\Research::class)
                         <a class='dropdown-item' href='{{ route('user-research.own-index') }}'> Hasil Penelitian Saya </a>
                         @endcan
                     </div>
@@ -201,7 +187,7 @@
                     <a
                         class='nav-link dropdown-toggle active' href='#' id='user' role='button'
                         data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
-                        {{ auth()->user()->name }}
+                        {{ auth()->user()->name }} ({{ auth()->user()->type }})
                     </a>
                     <div class='dropdown-menu' aria-labelledby='user'>
                         <div class='dropdown-item'>

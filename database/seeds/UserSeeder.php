@@ -22,7 +22,7 @@ class UserSeeder extends Seeder
             ->create([
                 "username" => "peneliti",
                 "password" => Hash::make("peneliti"),
-                "type" => App\User::TYPE_REGULAR,
+                "type" => App\User::TYPE_RESEARCHER,
             ]);
 
         factory(App\User::class, 30)->create();

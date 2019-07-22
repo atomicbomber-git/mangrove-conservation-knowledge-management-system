@@ -23,7 +23,7 @@
                             <th> Judul </th>
                             <th> Kategori </th>
                             <th> Status </th>
-                            <th> Tindakan </th>
+                            <th class="text-center"> Tindakan </th>
                         </tr>
                    </thead>
                    <tbody>
@@ -35,7 +35,7 @@
                             <td>
                                 @include("shared.research-status", ["article" => $research])
                             </td>
-                            <td>
+                            <td class="text-center">
                                 <a href="{{ route('user-research.edit', $research) }}" class="btn btn-secondary btn-sm">
                                     <i class="fa fa-pencil"></i>
                                 </a>

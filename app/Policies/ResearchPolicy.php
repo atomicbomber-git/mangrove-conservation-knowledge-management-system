@@ -33,6 +33,16 @@ class ResearchPolicy
         //
     }
 
+    public function seeManagementMenu(User $user)
+    {
+        return in_array($user->getOriginal('type'), [User::TYPE_ADMIN, User::TYPE_RESEARCHER]);
+    }
+
+    public function manageOwn(User $user)
+    {
+        return in_array($user->getOriginal('type'), [User::TYPE_RESEARCHER]);
+    }
+
     /**
      * Determine whether the user can update the research.
      *
