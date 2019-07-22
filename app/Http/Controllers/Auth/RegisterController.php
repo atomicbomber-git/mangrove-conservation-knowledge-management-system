@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Validation\Rule;
 
 class RegisterController extends Controller
 {
@@ -53,6 +54,7 @@ class RegisterController extends Controller
             'last_name' => ['required', 'string', 'max:255'],
             'username' => 'required|unique:users',
             'password' => ['required', 'string', 'min:6', 'confirmed'],
+            'type' => ['required', Rule::in(User::REGISTERABLE_TYPES)],
         ]);
     }
 
@@ -69,7 +71,7 @@ class RegisterController extends Controller
             'last_name' => $data['last_name'],
             'username' => $data['username'],
             'password' => $data['password'],
-            'type' => 'regular'
+            'type' => $data['type'],
         ]);
     }
 }

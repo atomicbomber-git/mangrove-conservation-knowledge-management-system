@@ -13,14 +13,16 @@ class User extends Authenticatable
     const TYPE_ADMIN = "admin";
     const TYPE_RESEARCHER = "researcher";
     const TYPE_REGULAR = "regular";
-    const TYPE_GOVERNMENT = "government";
-
 
     const TYPES = [
         self::TYPE_ADMIN => 'Administator',
         self::TYPE_RESEARCHER => 'Peneliti',
         self::TYPE_REGULAR => 'Umum',
-        self::TYPE_GOVERNMENT => 'Pemerintah',
+    ];
+
+    const REGISTERABLE_TYPES = [
+        self::TYPE_RESEARCHER,
+        self::TYPE_REGULAR,
     ];
 
     public function getTypeAttribute($value)

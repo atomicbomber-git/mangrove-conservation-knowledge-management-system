@@ -54,6 +54,18 @@
                    </div>
 
                    <div class='form-group'>
+                       <label for='type'> Tipe Pengguna: </label>
+                       <select name='type' id='type' class='form-control'>
+                           @foreach(App\User::REGISTERABLE_TYPES as $type_id)
+                           <option {{ old('type') !== $type_id ?: 'selected' }} value='{{ $type_id }}'> {{ App\User::TYPES[$type_id] }} </option>
+                           @endforeach
+                       </select>
+                       <div class='invalid-feedback'>
+                           {{ $errors->first('type') }}
+                       </div>
+                   </div>
+
+                   <div class='form-group'>
                        <label for='username'> Nama Pengguna: </label>
 
                        <input
@@ -97,8 +109,8 @@
 
                    <div class="form-group mt-2">
                        <button class="btn btn-primary">
-                           <i class="fa fa-plus"></i>
-                           Tambah Data
+                           <i class="fa fa-check"></i>
+                           Daftarkan Akun
                        </button>
                    </div>
                </form>

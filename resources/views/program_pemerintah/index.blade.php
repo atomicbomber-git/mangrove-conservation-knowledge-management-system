@@ -21,6 +21,7 @@
                         <tr>
                             <th> # </th>
                             <th style="width: 10rem"> Nama </th>
+                            <th> Lokasi </th>
                             <th class="text-right"> Dana (Rp.) </th>
                             <th> Durasi </th>
                             <th> Penanggung Jawab </th>
@@ -33,6 +34,7 @@
                          <tr>
                              <td> {{ $programPemerintah->id }} </td>
                              <td> {{ $programPemerintah->nama }} </td>
+                             <td> {{ $programPemerintah->lokasi }} </td>
                              <td class="text-right"> {{ $formatter->currency($programPemerintah->dana) }} </td>
                              <td>
                                  {{ $formatter->date($programPemerintah->tanggal_mulai) }} -

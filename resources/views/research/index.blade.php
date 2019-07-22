@@ -7,13 +7,6 @@
         Kelola Hasil Penelitian
     </h1>
 
-    <div class="my-4">
-        <a href="{{ route('research.create') }}" class="btn btn-secondary">
-            Tambahkan Hasil Penelitian Baru
-            <i class="fa fa-plus"></i>
-        </a>
-    </div>
-
     @include('shared.message', ['session_key' => 'message.success', 'state' => 'success'])
 
     <div class="card">
@@ -33,10 +26,10 @@
                             <th> Kategori </th>
                             <th> Tahun </th>
                             <th class="text-center"> Status </th>
-                            <th> Tindakan </th>
+                            <th class="text-center"> Tindakan </th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="text-center">
                         @foreach ($researches as $research)
                             <tr>
                                 <td> {{ $loop->iteration }} </td>

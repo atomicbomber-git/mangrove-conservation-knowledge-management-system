@@ -30,6 +30,20 @@
                     </div>
                 </div>
 
+                <div class='form-group'>
+                    <label for='lokasi'> Lokasi: </label>
+
+                    <input
+                        id='lokasi' name='lokasi' type='text'
+                        placeholder='Lokasi'
+                        value='{{ old('lokasi') }}'
+                        class='form-control {{ !$errors->has('lokasi') ?: 'is-invalid' }}'>
+
+                    <div class='invalid-feedback'>
+                        {{ $errors->first('lokasi') }}
+                    </div>
+                </div>
+
                 <div class="form-row">
                     <div class="col-md">
                         <div class='form-group'>

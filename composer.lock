@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "e0f13958c0543d39ce19b4d68a41a496",
+    "content-hash": "bc066c1946c41518638921a769068e4d",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -450,6 +450,53 @@
                 "schedule"
             ],
             "time": "2019-03-31T00:38:28+00:00"
+        },
+        {
+            "name": "drfraker/snipe-migrations",
+            "version": "v1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/drfraker/snipe-migrations.git",
+                "reference": "2338c63d3ff4b3b03f18d504bf298ffa1c8ad15a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/drfraker/snipe-migrations/zipball/2338c63d3ff4b3b03f18d504bf298ffa1c8ad15a",
+                "reference": "2338c63d3ff4b3b03f18d504bf298ffa1c8ad15a",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^3.7",
+                "phpunit/phpunit": "^7.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Drfraker\\SnipeMigrations\\SnipeMigrationsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Drfraker\\SnipeMigrations\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Dustin Fraker",
+                    "email": "drfraker@gmail.com"
+                }
+            ],
+            "description": "Blazing fast database migrations for Laravel tests.",
+            "time": "2019-07-15T14:37:12+00:00"
         },
         {
             "name": "egulias/email-validator",

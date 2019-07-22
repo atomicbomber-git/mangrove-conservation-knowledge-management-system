@@ -9,7 +9,7 @@ class ProgramPemerintahController extends Controller
     public function index()
     {
         $programPemerintahs = ProgramPemerintah::query()
-            ->select("id", "nama", "tanggal_mulai", "tanggal_selesai", "dana", "penanggung_jawab")
+            ->select("id", "nama", "tanggal_mulai", "tanggal_selesai", "dana", "penanggung_jawab", "lokasi")
             ->orderBy("tanggal_mulai", "desc")
             ->orderBy("tanggal_selesai", "desc")
             ->get();
@@ -41,6 +41,7 @@ class ProgramPemerintahController extends Controller
             "bentuk" => "required|string|max:1000",
             "hasil" => "required|string|max:1000",
             "persentase_hasil" => "required|numeric|gte:0|lte:100",
+            "lokasi" => "required|string|max:100",
         ]);
 
         ProgramPemerintah::create($data);
@@ -69,6 +70,7 @@ class ProgramPemerintahController extends Controller
             "bentuk" => "required|string|max:1000",
             "hasil" => "required|string|max:1000",
             "persentase_hasil" => "required|numeric|gte:0|lte:100",
+            "lokasi" => "required|string|max:100",
         ]);
 
         $programPemerintah->update($data);

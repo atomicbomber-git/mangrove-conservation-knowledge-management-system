@@ -18,5 +18,6 @@ $factory->define(App\ProgramPemerintah::class, function (Faker $faker) {
         "bentuk" => $faker->realText,
         "hasil" => $faker->realText,
         "persentase_hasil" => rand(0, 10000) / 100,
+        "lokasi" => $faker->city(),
     ];
 });

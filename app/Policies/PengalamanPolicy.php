@@ -42,7 +42,7 @@ class PengalamanPolicy
     public function create(User $user)
     {
         return in_array($user->getOriginal("type"), [
-            User::TYPE_REGULAR, User::TYPE_RESEARCHER, User::TYPE_GOVERNMENT
+            User::TYPE_REGULAR, User::TYPE_RESEARCHER,
         ]);
     }
 
@@ -54,7 +54,7 @@ class PengalamanPolicy
     public function manageOwn(User $user)
     {
         return in_array($user->getOriginal("type"), [
-            User::TYPE_REGULAR, User::TYPE_RESEARCHER, User::TYPE_GOVERNMENT
+            User::TYPE_REGULAR, User::TYPE_RESEARCHER,
         ]);
     }
 

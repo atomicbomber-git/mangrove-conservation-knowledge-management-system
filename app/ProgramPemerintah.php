@@ -18,5 +18,6 @@ class ProgramPemerintah extends Model
         "bentuk",
         "hasil",
         "persentase_hasil",
+        "lokasi",
     ];
 }

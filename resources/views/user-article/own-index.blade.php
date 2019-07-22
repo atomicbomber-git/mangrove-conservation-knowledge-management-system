@@ -27,7 +27,7 @@
                             <th> Kategori </th>
                             <th> Status </th>
                             <th> Tanggal Publikasi </th>
-                            <th> Tindakan </th>
+                            <th class="text-center"> Tindakan </th>
                         </tr>
                    </thead>
                    <tbody>
@@ -43,7 +43,7 @@
                                 @include("shared.status", ["status" => $article->getOriginal("status")])
                             </td>
                             <td> @localized_date($article->published_date) </td>
-                            <td>
+                            <td class="text-center">
                                 <a href="{{ route('user-article.read', $article) }}" class="btn btn-secondary btn-sm">
                                     <i class="fa fa-eye"></i>
                                 </a>

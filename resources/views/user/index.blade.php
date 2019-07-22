@@ -9,13 +9,6 @@
 
     @include('shared.message', ['session_key' => 'message.success', 'state' => 'success'])
 
-    <div class="my-4">
-        <a href="{{ route('user.create') }}" class="btn btn-secondary">
-            Tambahkan Akun Baru
-            <i class="fa fa-plus"></i>
-        </a>
-    </div>
-
     <div class="card">
         <div class="card-header">
             <i class="fa fa-users"></i>
@@ -30,7 +23,7 @@
                             <th> Nama Asli </th>
                             <th> Nama Pengguna </th>
                             <th> Status </th>
-                            <th> Tindakan </th>
+                            <th class="text-center"> Tindakan </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -40,7 +33,7 @@
                             <td> {{ $user->name }} </td>
                             <td> {{ $user->username }} </td>
                             <td> {{ $user->type }} </td>
-                            <td>
+                            <td class="text-center">
 
                                 <a href="{{ route('user.edit', $user) }}" class="btn btn-secondary btn-sm">
                                     <i class="fa fa-pencil"></i>

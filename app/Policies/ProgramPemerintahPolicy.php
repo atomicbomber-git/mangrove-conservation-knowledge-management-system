@@ -23,7 +23,7 @@ class ProgramPemerintahPolicy
 
     public function manageAny(User $user)
     {
-        return $user->getOriginal("type") === User::TYPE_ADMIN;
+        return in_array($user->getOriginal("type"), [User::TYPE_ADMIN]);
     }
 
     public function viewGuestIndex(?User $user)

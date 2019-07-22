@@ -27,6 +27,7 @@
                 </li>
                 @endcan
 
+                @can("manageAny", \App\ProgramPemerintah::class)
                 <li class='nav-item dropdown {{ Route::is('program-pemerintah.*') ? 'active' : '' }}'>
                     <a
                         class='nav-link dropdown-toggle' href='#' id='program-pemerintah' role='button'
@@ -35,12 +36,11 @@
                         Program Pemerintah
                     </a>
                     <div class='dropdown-menu' aria-labelledby='program-pemerintah'>
-                        @can("manageAny", "App\ProgramPemerintah")
                         <a class='dropdown-item' href='{{ route('program-pemerintah.index') }}'> Kelola Program </a>
                         <a class='dropdown-item' href='{{ route('program-pemerintah.create') }}'> Tambah Program </a>
-                        @endcan
                     </div>
                 </li>
+                @endcan
 
                 <li class='nav-item dropdown {{ Route::is('pengalaman.*') ? 'active' : '' }}'>
                     <a

@@ -25,7 +25,7 @@
                             <th> Penulis </th>
                             <th> Kategori </th>
                             <th> Tahun </th>
-                            <th> Tindakan </th>
+                            <th class="text-center"> Tindakan </th>
                         </tr>
                    </thead>
                    <tbody>
@@ -37,7 +37,7 @@
                             <td> {{ $research->formatted_authors }} </td>
                             <td> {{ $research->category->name }} </td>
                             <td> {{ $research->year }} </td>
-                            <td>
+                            <td class="text-center">
                                 <a href="{{ route('user-research.detail', $research) }}" class="btn btn-secondary btn-sm">
                                     <i class="fa fa-list"></i>
                                 </a>
