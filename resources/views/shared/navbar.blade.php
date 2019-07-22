@@ -6,8 +6,22 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                @auth
+                <li class='nav-item dropdown {{ Route::is('information.*') ? 'active' : '' }}'>
+                    <a
+                        class='nav-link dropdown-toggle' href='#' id='information' role='button'
+                        data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+                        <i class='fa fa-info'></i>
+                        Mangrove
+                    </a>
 
+                    <div class='dropdown-menu' aria-labelledby='information'>
+                        @foreach ($information as $record)
+                        <a class='dropdown-item' href='{{ route('information.index', $record) }}'> {{ $record->menu_title }} </a>
+                        @endforeach
+                    </div>
+                </li>
+
+                @auth
                 @can('administrate-home')
                 <li class='nav-item dropdown {{ Route::is('home.*') ? 'active' : '' }}'>
                     <a
@@ -52,11 +66,11 @@
 
                     </a>
                     <div class='dropdown-menu' aria-labelledby='pengalaman'>
+                        <a class='dropdown-item' href='{{ route('pengalaman.guest.index') }}'> Seluruh Pengalaman </a>
+
                         @can('manage', 'App\Pengalaman')
                         <a class='dropdown-item' href='{{ route('pengalaman.index') }}'> Kelola Pengalaman </a>
                         @endcan
-
-                        <a class='dropdown-item' href='{{ route('pengalaman.guest.index') }}'> Seluruh Pengalaman </a>
 
                         @can('create', 'App\Pengalaman')
                         <a class='dropdown-item' href='{{ route('pengalaman.create') }}'> Tambah Pengalaman </a>
@@ -142,22 +156,6 @@
                 @endcan
 
                 @else
-
-                <li class='nav-item dropdown {{ Route::is('information.*') ? 'active' : '' }}'>
-                    <a
-                        class='nav-link dropdown-toggle' href='#' id='information' role='button'
-                        data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
-                        <i class='fa fa-info'></i>
-                        Mangrove
-                    </a>
-
-                    <div class='dropdown-menu' aria-labelledby='information'>
-                        @foreach ($information as $record)
-                        <a class='dropdown-item' href='{{ route('information.index', $record) }}'> {{ $record->menu_title }} </a>
-                        @endforeach
-                    </div>
-                </li>
-
                 <li class='nav-item {{ Route::is('user-article.*') ? 'active' : '' }}'>
                     <a class='nav-link' href='{{ route('user-article.index') }}'>
                         <i class='fa fa-file-text'></i>
@@ -185,6 +183,7 @@
                         Hasil Penelitian
                     </a>
                 </li>
+                @endauth
 
                 <li class='nav-item {{ Route::is('search') ? 'active' : '' }}'>
                     <a class='nav-link' href='{{ route('search') }}'>
@@ -192,9 +191,6 @@
                         Pencarian
                     </a>
                 </li>
-
-
-                @endauth
             </div>
 
             <div class="navbar-nav ml-auto">
