@@ -9,10 +9,6 @@
     </h1>
 
     <div class="card">
-        <div class="card-header">
-            <i class="fa fa-product-hunt"></i>
-            Program Pemerintah
-        </div>
         <div class="card-body">
             @include('program_pemerintah.detail-component')
         </div>

@@ -17,6 +17,22 @@ class ProgramPemerintahController extends Controller
         return view("program_pemerintah.index", compact("programPemerintahs"));
     }
 
+    public function guestIndex()
+    {
+        $programPemerintahs = ProgramPemerintah::query()
+            ->select("id", "nama", "tanggal_mulai", "tanggal_selesai", "dana", "penanggung_jawab", "lokasi")
+            ->orderBy("tanggal_mulai", "desc")
+            ->orderBy("tanggal_selesai", "desc")
+            ->paginate();
+
+        return view("program_pemerintah.guest-index", compact("programPemerintahs"));
+    }
+
+    public function guestDetail(ProgramPemerintah $programPemerintah)
+    {
+        return view("program_pemerintah.guest-detail", compact("programPemerintah"));
+    }
+
     public function show(ProgramPemerintah $programPemerintah)
     {
         return view("program_pemerintah.show", compact("programPemerintah"));

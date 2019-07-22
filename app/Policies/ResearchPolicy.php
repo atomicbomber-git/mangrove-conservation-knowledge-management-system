@@ -35,7 +35,12 @@ class ResearchPolicy
 
     public function seeManagementMenu(User $user)
     {
-        return in_array($user->getOriginal('type'), [User::TYPE_ADMIN, User::TYPE_RESEARCHER]);
+        return in_array($user->getOriginal('type'), [User::TYPE_ADMIN, User::TYPE_RESEARCHER, User::TYPE_REGULAR]);
+    }
+
+    public function manageAll(User $user)
+    {
+        return in_array($user->getOriginal('type'), [User::TYPE_ADMIN]);
     }
 
     public function manageOwn(User $user)

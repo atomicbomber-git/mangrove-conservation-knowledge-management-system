@@ -21,14 +21,9 @@ class ProgramPemerintahPolicy
 
     }
 
-    public function manageAny(User $user)
+    public function seeManagementMenu(User $user)
     {
         return in_array($user->getOriginal("type"), [User::TYPE_ADMIN]);
-    }
-
-    public function viewGuestIndex(?User $user)
-    {
-        return $user === null;
     }
 
     /**
@@ -40,7 +35,7 @@ class ProgramPemerintahPolicy
      */
     public function view(User $user, ProgramPemerintah $programPemerintah)
     {
-        //
+        return true;
     }
 
     /**

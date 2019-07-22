@@ -27,7 +27,6 @@
                 </li>
                 @endcan
 
-                @can("manageAny", \App\ProgramPemerintah::class)
                 <li class='nav-item dropdown {{ Route::is('program-pemerintah.*') ? 'active' : '' }}'>
                     <a
                         class='nav-link dropdown-toggle' href='#' id='program-pemerintah' role='button'
@@ -36,11 +35,13 @@
                         Program Pemerintah
                     </a>
                     <div class='dropdown-menu' aria-labelledby='program-pemerintah'>
-                        <a class='dropdown-item' href='{{ route('program-pemerintah.index') }}'> Kelola Program </a>
-                        <a class='dropdown-item' href='{{ route('program-pemerintah.create') }}'> Tambah Program </a>
+                        <a class='dropdown-item' href='{{ route('program-pemerintah.guest.index') }}'> Seluruh Program Pemerintah </a>
+                        @can("seeManagementMenu", \App\ProgramPemerintah::class)
+                        <a class='dropdown-item' href='{{ route('program-pemerintah.index') }}'> Kelola Program Pemerintah </a>
+                        <a class='dropdown-item' href='{{ route('program-pemerintah.create') }}'> Tambah Program Pemerintah </a>
+                        @endcan
                     </div>
                 </li>
-                @endcan
 
                 <li class='nav-item dropdown {{ Route::is('pengalaman.*') ? 'active' : '' }}'>
                     <a
@@ -93,6 +94,7 @@
                         Artikel
                     </a>
                     <div class='dropdown-menu' aria-labelledby='article'>
+                        <a class='dropdown-item' href='{{ route('user-article.index') }}'> Seluruh Artikel </a>
                         <a class='dropdown-item' href='{{ route('article.index') }}'> Kelola Artikel </a>
                         <a class='dropdown-item' href='{{ route('article.create') }}'> Tambah Artikel </a>
                     </div>
@@ -124,10 +126,15 @@
                         Hasil Penelitian
                     </a>
                     <div class='dropdown-menu' aria-labelledby='user-research'>
+                        @cannot('manageAll', \App\Research::class)
                         <a class='dropdown-item' href='{{ route('user-research.index') }}'> Seluruh Hasil Penelitian </a>
-                        <a class='dropdown-item' href='{{ route('user-research.create') }}'> Tambah Hasil Penelitian </a>
+                        @else
+                        <a class='dropdown-item' href='{{ route('research.index') }}'> Seluruh Hasil Penelitian </a>
+                        <a class='dropdown-item' href='{{ route('research.create') }}'> Tambah Hasil Penelitian </a>
+                        @endcan
 
                         @can('manageOwn', \App\Research::class)
+                        <a class='dropdown-item' href='{{ route('user-research.create') }}'> Tambah Hasil Penelitian </a>
                         <a class='dropdown-item' href='{{ route('user-research.own-index') }}'> Hasil Penelitian Saya </a>
                         @endcan
                     </div>
@@ -135,6 +142,7 @@
                 @endcan
 
                 @else
+
                 <li class='nav-item dropdown {{ Route::is('information.*') ? 'active' : '' }}'>
                     <a
                         class='nav-link dropdown-toggle' href='#' id='information' role='button'
@@ -159,8 +167,15 @@
 
                 <li class='nav-item {{ Route::is('pengalaman.guest.*') ? 'active' : '' }}'>
                     <a class='nav-link' href='{{ route('pengalaman.guest.index') }}'>
-                        <i class='fa fa-list-alt'></i>
+                        <i class='fa fa-address-book'></i>
                         Pengalaman
+                    </a>
+                </li>
+
+                <li class='nav-item {{ Route::is('program-pemerintah.guest.*') ? 'active' : '' }}'>
+                    <a class='nav-link' href='{{ route('program-pemerintah.guest.index') }}'>
+                        <i class='fa fa-product-hunt'></i>
+                        Program Pemerintah
                     </a>
                 </li>
 
@@ -177,6 +192,7 @@
                         Pencarian
                     </a>
                 </li>
+
 
                 @endauth
             </div>

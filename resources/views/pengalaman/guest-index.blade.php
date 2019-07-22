@@ -12,15 +12,18 @@
             @inject('formatter', 'App\Helpers\FormatterInterface')
 
             @foreach ($pengalamans as $pengalaman)
-            <a href="{{ route('pengalaman.guest.detail', $pengalaman) }}" class="d-block text-muted">
-                {{ $pengalaman->tema }}
-            </a>
-            <div class="small">
-                {{ $formatter->localizedDatetime($pengalaman->created_at) }} oleh <span class="text-primary font-weight-bold"> {{ $pengalaman->poster->name }} </span>
+            <div class="mb-3">
+                <a href="{{ route('pengalaman.guest.detail', $pengalaman) }}" class="d-block text-primary h5 mb-1">
+                    {{ $pengalaman->tema }}
+                </a>
+                <div class="small">
+                    {{ $formatter->localizedDatetime($pengalaman->created_at) }} oleh <span class="text-primary font-weight-bold"> {{ $pengalaman->poster->name }} </span>
+                </div>
+                <p>
+                    {{ $pengalaman->cerita }}
+                </p>
             </div>
-            <p>
-                {{ $pengalaman->cerita }}
-            </p>
+
 
             @endforeach
 
