@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Pengalaman extends Model
 {
     protected $table = "pengalamans";
-
     protected $perPage = 10;
 
     public $fillable = [
@@ -16,6 +15,12 @@ class Pengalaman extends Model
         "pengaduan",
         "keluhan",
         "saran",
+    ];
+
+    const TEMAS = [
+        "Pembibitan",
+        "Perawatan",
+        "Penanaman",
     ];
 
     public function poster()

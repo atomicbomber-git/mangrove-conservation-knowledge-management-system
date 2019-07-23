@@ -13,7 +13,7 @@ $factory->define(Pengalaman::class, function (Faker $faker) {
 
     return [
         "poster_id" => $posters->random()->id,
-        "tema" => ucfirst($faker->sentence()),
+        "tema" => $faker->randomElement(Pengalaman::TEMAS),
         "cerita" => $faker->realText(),
         "pengaduan" => $faker->realText(),
         "keluhan" => $faker->realText(),

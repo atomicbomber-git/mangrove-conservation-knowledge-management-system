@@ -20,82 +20,80 @@
                 @csrf
 
                 <div class='form-group'>
-                        <label for='tema'> Tema: </label>
-
-                        <input
-                            id='tema' name='tema' type='text'
-                            placeholder='Tema'
-                            value='{{ old('tema', $pengalaman->tema) }}'
-                            class='form-control {{ !$errors->has('tema') ?: 'is-invalid' }}'>
-
-                        <div class='invalid-feedback'>
-                            {{ $errors->first('tema') }}
-                        </div>
+                    <label for='tema'> Tema: </label>
+                    <select name='tema' id='tema' class='form-control'>
+                        @foreach(App\Pengalaman::TEMAS as $tema)
+                        <option {{ old('tema', $pengalaman->tema) !== $tema ?: 'selected' }} value='{{ $tema }}'> {{ $tema }} </option>
+                        @endforeach
+                    </select>
+                    <div class='invalid-feedback'>
+                        {{ $errors->first('tema') }}
                     </div>
+                </div>
 
-                    <div class='form-group'>
-                        <label for='cerita'> Cerita: </label>
+                <div class='form-group'>
+                    <label for='cerita'> Cerita: </label>
 
-                        <textarea
-                            placeholder="Cerita`"
-                            id='cerita' name='cerita'
-                            class='form-control {{ !$errors->has('cerita') ?: 'is-invalid' }}'
-                            col='30' row='6'
-                            >{{ old('cerita', $pengalaman->cerita) }}</textarea>
+                    <textarea
+                        placeholder="Cerita`"
+                        id='cerita' name='cerita'
+                        class='form-control {{ !$errors->has('cerita') ?: 'is-invalid' }}'
+                        col='30' row='6'
+                        >{{ old('cerita', $pengalaman->cerita) }}</textarea>
 
-                        <div class='invalid-feedback'>
-                            {{ $errors->first('cerita') }}
-                        </div>
+                    <div class='invalid-feedback'>
+                        {{ $errors->first('cerita') }}
                     </div>
+                </div>
 
-                    <div class='form-group'>
-                        <label for='pengaduan'> Pengaduan: </label>
+                <div class='form-group'>
+                    <label for='pengaduan'> Pengaduan: </label>
 
-                        <textarea
-                            placeholder="Pengaduan"
-                            id='pengaduan' name='pengaduan'
-                            class='form-control {{ !$errors->has('pengaduan') ?: 'is-invalid' }}'
-                            col='30' row='6'
-                            >{{ old('pengaduan', $pengalaman->pengaduan) }}</textarea>
+                    <textarea
+                        placeholder="Pengaduan"
+                        id='pengaduan' name='pengaduan'
+                        class='form-control {{ !$errors->has('pengaduan') ?: 'is-invalid' }}'
+                        col='30' row='6'
+                        >{{ old('pengaduan', $pengalaman->pengaduan) }}</textarea>
 
-                        <div class='invalid-feedback'>
-                            {{ $errors->first('pengaduan') }}
-                        </div>
+                    <div class='invalid-feedback'>
+                        {{ $errors->first('pengaduan') }}
                     </div>
+                </div>
 
-                    <div class='form-group'>
-                        <label for='keluhan'> Keluhan: </label>
+                <div class='form-group'>
+                    <label for='keluhan'> Keluhan: </label>
 
-                        <textarea
-                            placeholder="Keluhan"
-                            id='keluhan' name='keluhan'
-                            class='form-control {{ !$errors->has('keluhan') ?: 'is-invalid' }}'
-                            col='30' row='6'
-                            >{{ old('keluhan', $pengalaman->keluhan) }}</textarea>
+                    <textarea
+                        placeholder="Keluhan"
+                        id='keluhan' name='keluhan'
+                        class='form-control {{ !$errors->has('keluhan') ?: 'is-invalid' }}'
+                        col='30' row='6'
+                        >{{ old('keluhan', $pengalaman->keluhan) }}</textarea>
 
-                        <div class='invalid-feedback'>
-                            {{ $errors->first('keluhan') }}
-                        </div>
+                    <div class='invalid-feedback'>
+                        {{ $errors->first('keluhan') }}
                     </div>
+                </div>
 
-                    <div class='form-group'>
-                        <label for='saran'> Saran: </label>
+                <div class='form-group'>
+                    <label for='saran'> Saran: </label>
 
-                        <textarea
-                            placeholder="Saran"
-                            id='saran' name='saran'
-                            class='form-control {{ !$errors->has('saran') ?: 'is-invalid' }}'
-                            col='30' row='6'
-                            >{{ old('saran', $pengalaman->saran) }}</textarea>
+                    <textarea
+                        placeholder="Saran"
+                        id='saran' name='saran'
+                        class='form-control {{ !$errors->has('saran') ?: 'is-invalid' }}'
+                        col='30' row='6'
+                        >{{ old('saran', $pengalaman->saran) }}</textarea>
 
-                        <div class='invalid-feedback'>
-                            {{ $errors->first('saran') }}
-                        </div>
+                    <div class='invalid-feedback'>
+                        {{ $errors->first('saran') }}
                     </div>
+                </div>
 
-                    <div>
-                        <input id="submit" type="submit" value="Ubah Data" class="btn btn-primary">
-                    </div>
+                <div>
+                    <input id="submit" type="submit" value="Ubah Data" class="btn btn-primary">
+                </div>
             </form>
         </div>
     </div>

@@ -22,7 +22,7 @@
                             <th> # </th>
                             <th> Tema </th>
                             <th> Cerita </th>
-                            <th style="width: 8rem"> Kendali </th>
+                            <th class="text-center" style="width: 8rem"> Kendali </th>
                         </tr>
                    </thead>
                    <tbody>
@@ -31,7 +31,7 @@
                             <td> {{ $loop->iteration }}. </td>
                             <td> {{ $pengalaman->tema }} </td>
                             <td> {{ $pengalaman->cerita }} </td>
-                            <td>
+                            <td class="text-center">
                                 <a href="{{ route('pengalaman.edit', $pengalaman) }}" class="btn btn-secondary btn-sm">
                                     <i class="fa fa-pencil"></i>
                                 </a>

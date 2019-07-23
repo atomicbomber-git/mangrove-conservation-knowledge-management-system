@@ -57,7 +57,7 @@ class PengalamanController extends Controller
     public function store()
     {
         $data = $this->validate(request(), [
-            "tema" => "required|string|max:255|unique:pengalamans",
+            "tema" => "required|string|max:255",
             "cerita" => "required|string|max:1000",
             "pengaduan" => "required|string|max:1000",
             "keluhan" => "required|string|max:1000",
@@ -80,7 +80,7 @@ class PengalamanController extends Controller
     public function update(Pengalaman $pengalaman)
     {
         $data = $this->validate(request(), [
-            "tema" => ["required", "string", "max:255", Rule::unique("pengalamans")->ignore($pengalaman->id)],
+            "tema" => ["required", "string", "max:255"],
             "cerita" => "required|string|max:1000",
             "pengaduan" => "required|string|max:1000",
             "keluhan" => "required|string|max:1000",
