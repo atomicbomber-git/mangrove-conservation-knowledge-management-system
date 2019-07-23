@@ -1,6 +1,8 @@
-<nav class="navbar navbar-dark bg-dark navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-dark bg-dark navbar-expand-lg navbar-light bg-light" style="font-size: 10pt">
     <div class="container-fluid">
-        <a class="navbar-brand" href="{{ route('home') }}"> {{ config('app.name') }} </a>
+        <a class="navbar-brand" style="font-size: 10pt" href="{{ route('home') }}">
+            {{ config('app.name') }}
+        </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
