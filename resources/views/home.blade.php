@@ -32,8 +32,25 @@
     <div class="row">
         <div class="col-md-9">
             <p>
-                <em> Knowledge Management System </em> (KMS) Konservasi Hutan Mangrove merupakan sebuah <em> website </em> yang mendukung manajemen dan pengelolaan pengetahuan terkait konservasi mangrove. <em> Website </em> ini bertujuan untuk memberikan pengetahuan dan informasi kepada masyarakat, pemerintah, dan peneliti dalam melakukan pelestarian mangrove. <em> Knowledge Management System </em> hutan mangrove dapat membantu dalam pencarian, pemilihan, pengaturan, penyaringan dan penyajian informasi, menawarkan sebuah pendekatan yang saling terintegrasi. <em> Knowledge Management System </em> ini terdiri dari <em> tacit knowledge </em> dan <em> explicit knowledge </em> yang meliputi pembibitan, penanaman, dan perawatan untuk konservasi hutan mangrove. Tersedia artikel dan hasil penelitian yang dikelola oleh <em> Knowledge Management System </em>. <em> Knowledge Management System </em> ini terbuka untuk umum, terutama masyarakat yang dapat membagikan pengalamannya menjadi sebuah pengetahuan di <em> Knowledge Management System </em> ini.
+                Knowledge Management System (KMS) Konservasi Hutan Mangrove merupakan sebuah website yang mendukung manajemen dan pengelolaan pengetahuan terkait konservasi mangrove. Website ini bertujuan untuk memberikan pengetahuan dan informasi kepada masyarakat, pemerintah, dan peneliti dalam melakukan pelestarian mangrove. Knowledge Management System hutan mangrove dapat membantu dalam pencarian, pemilihan, pengaturan, penyaringan dan penyajian informasi, menawarkan sebuah pendekatan yang saling terintegrasi. Knowledge Management System ini terdiri dari tacit knowledge dan explicit knowledge yang meliputi pembibitan, penanaman, dan perawatan untuk konservasi hutan mangrove. Tersedia menu pengalaman, artikel dan hasil penelitian terkait mangrove. Knowledge Management System ini terbuka untuk umum, terutama masyarakat yang dapat membagikan pengalamannya menjadi sebuah pengetahuan di Knowledge Management System.
             </p>
+
+            <div class="my-5">
+                <h5 class="text-primary"> Penelitian Terbaru </h5>
+                <hr class="mt-0 mb-2">
+                <div class="row">
+                    @foreach($latest_researches as $research)
+                    <div class="col-md-6 mb-3">
+                        <a href="{{ route('research.document', $research) }}" class="d-block text-muted"> {{ $research->title }} </a>
+                        <small> @localized_date($research->created_at) </small>
+                    </div>
+                    @endforeach
+                </div>
+
+                <a href="{{ route('user-research.index') }}" class="text-info font-weight-bold">
+                    Seluruh Hasil Penelitian
+                </a>
+            </div>
         </div>
         <div class="col-md-3" style="border-left: thin solid gray">
             <div class="mb-5">
@@ -48,27 +65,11 @@
                 @endforeach
 
                 <a href="{{ route('user-article.index') }}" class="text-info font-weight-bold">
-                    Kelola ARTIKEL
-                </a>
-            </div>
-
-            <div>
-                <h5 class="text-primary"> Penelitian Terbaru </h5>
-                <hr class="mt-0 mb-2">
-                @foreach($latest_researches as $research)
-                <div class="mb-2">
-                    <a href="{{ route('research.document', $research) }}" class="d-block text-muted"> {{ $research->title }} </a>
-                    <small> @localized_date($research->created_at) </small>
-                </div>
-                @endforeach
-                <a href="{{ route('user-research.index') }}" class="text-info font-weight-bold">
-                    Kelola HASIL PENELITIAN
+                    Seluruh Artikel
                 </a>
             </div>
         </div>
     </div>
-
-
 </div>
 @endsection
 
