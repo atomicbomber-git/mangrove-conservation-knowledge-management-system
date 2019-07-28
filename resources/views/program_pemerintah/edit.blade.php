@@ -35,10 +35,12 @@
                 <div class='form-group'>
                     <label for='image'> Gambar: </label>
 
+                    @if ($programPemerintah->hasImage())
                     <img
                         src="{{ route('program-pemerintah.image', $programPemerintah) }}"
                         class="img-fluid mb-4"
                         alt="Gambar {{ $programPemerintah->nama }}">
+                    @endif
 
                     <input
                         id='image'

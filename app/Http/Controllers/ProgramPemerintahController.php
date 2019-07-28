@@ -110,9 +110,13 @@ class ProgramPemerintahController extends Controller
 
         DB::transaction(function() use($data, $programPemerintah) {
             $programPemerintah->update($data);
-            $programPemerintah->clearMediaCollection(config('media.collections.images'));
-            $programPemerintah->addMediaFromRequest('image')
-                ->toMediaCollection(config('media.collections.images'));
+
+            if (isset($data["image"])) {
+                tap($programPemerintah)
+                    ->clearMediaCollection(config('media.collections.images'))
+                    ->addMediaFromRequest('image')
+                    ->toMediaCollection(config('media.collections.images'));
+            }
         });
 
         return back()
