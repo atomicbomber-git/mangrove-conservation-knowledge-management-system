@@ -14,7 +14,7 @@
         </div>
         <div class="card-body">
 
-            <form method='POST' action='{{ route('pengalaman.store') }}' class="form-create">
+            <form id="submit-form" method='POST' action='{{ route('pengalaman.store') }}' class="form-create">
                 @csrf
 
                 <div class='form-group'>
@@ -110,4 +110,23 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('extra-scripts')
+    <script>
+        $("form#submit-form").submit(function (e) {
+            e.preventDefault();
+            let form = $(this);
+            swal({
+                icon: "warning",
+                text: "Apakah Anda yakin Anda ingin menambahkan pengalaman ini?"
+            })
+            .then(ok => {
+                if (ok) {
+                    $("form#submit-form").off("submit")
+                    $("form#submit-form input[type=submit]").click()
+                }
+            })
+        });
+    </script>
 @endsection
