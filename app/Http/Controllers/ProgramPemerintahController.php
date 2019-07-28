@@ -56,25 +56,28 @@ class ProgramPemerintahController extends Controller
     {
         $data = $this->validate(request(), [
             "nama" => "required|unique:program_pemerintahs|max:255",
-            "image" => "required|file|mimes:png,jpg,jpeg",
+            "image" => "nullable|file|mimes:png,jpg,jpeg",
             "tanggal_mulai" => "required|date",
             "tanggal_selesai" => "required|date",
-            "dana" => "required|numeric",
+            "dana" => "nullable|numeric",
             "penanggung_jawab" => "required|string|max:255",
             "nama_instansi" => "required|string|max:255",
             "nama_instansi_penerima" => "required|string|max:255",
             "penanggung_jawab_penerima" => "required|string|max:255",
             "bentuk" => "required|string|max:1000",
             "hasil" => "required|string|max:1000",
-            "persentase_hasil" => "required|numeric|gte:0|lte:100",
+            "persentase_hasil" => "nullable|numeric|gte:0|lte:100",
             "lokasi" => "required|string|max:100",
         ]);
 
         DB::transaction(function() use($data) {
             $programPemerintah = ProgramPemerintah::create($data);
-            $programPemerintah
-                ->addMediaFromRequest('image')
-                ->toMediaCollection(config('media.collections.images'));
+
+            if (isset($data["image"])) {
+                $programPemerintah
+                    ->addMediaFromRequest('image')
+                    ->toMediaCollection(config('media.collections.images'));
+            }
         });
 
         return redirect()

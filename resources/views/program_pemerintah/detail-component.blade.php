@@ -1,8 +1,12 @@
 @inject('formatter', 'App\Helpers\FormatterInterface')
 
+@if ($programPemerintah->hasImage())
 <img
     src="{{ route('program-pemerintah.image', $programPemerintah) }}"
     class="img-fluid mb-3" alt="Gambar {{ $programPemerintah->nama }}">
+@endif
+
+
 
 <dl>
     <dt> Nama </dt>

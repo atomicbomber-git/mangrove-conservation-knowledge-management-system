@@ -26,4 +26,9 @@ class ProgramPemerintah extends Model implements HasMedia
         "persentase_hasil",
         "lokasi",
     ];
+
+    public function hasImage()
+    {
+        return $this->hasMedia(config("media.collections.images"));
+    }
 }
