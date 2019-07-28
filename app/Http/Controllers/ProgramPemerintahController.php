@@ -64,8 +64,8 @@ class ProgramPemerintahController extends Controller
             "nama_instansi" => "required|string|max:255",
             "nama_instansi_penerima" => "required|string|max:255",
             "penanggung_jawab_penerima" => "required|string|max:255",
-            "bentuk" => "required|string|max:1000",
-            "hasil" => "required|string|max:1000",
+            "bentuk" => "required|string|max:40000",
+            "hasil" => "required|string|max:40000",
             "persentase_hasil" => "nullable|numeric|gte:0|lte:100",
             "lokasi" => "required|string|max:100",
         ]);
@@ -103,8 +103,8 @@ class ProgramPemerintahController extends Controller
             "nama_instansi" => "required|string|max:255",
             "nama_instansi_penerima" => "required|string|max:255",
             "penanggung_jawab_penerima" => "required|string|max:255",
-            "bentuk" => "required|string|max:1000",
-            "hasil" => "required|string|max:1000",
+            "bentuk" => "required|string|max:40000",
+            "hasil" => "required|string|max:40000",
             "persentase_hasil" => "nullable|numeric|gte:0|lte:100",
             "lokasi" => "required|string|max:100",
         ]);
