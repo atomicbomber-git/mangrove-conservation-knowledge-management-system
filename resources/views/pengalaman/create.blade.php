@@ -119,7 +119,7 @@
             let form = $(this);
             swal({
                 icon: "warning",
-                text: "Apakah Anda yakin Anda ingin menambahkan pengalaman ini?",
+                text: "Apakah Anda yakin ingin menambahkan pengalaman Anda?",
                 buttons: ["Tidak", "Ya"],
             })
             .then(ok => {
