@@ -95,6 +95,7 @@ class ProgramPemerintahController extends Controller
 
         $data = $this->validate(request(), [
             "nama" => ["required", "max:255"],
+            "image" => "nullable|file|mimes:png,jpg,jpeg",
             "tanggal_mulai" => "required|date",
             "tanggal_selesai" => "required|date",
             "dana" => "required|numeric",
