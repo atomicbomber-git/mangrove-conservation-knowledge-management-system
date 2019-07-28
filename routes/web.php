@@ -132,6 +132,7 @@ Route::group(['prefix' => '/slide', 'as' => 'slide.'], function() {
 
 Route::group(['prefix' => '/program-pemerintah', 'as' => 'program-pemerintah.'], function() {
     Route::get('/index', 'ProgramPemerintahController@index')->name('index');
+    Route::get('/image/{programPemerintah}', 'ProgramPemerintahController@image')->name('image');
     Route::get('/', 'ProgramPemerintahController@guestIndex')->name('guest.index');
     Route::get('/guest-detail/{programPemerintah}', 'ProgramPemerintahController@guestDetail')->name('guest.detail');
     Route::get('/show/{programPemerintah}', 'ProgramPemerintahController@show')->name('show');

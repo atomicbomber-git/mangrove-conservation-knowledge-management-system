@@ -15,7 +15,7 @@
             Sunting Program Pemerintah
         </div>
         <div class="card-body" id="app">
-            <form method='POST' action='{{ route('program-pemerintah.update', $programPemerintah) }}'>
+            <form method='POST' enctype="multipart/form-data" action='{{ route('program-pemerintah.update', $programPemerintah) }}'>
                 @csrf
 
                 <div class='form-group'>
@@ -29,6 +29,27 @@
 
                     <div class='invalid-feedback'>
                         {{ $errors->first('nama') }}
+                    </div>
+                </div>
+
+                <div class='form-group'>
+                    <label for='image'> Gambar: </label>
+
+                    <img
+                        src="{{ route('program-pemerintah.image', $programPemerintah) }}"
+                        class="img-fluid mb-4"
+                        alt="Gambar {{ $programPemerintah->nama }}">
+
+                    <input
+                        id='image'
+                        name='image'
+                        type='file'
+                        accept="img/*"
+                        placeholder='Gambar'
+                        class='form-control {{ !$errors->has('image') ?: 'is-invalid' }}' style="padding-bottom: 2.2rem">
+
+                    <div class='invalid-feedback'>
+                        {{ $errors->first('image') }}
                     </div>
                 </div>
 

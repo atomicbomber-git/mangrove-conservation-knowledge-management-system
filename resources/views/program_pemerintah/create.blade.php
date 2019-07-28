@@ -13,7 +13,7 @@
             Tambah Program Pemerintah
         </div>
         <div class="card-body" id="app">
-            <form method='POST' action='{{ route('program-pemerintah.store') }}'>
+            <form method='POST' enctype="multipart/form-data" action='{{ route('program-pemerintah.store') }}'>
                 @csrf
 
                 <div class='form-group'>
@@ -27,6 +27,22 @@
 
                     <div class='invalid-feedback'>
                         {{ $errors->first('nama') }}
+                    </div>
+                </div>
+
+                <div class='form-group'>
+                    <label for='image'> Gambar: </label>
+
+                    <input
+                        id='image'
+                        name='image'
+                        type='file'
+                        accept="img/*"
+                        placeholder='Gambar'
+                        class='form-control {{ !$errors->has('image') ?: 'is-invalid' }}' style="padding-bottom: 2.2rem">
+
+                    <div class='invalid-feedback'>
+                        {{ $errors->first('image') }}
                     </div>
                 </div>
 
@@ -158,20 +174,6 @@
                 </div>
 
                 <div class='form-group'>
-                    <label for='hasil'> Hasil: </label>
-
-                    <textarea
-                        id='hasil' name='hasil'
-                        class='form-control {{ !$errors->has('hasil') ?: 'is-invalid' }}'
-                        col='30' row='6'
-                        >{{ old('hasil') }}</textarea>
-
-                    <div class='invalid-feedback'>
-                        {{ $errors->first('hasil') }}
-                    </div>
-                </div>
-
-                <div class='form-group'>
                     <label for='persentase_hasil'> Persentase Hasil (%): </label>
 
                     <input
@@ -183,6 +185,20 @@
 
                     <div class='invalid-feedback'>
                         {{ $errors->first('persentase_hasil') }}
+                    </div>
+                </div>
+
+                <div class='form-group'>
+                    <label for='hasil'> Hasil: </label>
+
+                    <textarea
+                        id='hasil' name='hasil'
+                        class='form-control {{ !$errors->has('hasil') ?: 'is-invalid' }}'
+                        col='30' row='6'
+                        >{{ old('hasil') }}</textarea>
+
+                    <div class='invalid-feedback'>
+                        {{ $errors->first('hasil') }}
                     </div>
                 </div>
 

@@ -3,9 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\MediaLibrary\HasMedia\HasMedia;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 
-class ProgramPemerintah extends Model
+class ProgramPemerintah extends Model implements HasMedia
 {
+    use HasMediaTrait;
+
     public $perPage = 10;
 
     public $fillable = [

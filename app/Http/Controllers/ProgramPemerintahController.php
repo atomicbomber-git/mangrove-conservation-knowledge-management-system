@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\ProgramPemerintah;
+use Illuminate\Support\Facades\DB;
 
 class ProgramPemerintahController extends Controller
 {
@@ -43,10 +44,19 @@ class ProgramPemerintahController extends Controller
         return view("program_pemerintah.create");
     }
 
+    public function image(ProgramPemerintah $programPemerintah)
+    {
+        return response()->file(
+            $programPemerintah
+                ->getFirstMedia(config("media.collections.images"))->getPath()
+        );
+    }
+
     public function store()
     {
         $data = $this->validate(request(), [
             "nama" => "required|unique:program_pemerintahs|max:255",
+            "image" => "required|file|mimes:png,jpg,jpeg",
             "tanggal_mulai" => "required|date",
             "tanggal_selesai" => "required|date",
             "dana" => "required|numeric",
@@ -60,7 +70,13 @@ class ProgramPemerintahController extends Controller
             "lokasi" => "required|string|max:100",
         ]);
 
-        ProgramPemerintah::create($data);
+        DB::transaction(function() use($data) {
+            $programPemerintah = ProgramPemerintah::create($data);
+            $programPemerintah
+                ->addMediaFromRequest('image')
+                ->toMediaCollection(config('media.collections.images'));
+        });
+
         return redirect()
             ->route("program-pemerintah.index")
             ->with("message.success", __('messages.create.success'));
@@ -89,7 +105,12 @@ class ProgramPemerintahController extends Controller
             "lokasi" => "required|string|max:100",
         ]);
 
-        $programPemerintah->update($data);
+        DB::transaction(function() use($data, $programPemerintah) {
+            $programPemerintah->update($data);
+            $programPemerintah->clearMediaCollection(config('media.collections.images'));
+            $programPemerintah->addMediaFromRequest('image')
+                ->toMediaCollection(config('media.collections.images'));
+        });
 
         return back()
             ->with("message.success", __('messages.update.success'));

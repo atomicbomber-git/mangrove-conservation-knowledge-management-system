@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
 use App\Research;
@@ -47,7 +46,7 @@ class ResearchController extends Controller
             'journal_name' => 'nullable|string',
             'volume' => 'nullable|string',
         ]);
-        
+
         $data['poster_id'] = auth()->user()->id;
         $data['status'] = Research::STATUS_APPROVED;
 
@@ -106,7 +105,7 @@ class ResearchController extends Controller
 
         DB::transaction(function() use($research, $data) {
             $research->update($data);
-            
+
             Author::where('research_id', $research->id)
                 ->delete();
 
