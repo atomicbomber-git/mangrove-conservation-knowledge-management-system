@@ -23,7 +23,7 @@
                     {{ $formatter->localizedDatetime($pengalaman->created_at) }} oleh <span class="text-primary font-weight-bold"> {{ $pengalaman->poster->name }} </span>
                 </div>
                 <p>
-                    {{ $pengalaman->cerita }}
+                    {{ \Illuminate\Support\Str::limit($pengalaman->cerita) }}
                 </p>
             </div>
 
