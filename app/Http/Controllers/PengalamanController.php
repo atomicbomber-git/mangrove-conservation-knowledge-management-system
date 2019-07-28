@@ -57,12 +57,12 @@ class PengalamanController extends Controller
     public function store()
     {
         $data = $this->validate(request(), [
-            "judul" => "required|string|max:255",
-            "tema" => "required|string|max:255",
-            "cerita" => "required|string|max:1000",
-            "pengaduan" => "required|string|max:1000",
-            "keluhan" => "required|string|max:1000",
-            "saran" => "required|string|max:1000",
+            "judul" => "required|string|max:10000",
+            "tema" => "required|string|max:10000",
+            "cerita" => "required|string|max:50000",
+            "pengaduan" => "required|string|max:50000",
+            "keluhan" => "required|string|max:50000",
+            "saran" => "required|string|max:50000",
         ]);
 
         auth()->user()->pengalamans()
@@ -81,12 +81,12 @@ class PengalamanController extends Controller
     public function update(Pengalaman $pengalaman)
     {
         $data = $this->validate(request(), [
-            "judul" => "required|string|max:255",
-            "tema" => ["required", "string", "max:255"],
-            "cerita" => "required|string|max:1000",
-            "pengaduan" => "required|string|max:1000",
-            "keluhan" => "required|string|max:1000",
-            "saran" => "required|string|max:1000",
+            "judul" => "required|string|max:10000",
+            "tema" => ["required", "string", "max:10000"],
+            "cerita" => "required|string|max:50000",
+            "pengaduan" => "required|string|max:50000",
+            "keluhan" => "required|string|max:50000",
+            "saran" => "required|string|max:50000",
         ]);
 
         $pengalaman->update($data);
