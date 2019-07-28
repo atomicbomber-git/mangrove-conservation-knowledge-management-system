@@ -19,7 +19,7 @@
                 @csrf
 
                 <div class='form-group'>
-                    <label for='nama'> Nama: </label>
+                    <label for='nama'> Nama Program: </label>
 
                     <input
                         id='nama' name='nama' type='text'
