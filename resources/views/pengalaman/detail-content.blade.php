@@ -1,8 +1,7 @@
-<h1 class="mb-5">
-    {{ $pengalaman->tema }}
-</h1>
-
 <dl>
+    <dt> Tema </dt>
+    <dd> {{ $pengalaman->tema }} </dd>
+
     <dt> Cerita </dt>
     <dd> {{ $pengalaman->cerita }} </dd>
 

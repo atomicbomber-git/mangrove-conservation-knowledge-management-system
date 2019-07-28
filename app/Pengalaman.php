@@ -10,6 +10,7 @@ class Pengalaman extends Model
     protected $perPage = 10;
 
     public $fillable = [
+        "judul",
         "tema",
         "cerita",
         "pengaduan",

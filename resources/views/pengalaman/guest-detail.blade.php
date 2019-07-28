@@ -9,25 +9,15 @@
         </a>
     </div>
 
+    <h1 class='mb-5'>
+        <i class='fa fa-address-book'></i>
+        Pengalaman
+        <p class="small text-muted"> {{ $pengalaman->judul }} </p>
+    </h1>
+
     <div class="card">
         <div class="card-body">
-            <h1 class="mb-5">
-                {{ $pengalaman->tema }}
-            </h1>
-
-            <dl>
-                <dt> Cerita </dt>
-                <dd> {{ $pengalaman->cerita }} </dd>
-
-                <dt> Pengaduan </dt>
-                <dd> {{ $pengalaman->pengaduan }} </dd>
-
-                <dt> Keluhan </dt>
-                <dd> {{ $pengalaman->keluhan }} </dd>
-
-                <dt> Saran </dt>
-                <dd> {{ $pengalaman->saran }} </dd>
-            </dl>
+            @include('pengalaman.detail-content')
         </div>
     </div>
 

@@ -14,8 +14,11 @@
             @foreach ($pengalamans as $pengalaman)
             <div class="mb-3">
                 <a href="{{ route('pengalaman.guest.detail', $pengalaman) }}" class="d-block text-primary h5 mb-1">
-                    {{ $pengalaman->tema }}
+                    {{ $pengalaman->judul }}
                 </a>
+                <div>
+                    <span class="badge badge-primary"> {{ $pengalaman->tema }} </span>
+                </div>
                 <div class="small">
                     {{ $formatter->localizedDatetime($pengalaman->created_at) }} oleh <span class="text-primary font-weight-bold"> {{ $pengalaman->poster->name }} </span>
                 </div>

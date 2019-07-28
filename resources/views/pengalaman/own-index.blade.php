@@ -20,6 +20,7 @@
                    <thead>
                         <tr>
                             <th> # </th>
+                            <th> Judul </th>
                             <th> Tema </th>
                             <th> Cerita </th>
                             <th class="text-center" style="width: 8rem"> Kendali </th>
@@ -29,6 +30,7 @@
                        @foreach ($pengalamans as $pengalaman)
                         <tr>
                             <td> {{ $loop->iteration }}. </td>
+                            <td> {{ $pengalaman->judul }} </td>
                             <td> {{ $pengalaman->tema }} </td>
                             <td> {{ $pengalaman->cerita }} </td>
                             <td class="text-center">

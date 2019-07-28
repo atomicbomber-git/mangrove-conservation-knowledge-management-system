@@ -10,7 +10,7 @@ class PengalamanController extends Controller
     public function index()
     {
         $pengalamans = Pengalaman::query()
-            ->select("id", "tema", "cerita", "created_at", "poster_id")
+            ->select("id", "judul", "tema", "cerita", "created_at", "poster_id")
             ->with("poster:id,first_name,last_name")
             ->orderBy("created_at", "desc")
             ->paginate();
@@ -26,7 +26,7 @@ class PengalamanController extends Controller
     public function guestIndex()
     {
         $pengalamans = Pengalaman::query()
-            ->select("id", "tema", "cerita", "created_at", "poster_id")
+            ->select("judul", "id", "tema", "cerita", "created_at", "poster_id")
             ->with("poster:id,first_name,last_name")
             ->orderBy("created_at", "desc")
             ->paginate();
@@ -42,7 +42,7 @@ class PengalamanController extends Controller
     public function ownIndex()
     {
         $pengalamans = auth()->user()->pengalamans()
-            ->select("id", "tema", "cerita", "created_at", "poster_id")
+            ->select("id", "judul", "tema", "cerita", "created_at", "poster_id")
             ->orderBy("created_at", "desc")
             ->get();
 
@@ -57,6 +57,7 @@ class PengalamanController extends Controller
     public function store()
     {
         $data = $this->validate(request(), [
+            "judul" => "required|string|max:255",
             "tema" => "required|string|max:255",
             "cerita" => "required|string|max:1000",
             "pengaduan" => "required|string|max:1000",
@@ -80,6 +81,7 @@ class PengalamanController extends Controller
     public function update(Pengalaman $pengalaman)
     {
         $data = $this->validate(request(), [
+            "judul" => "required|string|max:255",
             "tema" => ["required", "string", "max:255"],
             "cerita" => "required|string|max:1000",
             "pengaduan" => "required|string|max:1000",

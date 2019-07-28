@@ -18,6 +18,7 @@
                    <thead>
                         <tr>
                             <th> # </th>
+                            <th> Judul </th>
                             <th> Tema </th>
                             <th> Cerita </th>
                             <th style="width: 12rem"> Tanggal / Waktu </th>
@@ -28,6 +29,7 @@
                        @foreach ($pengalamans as $pengalaman)
                         <tr>
                             <td> {{ $loop->iteration }}. </td>
+                            <td> {{ $pengalaman->judul }} </td>
                             <td> {{ $pengalaman->tema }} </td>
                             <td> {{ $pengalaman->cerita }} </td>
                             <td> {{ $formatter->localizedDatetime($pengalaman->created_at) }} </td>

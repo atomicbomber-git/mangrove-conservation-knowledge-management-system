@@ -12,6 +12,7 @@ $factory->define(Pengalaman::class, function (Faker $faker) {
         ->get();
 
     return [
+        "judul" => $faker->sentence(),
         "poster_id" => $posters->random()->id,
         "tema" => $faker->randomElement(Pengalaman::TEMAS),
         "cerita" => $faker->realText(),

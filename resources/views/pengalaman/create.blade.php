@@ -18,6 +18,20 @@
                 @csrf
 
                 <div class='form-group'>
+                    <label for='judul'> Judul: </label>
+
+                    <input
+                        id='judul' name='judul' type='text'
+                        placeholder='Judul'
+                        value='{{ old('judul') }}'
+                        class='form-control {{ !$errors->has('judul') ?: 'is-invalid' }}'>
+
+                    <div class='invalid-feedback'>
+                        {{ $errors->first('judul') }}
+                    </div>
+                </div>
+
+                <div class='form-group'>
                     <label for='tema'> Tema: </label>
                     <select name='tema' id='tema' class='form-control'>
                         @foreach(App\Pengalaman::TEMAS as $tema)
