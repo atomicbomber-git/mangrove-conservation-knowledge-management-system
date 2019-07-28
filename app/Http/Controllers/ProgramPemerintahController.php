@@ -104,7 +104,7 @@ class ProgramPemerintahController extends Controller
             "penanggung_jawab_penerima" => "required|string|max:255",
             "bentuk" => "required|string|max:1000",
             "hasil" => "required|string|max:1000",
-            "persentase_hasil" => "required|numeric|gte:0|lte:100",
+            "persentase_hasil" => "nullable|numeric|gte:0|lte:100",
             "lokasi" => "required|string|max:100",
         ]);
 
