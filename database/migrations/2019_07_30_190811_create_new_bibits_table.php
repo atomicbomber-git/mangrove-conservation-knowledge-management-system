@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBibitsTable extends Migration
+class CreateNewBibitsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -17,7 +17,7 @@ class CreateBibitsTable extends Migration
             $table->bigIncrements('id');
             $table->string("spesies");
             $table->string("famili");
-            $table->string("deskripsi");
+            $table->string("deskripsi")->nullable();
             $table->string("daun")->nullable();
             $table->string("bunga")->nullable();
             $table->string("buah")->nullable();

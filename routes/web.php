@@ -159,6 +159,9 @@ Route::group(['prefix' => '/pengalaman', 'as' => 'pengalaman.'], function() {
 
 Route::group(['prefix' => '/bibit', 'as' => 'bibit.'], function() {
     Route::get('/index', [BibitController::class, 'index'])->name('index');
+    Route::get('/guest-index', [BibitController::class, 'guestIndex'])->name('guest.index');
+    Route::get('/show/{bibit}', [BibitController::class, 'show'])->name('show');
+    Route::get('/guest-show/{bibit}', [BibitController::class, 'guestShow'])->name('guest.show');
     Route::get('/create', [BibitController::class, 'create'])->name('create');
     Route::post('/store', [BibitController::class, 'store'])->name('store');
     Route::get('/edit/{bibit}', [BibitController::class, 'edit'])->name('edit');

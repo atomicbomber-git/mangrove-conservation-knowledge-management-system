@@ -33,10 +33,18 @@
                                 <td> {{ $bibit->spesies ?? '-' }} </td>
                                 <td> {{ $bibit->famili ?? '-' }} </td>
                                 <td class="text-center">
+
+                                    <a class="btn btn-secondary btn-sm" href="{{ route('bibit.edit', $bibit) }}">
+                                        <i class="fa fa-pencil"></i>
+                                    </a>
+
+                                    <a class="btn btn-secondary btn-sm" href="{{ route('bibit.show', $bibit) }}">
+                                        <i class="fa fa-list"></i>
+                                    </a>
+
                                     <form action='{{ route('bibit.delete', $bibit) }}' method='POST' class='d-inline-block'>
                                         @csrf
                                         <button type='submit' class='btn btn-delete btn-danger btn-sm'>
-                                            Hapus
                                             <i class='fa fa-trash'></i>
                                         </button>
                                     </form>

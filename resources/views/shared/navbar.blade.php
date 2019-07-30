@@ -68,6 +68,7 @@
                     </a>
                     <div class='dropdown-menu' aria-labelledby='bibit'>
                         <div>
+                            <a class='dropdown-item' href='{{ route('bibit.guest.index') }}'> Seluruh Bibit </a>
                             @can("seeManagementMenu", \App\Bibit::class)
                             <a class='dropdown-item' href='{{ route('bibit.index') }}'> Kelola Bibit </a>
                             <a class='dropdown-item' href='{{ route('bibit.create') }}'> Tambah Bibit </a>
@@ -203,8 +204,8 @@
                     </a>
                 </li>
 
-                <li class='nav-item {{ Route::is('bibit.*') ? 'active' : '' }}'>
-                    <a class='nav-link' href='{{ route('bibit.index') }}'>
+                <li class='nav-item {{ Route::is('bibit.guest.*') ? 'active' : '' }}'>
+                    <a class='nav-link' href='{{ route('bibit.guest.index') }}'>
                         <i class='fa fa-tree'></i>
                         Bibit
                     </a>
