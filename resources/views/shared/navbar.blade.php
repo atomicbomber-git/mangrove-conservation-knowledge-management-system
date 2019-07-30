@@ -59,6 +59,23 @@
                     </div>
                 </li>
 
+                <li class='nav-item dropdown {{ Route::is('bibit.*') ? 'active' : '' }}'>
+                    <a
+                        class='nav-link dropdown-toggle' href='#' id='bibit' role='button'
+                        data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+                        <i class='fa fa-tree'></i>
+                        Bibit
+                    </a>
+                    <div class='dropdown-menu' aria-labelledby='bibit'>
+                        <div>
+                            @can("seeManagementMenu", \App\Bibit::class)
+                            <a class='dropdown-item' href='{{ route('bibit.index') }}'> Kelola Bibit </a>
+                            <a class='dropdown-item' href='{{ route('bibit.create') }}'> Tambah Bibit </a>
+                            @endcan
+                        </div>
+                    </div>
+                </li>
+
                 <li class='nav-item dropdown {{ Route::is('pengalaman.*') ? 'active' : '' }}'>
                     <a
                         class='nav-link dropdown-toggle' href='#' id='pengalaman' role='button'
@@ -185,6 +202,14 @@
                         Hasil Penelitian
                     </a>
                 </li>
+
+                <li class='nav-item {{ Route::is('bibit.*') ? 'active' : '' }}'>
+                    <a class='nav-link' href='{{ route('bibit.index') }}'>
+                        <i class='fa fa-tree'></i>
+                        Bibit
+                    </a>
+                </li>
+
                 @endauth
 
                 <li class='nav-item {{ Route::is('search') ? 'active' : '' }}'>

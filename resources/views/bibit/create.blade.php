@@ -16,16 +16,30 @@
             <form method='POST' action='{{ route('bibit.store') }}'>
                 @csrf
                 <div class='form-group'>
-                    <label for='nama'> Nama: </label>
+                    <label for='spesies'> Spesies: </label>
 
                     <input
-                        id='nama' name='nama' type='text'
-                        placeholder='Nama'
-                        value='{{ old('nama') }}'
-                        class='form-control {{ !$errors->has('nama') ?: 'is-invalid' }}'>
+                        id='spesies' name='spesies' type='text'
+                        placeholder='Spesies'
+                        value='{{ old('spesies', $bibit->spesies) }}'
+                        class='form-control {{ !$errors->has('spesies') ?: 'is-invalid' }}'>
 
                     <div class='invalid-feedback'>
-                        {{ $errors->first('nama') }}
+                        {{ $errors->first('spesies') }}
+                    </div>
+                </div>
+
+                <div class='form-group'>
+                    <label for='famili'> Famili: </label>
+
+                    <input
+                        id='famili' name='famili' type='text'
+                        placeholder='Famili'
+                        value='{{ old('famili', $bibit->famili) }}'
+                        class='form-control {{ !$errors->has('famili') ?: 'is-invalid' }}'>
+
+                    <div class='invalid-feedback'>
+                        {{ $errors->first('famili') }}
                     </div>
                 </div>
 

@@ -16,6 +16,7 @@
 // });
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BibitController;
 
 Route::redirect('/', '/home');
 
@@ -154,4 +155,13 @@ Route::group(['prefix' => '/pengalaman', 'as' => 'pengalaman.'], function() {
     Route::get('/edit/{pengalaman}', 'PengalamanController@edit')->name('edit');
     Route::post('/update/{pengalaman}', 'PengalamanController@update')->name('update');
     Route::post('/delete/{pengalaman}', 'PengalamanController@delete')->name('delete');
+});
+
+Route::group(['prefix' => '/bibit', 'as' => 'bibit.'], function() {
+    Route::get('/index', [BibitController::class, 'index'])->name('index');
+    Route::get('/create', [BibitController::class, 'create'])->name('create');
+    Route::post('/store', [BibitController::class, 'store'])->name('store');
+    Route::get('/edit/{bibit}', [BibitController::class, 'edit'])->name('edit');
+    Route::post('/update/{bibit}', [BibitController::class, 'update'])->name('update');
+    Route::post('/delete/{bibit}', [BibitController::class, 'delete'])->name('delete');
 });
