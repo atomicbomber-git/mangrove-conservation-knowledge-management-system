@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Bibit;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\DB;
 
 class BibitController extends Controller
 {
@@ -13,7 +14,7 @@ class BibitController extends Controller
             ->select(
                 "id",
                 "spesies",
-                "famili",
+                "famili"
             )
             ->orderBy("famili")
             ->orderBy("spesies")
@@ -28,13 +29,18 @@ class BibitController extends Controller
             ->select(
                 "id",
                 "spesies",
-                "deskripsi",
+                "deskripsi"
             )
             ->orderBy("famili")
             ->orderBy("spesies")
             ->paginate();
 
         return view("bibit.guest-index", compact("bibits"));
+    }
+
+    public function image(Bibit $bibit)
+    {
+        return response()->file($bibit->getFirstMediaPath(config('media.collections.images')));
     }
 
     public function show(Bibit $bibit)
@@ -56,6 +62,7 @@ class BibitController extends Controller
     {
         $data = $this->validate(request(), [
             "spesies" => "required|string|unique:bibits",
+            "image" => "required|file|mimes:jpg,png,jpeg",
             "famili" => "required|string",
             "deskripsi" => "nullable|string",
             "daun" => "nullable|string",
@@ -68,7 +75,11 @@ class BibitController extends Controller
             "catatan" => "nullable|string",
         ]);
 
-        Bibit::create($data);
+        DB::transaction(function() use($data) {
+            Bibit::create($data)
+                ->addMediaFromRequest("image")
+                ->toMediaCollection(config("media.collections.images"));
+        });
 
         return redirect()
             ->route("bibit.index")

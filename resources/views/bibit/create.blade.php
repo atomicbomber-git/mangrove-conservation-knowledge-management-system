@@ -13,7 +13,7 @@
             Tambah Bibit
         </div>
         <div class="card-body">
-            <form method='POST' action='{{ route('bibit.store') }}'>
+            <form method='POST' enctype="multipart/form-data" action='{{ route('bibit.store') }}'>
                 @csrf
                 <div class='form-group'>
                     <label for='spesies'> Spesies: </label>
@@ -28,6 +28,25 @@
                         {{ $errors->first('spesies') }}
                     </div>
                 </div>
+
+                <div class='form-group'>
+                    <label for='image'>
+                         Gambar:
+                    </label>
+
+                    <input
+                        id='image'
+                        name='image'
+                        type='file'
+                        placeholder='Gambar'
+                        value='{{ old('image') }}'
+                        class='form-control {{ !$errors->has('image') ?: 'is-invalid' }}'>
+
+                    <div class='invalid-feedback'>
+                        {{ $errors->first('image') }}
+                    </div>
+                </div>
+
 
                 <div class='form-group'>
                     <label for='famili'> Famili: </label>
