@@ -17,6 +17,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BibitController;
+use App\Http\Controllers\DefinisiController;
 
 Route::redirect('/', '/home');
 
@@ -168,4 +169,14 @@ Route::group(['prefix' => '/bibit', 'as' => 'bibit.'], function() {
     Route::get('/edit/{bibit}', [BibitController::class, 'edit'])->name('edit');
     Route::post('/update/{bibit}', [BibitController::class, 'update'])->name('update');
     Route::post('/delete/{bibit}', [BibitController::class, 'delete'])->name('delete');
+});
+
+Route::group(['prefix' => '/definisi', 'as' => 'definisi.'], function() {
+    Route::get('/index', [DefinisiController::class, 'index'])->name('index');
+    Route::get('/show/{definisi}', [DefinisiController::class, 'show'])->name('show');
+    Route::get('/create', [DefinisiController::class, 'create'])->name('create');
+    Route::post('/store', [DefinisiController::class, 'store'])->name('store');
+    Route::get('/edit/{definisi}', [DefinisiController::class, 'edit'])->name('edit');
+    Route::post('/update/{definisi}', [DefinisiController::class, 'update'])->name('update');
+    Route::post('/delete/{definisi}', [DefinisiController::class, 'delete'])->name('delete');
 });

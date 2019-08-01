@@ -20,6 +20,12 @@
                         @foreach ($information as $record)
                         <a class='dropdown-item' href='{{ route('information.index', $record) }}'> {{ $record->menu_title }} </a>
                         @endforeach
+
+                        @can('seeManagementMenu', \App\Definisi::class)
+                        <div class="dropdown-divider"></div>
+                        <a class='dropdown-item' href='{{ route('definisi.index') }}'> Kelola Definisi </a>
+                        <a class='dropdown-item' href='{{ route('definisi.create') }}'> Tambah Definisi </a>
+                        @endcan
                     </div>
                 </li>
 

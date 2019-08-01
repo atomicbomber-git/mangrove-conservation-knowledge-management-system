@@ -9,8 +9,10 @@ use App\Article;
 use App\Research;
 use App\Policies\ResearchPolicy;
 use App\Pengalaman;
+use App\Definisi;
 use App\Policies\PengalamanPolicy;
 use App\Policies\ArticlePolicy;
+use App\Policies\DefinisiPolicy;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -23,6 +25,7 @@ class AuthServiceProvider extends ServiceProvider
         Research::class => ResearchPolicy::class,
         Pengalaman::class => PengalamanPolicy::class,
         Article::class => ArticlePolicy::class,
+        Definisi::class => DefinisiPolicy::class,
     ];
 
     /**
