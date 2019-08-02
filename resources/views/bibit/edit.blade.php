@@ -15,7 +15,7 @@
             Sunting Bibit
         </div>
         <div class="card-body">
-            <form method='POST' action='{{ route('bibit.update', $bibit) }}'>
+            <form method='POST' enctype="multipart/form-data" action='{{ route('bibit.update', $bibit) }}'>
                 @csrf
 
                 <div class='form-group'>
@@ -31,6 +31,28 @@
                         {{ $errors->first('spesies') }}
                     </div>
                 </div>
+
+                <div class='form-group'>
+                    <label for='image'>
+                         Gambar Baru:
+                    </label>
+
+                    <input
+                        id='image'
+                        name='image'
+                        type='file'
+                        placeholder='Gambar'
+                        class='form-control {{ !$errors->has('image') ?: 'is-invalid' }}'>
+
+                    <div class='invalid-feedback'>
+                        {{ $errors->first('image') }}
+                    </div>
+                </div>
+
+                <figure class="figure">
+                    <img src="{{ route('bibit.image', $bibit) }}" class="figure-img img-fluid rounded" alt="">
+                    <figcaption class="figure-caption text-xs-right"> Gambar Sekarang </figcaption>
+                </figure>
 
                 <div class='form-group'>
                     <label for='famili'> Famili: </label>

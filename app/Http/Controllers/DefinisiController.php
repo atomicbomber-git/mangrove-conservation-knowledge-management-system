@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Definisi;
+use Illuminate\Support\Facades\DB;
 
 class DefinisiController extends Controller
 {
@@ -38,10 +39,16 @@ class DefinisiController extends Controller
 
         $data = $this->validate(request(), [
             "title" => ["required", "string", "max:3000", "unique:definisis"],
+            "image" => ["required", "file", "mimes:png,jpg,jpeg"],
             "content" => ["required", "string", "max:300000"],
         ]);
 
-        Definisi::create($data);
+        DB::transaction(function() use($data) {
+            Definisi::create($data)
+                ->addMediaFromRequest("image")
+                ->toMediaCollection(config("media.collections.images"));
+        });
+
         return redirect()
             ->route("definisi.index")
             ->with("message.success", __('messages.create.success'));

@@ -173,6 +173,7 @@ Route::group(['prefix' => '/bibit', 'as' => 'bibit.'], function() {
 
 Route::group(['prefix' => '/definisi', 'as' => 'definisi.'], function() {
     Route::get('/index', [DefinisiController::class, 'index'])->name('index');
+    Route::get('/image/{definisi}', [DefinisiController::class, 'image'])->name('image');
     Route::get('/show/{definisi}', [DefinisiController::class, 'show'])->name('show');
     Route::get('/create', [DefinisiController::class, 'create'])->name('create');
     Route::post('/store', [DefinisiController::class, 'store'])->name('store');

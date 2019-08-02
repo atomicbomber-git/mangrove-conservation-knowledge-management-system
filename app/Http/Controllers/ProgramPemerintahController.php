@@ -114,9 +114,8 @@ class ProgramPemerintahController extends Controller
 
             if (isset($data["image"])) {
                 $programPemerintah
-                    ->clearMediaCollection(config('media.collections.images'));
-
-                $programPemerintah->addMediaFromRequest('image')
+                    ->clearMediaCollection(config('media.collections.images'))
+                    ->addMediaFromRequest('image')
                     ->toMediaCollection(config('media.collections.images'));
             }
         });

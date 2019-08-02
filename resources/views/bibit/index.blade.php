@@ -39,7 +39,7 @@
                                     </a>
 
                                     <a class="btn btn-secondary btn-sm" href="{{ route('bibit.show', $bibit) }}">
-                                        <i class="fa fa-list"></i>
+                                        <i class="fa fa-eye"></i>
                                     </a>
 
                                     <form action='{{ route('bibit.delete', $bibit) }}' method='POST' class='d-inline-block'>

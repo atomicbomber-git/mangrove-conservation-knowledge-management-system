@@ -15,7 +15,7 @@
             Tambah Definisi
         </div>
         <div class="card-body">
-            <form method='POST' action='{{ route('definisi.store') }}'>
+            <form method='POST' enctype="multipart/form-data" action='{{ route('definisi.store') }}'>
                 @csrf
 
                 <div class='form-group'>
@@ -33,6 +33,22 @@
 
                     <div class='invalid-feedback'>
                         {{ $errors->first('title') }}
+                    </div>
+                </div>
+
+                <div class='form-group'>
+                    <label for='image'>
+                         Gambar:
+                    </label>
+
+                    <input
+                        id='image'
+                        name='image'
+                        type='file'
+                        class='form-control {{ !$errors->has('image') ?: 'is-invalid' }}'>
+
+                    <div class='invalid-feedback'>
+                        {{ $errors->first('image') }}
                     </div>
                 </div>
 

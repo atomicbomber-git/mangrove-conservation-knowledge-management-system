@@ -95,6 +95,7 @@ class BibitController extends Controller
     {
         $data = $this->validate(request(), [
             "spesies" => ["required", "string", Rule::unique("bibits")->ignore($bibit->id)],
+            "image" => "nullable|file|mimes:jpg,png,jpeg",
             "famili" => "required|string",
             "deskripsi" => "nullable|string",
             "daun" => "nullable|string",
@@ -107,7 +108,15 @@ class BibitController extends Controller
             "catatan" => "nullable|string",
         ]);
 
-        $bibit->update($data);
+        DB::transaction(function() use($data, $bibit) {
+            $bibit->update($data);
+
+            if (isset($data["image"])) {
+                $bibit->clearMediaCollection(config("media.collections.images"))
+                    ->addMediaFromRequest("image")
+                    ->toMediaCollection(config("media.collections.images"));
+            }
+        });
 
         return back()
             ->with("message.success", __('messages.update.success'));
