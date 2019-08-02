@@ -83,7 +83,7 @@ class BibitController extends Controller
 
         return redirect()
             ->route("bibit.index")
-            ->with("message.success", __('messages.delete.success'));
+            ->with("message.success", __('messages.create.success'));
     }
 
     public function edit(Bibit $bibit)
@@ -117,6 +117,6 @@ class BibitController extends Controller
     {
         $bibit->delete();
         return back()
-            ->with("message.success", __('messages.delete.success'));
+            ->with("message.success", __('messages.update.success'));
     }
 }
