@@ -1,11 +1,8 @@
 <dl>
-    <dt> Gambar: </dt>
-    <dd>
-        <img
-            class="img-fluid"
-            src="{{ route('bibit.image', $bibit) }}"
-            alt="Gambar {{ $bibit->spesies }}">
-    </dd>
+    <img
+        class="img-fluid d-block mx-auto mb-3"
+        src="{{ route('bibit.image', $bibit) }}"
+        alt="Gambar {{ $bibit->spesies }}">
     <dt> Famili: </dt>
     <dd> {{ $bibit->famili }} </dd>
     <dt> Deskripsi: </dt>

@@ -15,7 +15,7 @@
             Sunting Definisi
         </div>
         <div class="card-body">
-            <form method='POST' action='{{ route('definisi.update', $definisi) }}'>
+            <form method='POST' enctype="multipart/form-data" action='{{ route('definisi.update', $definisi) }}'>
                 @csrf
 
                 <div class='form-group'>
@@ -33,6 +33,28 @@
 
                     <div class='invalid-feedback'>
                         {{ $errors->first('title') }}
+                    </div>
+                </div>
+
+                <figure class="figure">
+                    <img src="{{ route('definisi.image', $definisi) }}" class="figure-img img-fluid rounded" alt="Gambar {{ $definisi->title }}">
+                    <figcaption class="figure-caption text-xs-right"> Gambar Sekarang </figcaption>
+                </figure>
+
+                <div class='form-group'>
+                    <label for='image'>
+                         Gambar:
+                    </label>
+
+                    <input
+                        id='image'
+                        name='image'
+                        type='file'
+                        placeholder='Gambar'
+                        class='form-control {{ !$errors->has('image') ?: 'is-invalid' }}'>
+
+                    <div class='invalid-feedback'>
+                        {{ $errors->first('image') }}
                     </div>
                 </div>
 

@@ -21,5 +21,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ProgramPemerintahSeeder::class);
         $this->call(PengalamanSeeder::class);
         $this->call(BibitSeeder::class);
+        $this->call(DefinisiSeeder::class);
     }
 }

@@ -24,69 +24,49 @@
                     </div>
                 </div>
 
-                <div class="form-group text-right">
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="mode-definisis" name="mode" value="definisis"
+                        {{ request('mode') === 'definisis' ? 'checked' : '' }}
+                        class="custom-control-input">
+                    <label class="custom-control-label" for="mode-definisis"> Rangkuman </label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="mode-researches" name="mode" value="researches"
+                        {{ (request('mode') === 'researches') || (request('mode') === null) ? 'checked' : '' }}
+                        class="custom-control-input">
+                    <label class="custom-control-label" for="mode-researches"> Hasil Penelitian </label>
+                </div>
+
+                <div class="d-flex justify-content-end">
                     <button class="btn btn-secondary">
                         Cari
                         <i class="fa fa-search"></i>
                     </button>
                 </div>
+
             </form>
         </div>
     </div>
 
-    @isset($researches)
     <div class="card">
         <div class="card-body">
-            @if(null !== request('keyword'))
-
+            @isset($google_scholar_query)
             <div class="mb-3">
                 <a target="_blank" href="{{ $google_scholar_query }}">
                     <i class="fa fa-search"></i>
                     Hasil pencarian di Google Scholar
                 </a>
             </div>
+            @endisset
 
-            <div class="alert alert-info mb-5">
-                Menampilkan hasil pencarian ke {{ $researches->firstItem() }}-{{ $researches->lastItem() }}
-                dari {{ $researches_count }} hasil
-                untuk kata kunci: <strong> {{ implode(", ", $splitted_keywords) }} </strong>
-            </div>
+            @isset($researches)
+                @include('research-search-result')
+            @endisset
 
-            @else
-
-            <div class="alert alert-info mb-5">
-                Menampilkan Kelola hasil penelitian
-            </div>
-
-            @endif
-
-            @if(isset($researches))
-
-            @forelse ($researches as $research)
-            <h5> {{ $research->title }} ({{ $research->year }}) </h5>
-            <p>
-            @foreach ($research->authors as $author)
-                <span class="text-success font-weight-bold">
-                    {{ $author->name }}{{ !$loop->last ? ', ' : '' }}
-                </span>
-            @endforeach
-            </p>
-            <p> {{ str_limit($research->description, 200) }} </p>
-            <a href="{{ route('user-research.detail', $research) }}"> Detail </a> | <a href="{{ route('research.document', $research) }}"> Unduh Dokumen </a>
-            <hr/>
-            @empty
-
-            @endforelse
-
-            @endif
-        </div>
-
-        <div class="d-flex justify-content-center p-4">
-            <div style="overflow-x: scroll">
-                {{ $researches->appends(['keyword' => request('keyword')])->links() }}
-            </div>
+            @isset($definisis)
+                @include('definisi-search-result')
+            @endisset
         </div>
     </div>
-    @endif
 </div>
 @endsection

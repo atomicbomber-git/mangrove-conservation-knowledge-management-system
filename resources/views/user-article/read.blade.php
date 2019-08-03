@@ -8,14 +8,14 @@
             Kembali ke Daftar Artikel
         </a>
     </div>
-    
+
     <div class="card mb-5">
         <div class="card-body">
             <small>
                 @localized_date($article->published_date) <br>
                 ({{ $article->publisher_media ?? '-' }})
             </small>
-    
+
             <h1> {{ $article->title }}
                 <small class="text-muted">
                     <p class="lead">

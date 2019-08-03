@@ -27,7 +27,7 @@ class UserResearchController extends Controller
                     })
                     ->toArray();
 
-                $research->formatted_authors = implode(", ", $author_names); 
+                $research->formatted_authors = implode(", ", $author_names);
             });
 
         return view('user-research.index', compact('researches'));
@@ -58,7 +58,7 @@ class UserResearchController extends Controller
             'publisher_location' => 'nullable|string',
             'volume' => 'nullable|string',
         ]);
-        
+
         $data['poster_id'] = auth()->user()->id;
 
         DB::transaction(function() use($data) {
@@ -127,7 +127,7 @@ class UserResearchController extends Controller
 
         DB::transaction(function() use($research, $data) {
             $research->update($data);
-            
+
             Author::where('research_id', $research->id)
                 ->delete();
 
@@ -155,7 +155,7 @@ class UserResearchController extends Controller
             $research->authors()->delete();
             $research->delete();
         });
-        
+
         return back()
             ->with('message.success', __('messages.delete.success'));
     }

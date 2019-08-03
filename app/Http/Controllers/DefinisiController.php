@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Definisi;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\Rule;
 
 class DefinisiController extends Controller
 {
@@ -65,10 +66,19 @@ class DefinisiController extends Controller
         $this->authorize("update", $definisi);
         $data = $this->validate(request(), [
             "title" => ["required", "string", "max:3000", Rule::unique("definisis")->ignore($definisi->id)],
+            "image" => ["nullable", "file", "mimes:jpg,jpeg,png"],
             "content" => ["required", "string", "max:300000"],
         ]);
 
-        $definisi->update($data);
+        DB::transaction(function() use ($data, $definisi) {
+            $definisi->update($data);
+            if (isset($data["image"])) {
+                $definisi
+                    ->clearMediaCollection(config("media.collections.images"))
+                    ->addMediaFromRequest("image")
+                    ->toMediaCollection(config("media.collections.images"));
+            }
+        });
 
         return redirect()
             ->route("definisi.edit", $definisi)
@@ -82,5 +92,15 @@ class DefinisiController extends Controller
         return redirect()
             ->route("definisi.index")
             ->with("message.success", __('messages.delete.success'));
+    }
+
+    public function image(Definisi $definisi)
+    {
+        if ($definisi->hasMedia(config("media.collections.images"))) {
+            return response()
+                ->file($definisi->getFirstMediaPath(config("media.collections.images")));
+        }
+
+        abort(404);
     }
 }
