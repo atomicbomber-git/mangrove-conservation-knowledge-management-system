@@ -79,3 +79,17 @@
     </div>
 </div>
 @endsection
+
+
+@section('extra-scripts')
+<script>
+
+tinyMCE.init(Object.assign(window.tinymce_settings, {
+    content_css: '{{ asset('css/app.css') }}',
+}))
+.then(editors => {
+    editors[0].setContent(`{!! old('content') !!}`)
+})
+
+</script>
+@endsection

@@ -14,7 +14,7 @@
                 <figcaption class="figure-caption text-xs-right"> {{ $definisi->title }} </figcaption>
             </figure>
 
-            {{ $definisi->content }}
+            {!! $definisi->content !!}
         </div>
     </div>
 

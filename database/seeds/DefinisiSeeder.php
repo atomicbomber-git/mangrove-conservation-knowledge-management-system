@@ -19,13 +19,11 @@ class DefinisiSeeder extends Seeder
      */
     public function run()
     {
-        echo $this->faker->name;
-
         DB::transaction(function() {
             factory(App\Definisi::class, 50)
                 ->create()
-                ->each(function (Definisi $definisi) {
-                    $definisi->addMedia(imagecreate(100, 100));
+                ->each(function ($definisi) {
+                    // $definisi->addMedia(imagecreate(100, 100));
                 });
         });
     }

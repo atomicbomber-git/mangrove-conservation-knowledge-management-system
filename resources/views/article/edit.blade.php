@@ -20,13 +20,13 @@
 
                 <div class='form-group'>
                     <label for='title'> Judul: </label>
-                
+
                     <input
                         id='title' name='title' type='text'
                         placeholder='Judul'
                         value='{{ old('title', $article->title) }}'
                         class='form-control {{ !$errors->has('title') ?: 'is-invalid' }}'>
-                
+
                     <div class='invalid-feedback'>
                         {{ $errors->first('title') }}
                     </div>
@@ -48,13 +48,13 @@
                     <div class="col-md">
                         <div class='form-group'>
                             <label for='author_first_name'> Nama Depan Penulis: </label>
-                        
+
                             <input
                                 id='author_first_name' name='author_first_name' type='text'
                                 placeholder='Nama Depan Penulis'
                                 value='{{ old('author_first_name', $article->author_first_name) }}'
                                 class='form-control {{ !$errors->has('author_first_name') ?: 'is-invalid' }}'>
-                        
+
                             <div class='invalid-feedback'>
                                 {{ $errors->first('author_first_name') }}
                             </div>
@@ -63,13 +63,13 @@
                     <div class="col-md">
                         <div class='form-group'>
                             <label for='author_last_name'> Nama Belakang Penulis: </label>
-                        
+
                             <input
                                 id='author_last_name' name='author_last_name' type='text'
                                 placeholder='Nama Belakang Penulis'
                                 value='{{ old('author_last_name', $article->author_last_name) }}'
                                 class='form-control {{ !$errors->has('author_last_name') ?: 'is-invalid' }}'>
-                        
+
                             <div class='invalid-feedback'>
                                 {{ $errors->first('author_last_name') }}
                             </div>
@@ -79,13 +79,13 @@
 
                 <div class='form-group'>
                     <label for='publisher_media'> Media Penerbit: </label>
-                
+
                     <input
                         id='publisher_media' name='publisher_media' type='text'
                         placeholder='Media Penerbit'
                         value='{{ old('publisher_media', $article->publisher_media) }}'
                         class='form-control {{ !$errors->has('publisher_media') ?: 'is-invalid' }}'>
-                
+
                     <div class='invalid-feedback'>
                         {{ $errors->first('publisher_media') }}
                     </div>
@@ -93,12 +93,12 @@
 
                 <div class='form-group'>
                     <label for='content'> Isi: </label>
-                
+
                     <textarea
                         id='content' name='content'
                         class='form-control {{ !$errors->has('content') ?: 'is-invalid' }}'
                         ></textarea>
-                
+
                     <div class='invalid-feedback'>
                         {{ $errors->first('content') }}
                     </div>
