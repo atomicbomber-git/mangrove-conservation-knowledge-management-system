@@ -11,9 +11,7 @@
 
 @forelse ($definisis as $definisi)
 <h5> {{ $definisi->title }} </h5>
-<p>
-</p>
-<p> {{ str_limit($definisi->content, 200) }} </p>
+<p> {{ $definisi->short_content_text }} </p>
 <a href="{{ route('definisi.show', $definisi) }}"> Detail </a>
 <hr/>
 @empty

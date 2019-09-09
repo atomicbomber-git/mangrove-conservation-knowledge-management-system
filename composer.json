@@ -9,6 +9,7 @@
         "doctrine/dbal": "^2.9",
         "drfraker/snipe-migrations": "^1.2",
         "fideloper/proxy": "^4.0",
+        "html2text/html2text": "^4.2",
         "jenssegers/date": "^3.4",
         "laravel/framework": "5.8.*",
         "laravel/tinker": "^1.0",

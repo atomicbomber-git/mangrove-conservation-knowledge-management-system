@@ -31,8 +31,8 @@ class BibitController extends Controller
                 "spesies",
                 "deskripsi"
             )
-            ->orderBy("famili")
             ->orderBy("spesies")
+            ->orderBy("famili")
             ->paginate();
 
         return view("bibit.guest-index", compact("bibits"));
