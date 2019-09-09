@@ -28,7 +28,7 @@
                     <input type="radio" id="mode-definisis" name="mode" value="definisis"
                         {{ request('mode') === 'definisis' ? 'checked' : '' }}
                         class="custom-control-input">
-                    <label class="custom-control-label" for="mode-definisis"> Rangkuman </label>
+                    <label class="custom-control-label" for="mode-definisis"> Definisi </label>
                 </div>
                 <div class="custom-control custom-radio custom-control-inline">
                     <input type="radio" id="mode-researches" name="mode" value="researches"
